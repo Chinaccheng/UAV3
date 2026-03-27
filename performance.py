@@ -147,6 +147,7 @@ class PerformanceEvaluator:
         final_q_comm = mu * raw_avg_q_comm
         
         # 确保在 [0, 1] 范围内
+        print('final_q_comm',final_q_comm)
         return max(0.0, min(final_q_comm, 1.0))
     
     def calculate_mission_performance(self, mission_layer: MissionLayer):

@@ -58,11 +58,11 @@ class Config:
     # 'random': 随机打击
     # 'topology': 拓扑蓄意打击（按度数降序优先）
     # 'role': 角色导向打击（按节点类型优先）
-    ATTACK_STRATEGY = 'random'
+    ATTACK_STRATEGY = 'role'
 
     # 攻击规模（二选一，优先使用 ATTACK_RATIO）
     ATTACK_RATIO = None   # 从当前存活节点中按比例打击
-    ATTACK_NODES = 70    # 当 ATTACK_RATIO=None 时生效
+    ATTACK_NODES = 20    # 当 ATTACK_RATIO=None 时生效
 
     # 角色导向策略参数
     ATTACK_ROLE_TARGET = 'DECIDER'  # 'SENSOR' | 'DECIDER' | 'INFLUENCER'
@@ -85,7 +85,7 @@ class Config:
     DT = 1.0  # 时间步长
     
     # 可视化参数（None表示使用默认值）
-    SNAPSHOT_TIMES = [10,19,21,40,50]
+    SNAPSHOT_TIMES = [19,21,50]
     # 默认值：攻击前、攻击后、最终时刻
     # 示例：[0, 10, 20, 30, 50, 100] 或 [ATTACK_TIME - 1, ATTACK_TIME + 1, TIME_STEPS]
     
