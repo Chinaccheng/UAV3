@@ -80,6 +80,7 @@ class PerformanceEvaluator:
         计算通信层性能 Q_comm(t)
         采用强度与有序度解耦方案：结合通信总概率(强度)与分布倾向(信息熵)
         修复低概率残存链路导致的“假性低熵”评分飙升问题
+        对有向通信网，按节点的对外发送概率分布 P(i->j) 计算
         """
         graph = comm_layer.graph
         nodes = list(graph.nodes())
@@ -104,8 +105,8 @@ class PerformanceEvaluator:
                 if node_id == other_id:
                     continue
                     
-                # 从通信层字典中读取理论交互概率 P_ij
-                edge_key = tuple(sorted([node_id, other_id]))
+                # 从通信层字典中读取有向理论交互概率 P(i->j)
+                edge_key = (node_id, other_id)
                 p_ij = comm_layer.activation_probabilities.get(edge_key, 0.0)
                 
                 if p_ij > 0:
@@ -206,4 +207,3 @@ class PerformanceEvaluator:
     def reset_initial_values(self):
         """重置初始值（用于新的实验）"""
         self.initial_values.clear()
-

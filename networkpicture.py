@@ -39,8 +39,8 @@ def generate_uav_networks(N=100, rc=20, area_size=100, eta=0.8):
             if dist <= rc:
                 G_phy.add_edge(i, j)
 
-    # --- 3. 通信层 (无向, 概率) ---
-    G_comm = nx.Graph()
+    # --- 3. 通信层 (有向, 概率) ---
+    G_comm = nx.DiGraph()
     G_comm.add_nodes_from(nodes)
     epsilon = 0.1
     Omega = np.array([[epsilon, 1.0, 1.0], [epsilon, 1.0, 1.0], [1.0, 1.0, epsilon]])
@@ -53,10 +53,13 @@ def generate_uav_networks(N=100, rc=20, area_size=100, eta=0.8):
             f_phy = 1 if dist < eta * rc else (rc - dist) / (rc * (1 - eta))
             score_ij = np.dot(np.dot(type_vectors[i], Omega), type_vectors[j])
             score_ji = np.dot(np.dot(type_vectors[j], Omega), type_vectors[i])
-            P_ij = f_phy * max(score_ij, score_ji)
+            P_ij = f_phy * score_ij
+            P_ji = f_phy * score_ji
 
             if random.random() < P_ij:
                 G_comm.add_edge(i, j)
+            if random.random() < P_ji:
+                G_comm.add_edge(j, i)
 
     # --- 4. 任务层 (有向) ---
     G_mis = nx.DiGraph()
@@ -66,8 +69,8 @@ def generate_uav_networks(N=100, rc=20, area_size=100, eta=0.8):
         ('Decider', 'Decider'), ('Decider', 'Sensor'), ('Decider', 'Influencer')
     ])
     for u, v in G_comm.edges():
-        if (types[u], types[v]) in valid_flows: G_mis.add_edge(u, v)
-        if (types[v], types[u]) in valid_flows: G_mis.add_edge(v, u)
+        if (types[u], types[v]) in valid_flows:
+            G_mis.add_edge(u, v)
 
     return G_phy, G_comm, G_mis, pos, types
 
@@ -126,10 +129,11 @@ def plot_3d_stacked_final(G_phy, G_comm, G_mis, pos, types, area_size=100):
         ax.plot([pos[u][0], pos[v][0]], [pos[u][1], pos[v][1]], [z_phy, z_phy],
                 c='gray', alpha=0.2, linewidth=0.6)
 
-    # 通信层 (橙色无向线)
+    # 通信层 (橙色有向线)
     for u, v in G_comm.edges():
-        ax.plot([pos[u][0], pos[v][0]], [pos[u][1], pos[v][1]], [z_comm, z_comm],
-                c='orange', alpha=0.5, linewidth=0.8)
+        ax.quiver(pos[u][0], pos[u][1], z_comm,
+                  pos[v][0] - pos[u][0], pos[v][1] - pos[u][1], 0,
+                  color='orange', alpha=0.6, arrow_length_ratio=0.15, linewidth=0.8)
 
     # --- 4. 绘制节点 ---
     def draw_nodes(G, z_height):

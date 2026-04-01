@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from typing import Dict
 import matplotlib
+from matplotlib.lines import Line2D
 from node import NodeType
 
 matplotlib.rcParams['font.sans-serif'] = ['SimHei', 'Arial Unicode MS', 'DejaVu Sans']
@@ -15,6 +16,35 @@ class Visualizer:
     
     def __init__(self, figsize=(12, 8)):
         self.figsize = figsize
+
+    @staticmethod
+    def _draw_directed_edge(ax, start_pos, end_pos, color, linewidth, alpha,
+                            linestyle='-', label=None):
+        """绘制有向边，并在需要时补一条可进图例的线段。"""
+        ax.annotate(
+            '',
+            xy=(end_pos[0], end_pos[1]),
+            xytext=(start_pos[0], start_pos[1]),
+            arrowprops=dict(
+                arrowstyle='->',
+                color=color,
+                lw=linewidth,
+                alpha=alpha,
+                linestyle=linestyle,
+                shrinkA=8,
+                shrinkB=8,
+            ),
+        )
+        if label:
+            ax.plot(
+                [start_pos[0], end_pos[0]],
+                [start_pos[1], end_pos[1]],
+                color=color,
+                linewidth=linewidth,
+                alpha=min(alpha, 0.4),
+                linestyle=linestyle,
+                label=label,
+            )
     
     def plot_performance_curves(self, history: Dict, save_path: str = None):
         """
@@ -156,12 +186,11 @@ class Visualizer:
                            'gray', linewidth=0.5, alpha=0.3, label=label)
         
         if (layer == 'communication' or layer == 'all') and comm_layer is not None:
-            # 绘制通信层边（绿色，中等粗细）
-            for i, edge in enumerate(comm_layer.graph.edges()):
+            # 绘制通信层边（绿色，中等粗细，有向箭头）
+            for edge in comm_layer.graph.edges():
                 node_i = next(n for n in nodes if n.id == edge[0])
                 node_j = next(n for n in nodes if n.id == edge[1])
                 if node_i.is_alive and node_j.is_alive:
-                    # 只在第一条边时添加图例标签
                     if layer == 'communication' and not legend_added['communication']:
                         label = '通信层'
                         legend_added['communication'] = True
@@ -170,9 +199,16 @@ class Visualizer:
                         legend_added['communication'] = True
                     else:
                         label = ''
-                    ax.plot([node_i.position[0], node_j.position[0]],
-                           [node_i.position[1], node_j.position[1]],
-                           'green', linewidth=1.0, alpha=0.5, linestyle='--', label=label)
+                    self._draw_directed_edge(
+                        ax,
+                        node_i.position,
+                        node_j.position,
+                        color='green',
+                        linewidth=1.2,
+                        alpha=0.55,
+                        linestyle='--',
+                        label=label,
+                    )
         
         if (layer == 'mission' or layer == 'all') and mission_layer is not None:
             # 绘制任务层边（红色，粗线，有向箭头）
@@ -189,15 +225,15 @@ class Visualizer:
                         legend_added['mission'] = True
                     else:
                         label = ''
-                    # 绘制有向箭头
-                    ax.annotate('', xy=(node_j.position[0], node_j.position[1]),
-                               xytext=(node_i.position[0], node_i.position[1]),
-                               arrowprops=dict(arrowstyle='->', color='red', 
-                                             lw=1.5, alpha=0.6))
-                    # 绘制线段
-                    ax.plot([node_i.position[0], node_j.position[0]],
-                           [node_i.position[1], node_j.position[1]],
-                           'red', linewidth=1.5, alpha=0.4, label=label)
+                    self._draw_directed_edge(
+                        ax,
+                        node_i.position,
+                        node_j.position,
+                        color='red',
+                        linewidth=1.5,
+                        alpha=0.65,
+                        label=label,
+                    )
         
         # 绘制节点
         colors = {'SENSOR': 'blue', 'DECIDER': 'green', 'INFLUENCER': 'red'}
@@ -315,14 +351,20 @@ class Visualizer:
         # 绘制通信层
         ax = axes[1]
         if comm_layer is not None:
-            # 绘制通信层边
+            # 绘制通信层边（有向）
             for edge in comm_layer.graph.edges():
                 node_i = next(n for n in nodes if n.id == edge[0])
                 node_j = next(n for n in nodes if n.id == edge[1])
                 if node_i.is_alive and node_j.is_alive:
-                    ax.plot([node_i.position[0], node_j.position[0]],
-                           [node_i.position[1], node_j.position[1]],
-                           'green', linewidth=1.2, alpha=0.6, linestyle='--')
+                    self._draw_directed_edge(
+                        ax,
+                        node_i.position,
+                        node_j.position,
+                        color='green',
+                        linewidth=1.2,
+                        alpha=0.6,
+                        linestyle='--',
+                    )
         
         # 绘制节点
         for node_type in NodeType:
@@ -349,7 +391,11 @@ class Visualizer:
         ax.set_ylabel('Y坐标')
         ax.set_title('通信层拓扑', fontsize=12, fontweight='bold')
         ax.grid(True, alpha=0.3)
-        ax.legend(loc='upper right', fontsize=8)
+        comm_legend = [
+            Line2D([0], [0], color='green', linestyle='--', lw=1.2, label='有向通信链路'),
+        ]
+        handles, labels = ax.get_legend_handles_labels()
+        ax.legend(handles + comm_legend, labels + ['有向通信链路'], loc='upper right', fontsize=8)
         ax.set_aspect('equal')
         
         # 绘制任务层
@@ -360,15 +406,14 @@ class Visualizer:
                 node_i = next(n for n in nodes if n.id == edge[0])
                 node_j = next(n for n in nodes if n.id == edge[1])
                 if node_i.is_alive and node_j.is_alive:
-                    # 绘制有向箭头
-                    ax.annotate('', xy=(node_j.position[0], node_j.position[1]),
-                               xytext=(node_i.position[0], node_i.position[1]),
-                               arrowprops=dict(arrowstyle='->', color='red', 
-                                             lw=1.5, alpha=0.7))
-                    # 绘制线段
-                    ax.plot([node_i.position[0], node_j.position[0]],
-                           [node_i.position[1], node_j.position[1]],
-                           'red', linewidth=1.2, alpha=0.4)
+                    self._draw_directed_edge(
+                        ax,
+                        node_i.position,
+                        node_j.position,
+                        color='red',
+                        linewidth=1.5,
+                        alpha=0.7,
+                    )
         
         # 绘制节点
         for node_type in NodeType:
@@ -436,4 +481,3 @@ class Visualizer:
             print(f"韧性对比图已保存至: {save_path}")
         
         plt.show()
-

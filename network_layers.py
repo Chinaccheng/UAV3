@@ -51,7 +51,7 @@ class CommunicationLayer:
     
     def __init__(self, config: Config):
         self.config = config
-        self.graph = nx.Graph()
+        self.graph = nx.DiGraph()
         self.activation_probabilities = {}  # 存储激活概率
         
     def _f_phy(self, distance):
@@ -74,21 +74,21 @@ class CommunicationLayer:
         else:
             return 0.0
     
-    def _f_logic(self, node_i: Node, node_j: Node, phase: int, physical_layer: PhysicalLayer):
+    def _f_logic(self, node_sender: Node, node_receiver: Node, phase: int, physical_layer: PhysicalLayer):
         """
         逻辑层交互倾向函数（基于OODA任务链 + 负载修正）
 
         Args:
-            node_i: 节点i
-            node_j: 节点j
+            node_sender: 发送方节点
+            node_receiver: 接收方节点
             phase: 任务阶段 (1=侦察阶段, 2=打击阶段)
             physical_layer: 物理层网络（用于计算负载修正项）
 
         Returns:
-            逻辑层交互概率
+            从 sender 指向 receiver 的逻辑层交互概率
         """
-        type_i = node_i.type
-        type_j = node_j.type
+        type_i = node_sender.type
+        type_j = node_receiver.type
 
         # 允许的传输规则 R = {(S->S), (S->D), (D->D), (D->S), (D->I)}
         allowed_rules = [
@@ -103,8 +103,7 @@ class CommunicationLayer:
         match_score = 0.0
         EPSILON = 0.05  # 极小底噪，对应公式中的 \epsilon（代表静默状态下的最低限度心跳）
 
-        # 假设 allowed_rules 依然控制着合法的物理或逻辑连接范围
-        if (type_i, type_j) in allowed_rules or (type_j, type_i) in allowed_rules:
+        if (type_i, type_j) in allowed_rules:
 
             if phase == 1:  # 侦察阶段 (\Phi = 1)
                 # --- 发送方为 SENSOR ---
@@ -137,10 +136,7 @@ class CommunicationLayer:
                     match_score = EPSILON
 
         else:
-            match_score = 0.0
-
-        if match_score <= 0.0:
-            return 0.0
+            match_score = EPSILON
 
         # 若关闭负载修正，直接返回基础匹配得分
         if not self.config.USE_LOGIC_LOAD_CORRECTION:
@@ -148,7 +144,7 @@ class CommunicationLayer:
 
         # 2) 负载修正项 eta_load(j,t) = 1 - k_j(t)/K_max(t)
         degrees = dict(physical_layer.graph.degree())
-        k_j = degrees.get(node_j.id, 0)
+        k_j = degrees.get(node_receiver.id, 0)
         k_max = max(degrees.values()) if degrees else 1
 
         eta_load = 1.0 - (k_j / k_max) if k_max > 0 else 1.0
@@ -183,26 +179,33 @@ class CommunicationLayer:
             if node.is_alive:
                 self.graph.add_node(node.id, node=node)
         
-        # 基于物理层和概率模型添加边
-        for edge in physical_layer.graph.edges():
-            node_i_id, node_j_id = edge
-            node_i = next(n for n in nodes if n.id == node_i_id)
-            node_j = next(n for n in nodes if n.id == node_j_id)
-            
-            # 计算通信概率
+        node_dict = {node.id: node for node in nodes if node.is_alive}
+
+        # 基于物理层和概率模型添加有向边
+        for node_i_id, node_j_id in physical_layer.graph.edges():
+            node_i = node_dict.get(node_i_id)
+            node_j = node_dict.get(node_j_id)
+
+            if node_i is None or node_j is None:
+                continue
+
             distance = node_i.get_distance(node_j)
             p_phy = self._f_phy(distance)
-            p_logic = self._f_logic(node_i, node_j, phase, physical_layer)
-            p_ij = p_phy * p_logic
-            
-            # 存储概率
-            edge_key = tuple(sorted([node_i_id, node_j_id]))
-            self.activation_probabilities[edge_key] = p_ij
-            
-            # 根据概率决定是否激活链路
-            if np.random.random() < p_ij:
-                self.graph.add_edge(node_i_id, node_j_id, 
-                                  probability=p_ij, distance=distance)
+
+            # 对同一条物理边分别尝试两个方向的通信意愿
+            for sender, receiver in ((node_i, node_j), (node_j, node_i)):
+                p_logic = self._f_logic(sender, receiver, phase, physical_layer)
+                p_ij = p_phy * p_logic
+                edge_key = (sender.id, receiver.id)
+                self.activation_probabilities[edge_key] = p_ij
+
+                if np.random.random() < p_ij:
+                    self.graph.add_edge(
+                        sender.id,
+                        receiver.id,
+                        probability=p_ij,
+                        distance=distance,
+                    )
     
     def get_adjacency_matrix(self):
         """获取邻接矩阵"""
@@ -405,11 +408,9 @@ class MissionLayer:
             if not node_i or not node_j:
                 continue
             
-            # 检查是否符合传输规则
+            # 通信层已经是有向边概率，这里只保留符合任务传输规则的方向
             if self._is_valid_transition(node_i.type, node_j.type):
                 self.graph.add_edge(node_i_id, node_j_id)
-            if self._is_valid_transition(node_j.type, node_i.type):
-                self.graph.add_edge(node_j_id, node_i_id)
         
         # 搜索有效任务链（使用任务层有向图，而不是通信层无向图）
         # 因为任务链需要遵循有向的传输规则
@@ -453,4 +454,3 @@ class MissionLayer:
                 total_efficiency += 1.0 / path_length
         
         return total_efficiency / initial_efficiency if initial_efficiency > 0 else 0.0
-

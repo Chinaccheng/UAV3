@@ -22,6 +22,16 @@ class RecoveryStrategy:
         self.config = config
         self.performance_evaluator = performance_evaluator
         self.cluster_center_history = []  # 记录集群重心历史
+
+    @staticmethod
+    def _get_comm_neighbors(comm_layer: CommunicationLayer, node_id: int):
+        """获取通信层中与节点相关的所有邻居（兼容有向图）。"""
+        graph = comm_layer.graph
+        if node_id not in graph:
+            return []
+        if graph.is_directed():
+            return list(set(graph.predecessors(node_id)) | set(graph.successors(node_id)))
+        return list(graph.neighbors(node_id))
     
     def calculate_node_entropy(self, node: Node, nodes: List[Node], 
                              comm_layer: CommunicationLayer):
@@ -43,7 +53,7 @@ class RecoveryStrategy:
         if node.id not in comm_layer.graph:
             return np.inf
         
-        neighbors = list(comm_layer.graph.neighbors(node.id))
+        neighbors = self._get_comm_neighbors(comm_layer, node.id)
         if len(neighbors) == 0:
             return np.inf
         
@@ -91,7 +101,7 @@ class RecoveryStrategy:
         
         # 如果使用通信范围，直接使用图的邻居（更快）
         if not use_sensor_range and node.id in comm_layer.graph:
-            neighbor_ids = list(comm_layer.graph.neighbors(node.id))
+            neighbor_ids = self._get_comm_neighbors(comm_layer, node.id)
             candidate_nodes = [node_dict[nid] for nid in neighbor_ids if nid in node_dict]
         else:
             # 使用感知范围时，需要遍历所有节点（但这种情况较少）
@@ -266,4 +276,3 @@ class RecoveryStrategy:
         if len(self.cluster_center_history) > 0:
             return self.cluster_center_history[-1]
         return None
-
