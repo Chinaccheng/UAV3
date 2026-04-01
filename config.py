@@ -60,6 +60,11 @@ class Config:
     # 'role': 角色导向打击（按节点类型优先）
     ATTACK_STRATEGY = 'topology'
 
+    # 拓扑蓄意打击的度数参考网络层
+    # 'comm': 参考通信层度数
+    # 'physical': 参考物理层度数
+    ATTACK_DEGREE_LAYER = 'physical'
+
     # 攻击规模（二选一，优先使用 ATTACK_RATIO）
     ATTACK_RATIO = None   # 从当前存活节点中按比例打击
     ATTACK_NODES = 40    # 当 ATTACK_RATIO=None 时生效
@@ -128,6 +133,8 @@ class Config:
             "ATTACK_MODE 仅支持 'physical' 或 'cyber'"
         assert cls.ATTACK_STRATEGY in ('random', 'topology', 'role', 'high_degree', 'critical'), \
             "ATTACK_STRATEGY 不在支持范围内"
+        assert cls.ATTACK_DEGREE_LAYER in ('comm', 'physical'), \
+            "ATTACK_DEGREE_LAYER 仅支持 'comm' 或 'physical'"
         assert cls.ATTACK_ROLE_TARGET in ('SENSOR', 'DECIDER', 'INFLUENCER'), \
             "ATTACK_ROLE_TARGET 仅支持 'SENSOR'|'DECIDER'|'INFLUENCER'"
         if cls.ATTACK_RATIO is not None:
@@ -166,4 +173,3 @@ class Config:
         for t in snapshot_times:
             assert 0 <= t <= cls.TIME_STEPS, \
                 f"快照时间点 {t} 必须在 [0, {cls.TIME_STEPS}] 范围内"
-

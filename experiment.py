@@ -109,11 +109,13 @@ class Experiment:
         
         # 主循环
         for t in range(1, self.config.TIME_STEPS + 1):
+            attack_graph = self._get_attack_reference_graph()
+
             # 执行攻击（打击时刻选择并作用目标）
             self.attack_module.execute_attack(
                 self.nodes,
                 t,
-                graph=self.comm_layer.graph,
+                graph=attack_graph,
             )
 
             # 执行恢复策略（仅对物理毁伤场景生效）
@@ -144,6 +146,13 @@ class Experiment:
         
         print("实验完成！")
         return self.history
+
+    def _get_attack_reference_graph(self):
+        """根据配置返回拓扑蓄意打击使用的度数参考网络层。"""
+        degree_layer = getattr(self.config, 'ATTACK_DEGREE_LAYER', 'comm')
+        if degree_layer == 'physical':
+            return self.physical_layer.graph
+        return self.comm_layer.graph
     
     def _record_state(self, t: int, Q_phy: float, Q_comm: float, 
                      Q_mis: float, Q_overall: float):
@@ -233,4 +242,3 @@ class Experiment:
         
         R = numerator / denominator
         return R
-
