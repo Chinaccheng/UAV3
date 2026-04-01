@@ -58,11 +58,11 @@ class Config:
     # 'random': 随机打击
     # 'topology': 拓扑蓄意打击（按度数降序优先）
     # 'role': 角色导向打击（按节点类型优先）
-    ATTACK_STRATEGY = 'role'
+    ATTACK_STRATEGY = 'random'
 
     # 攻击规模（二选一，优先使用 ATTACK_RATIO）
     ATTACK_RATIO = None   # 从当前存活节点中按比例打击
-    ATTACK_NODES = 20    # 当 ATTACK_RATIO=None 时生效
+    ATTACK_NODES = 40    # 当 ATTACK_RATIO=None 时生效
 
     # 角色导向策略参数
     ATTACK_ROLE_TARGET = 'DECIDER'  # 'SENSOR' | 'DECIDER' | 'INFLUENCER'

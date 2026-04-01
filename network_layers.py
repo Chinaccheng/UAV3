@@ -99,42 +99,47 @@ class CommunicationLayer:
             (NodeType.DECIDER, NodeType.INFLUENCER),
         ]
 
-        # 1) 基础匹配得分（等价于 X^T * Omega * X）
+        # 1) 基础匹配得分（等价于 X_i^T * Omega(\Phi) * X_j）
         match_score = 0.0
+        EPSILON = 0.05  # 极小底噪，对应公式中的 \epsilon（代表静默状态下的最低限度心跳）
 
+        # 假设 allowed_rules 依然控制着合法的物理或逻辑连接范围
         if (type_i, type_j) in allowed_rules or (type_j, type_i) in allowed_rules:
-            if phase == 1:  # 侦察阶段
-                if (type_i == NodeType.SENSOR and type_j == NodeType.DECIDER) or \
-                        (type_i == NodeType.DECIDER and type_j == NodeType.SENSOR):
-                    match_score = 1.0  # S-D: 核心情报上传
-                elif type_i == NodeType.DECIDER and type_j == NodeType.DECIDER:
-                    match_score = 0.9  # D-D: 骨干态势同步
-                elif type_i == NodeType.SENSOR and type_j == NodeType.SENSOR:
-                    match_score = 0.3  # S-S: 局部避让协同
-                elif (type_i == NodeType.DECIDER and type_j == NodeType.INFLUENCER) or \
-                        (type_i == NodeType.INFLUENCER and type_j == NodeType.DECIDER):
-                    match_score = 0.05  # D-I: 无线电静默，仅维持心跳
-                elif type_i == NodeType.INFLUENCER and type_j == NodeType.INFLUENCER:
-                    match_score = 0.05  # I-I: 深度休眠
-                else:
-                    match_score = 0.05  # 其他非核心链路的极小底噪
-            else:  # 打击阶段
-                if (type_i == NodeType.DECIDER and type_j == NodeType.INFLUENCER) or \
-                        (type_i == NodeType.INFLUENCER and type_j == NodeType.DECIDER):
-                    match_score = 1.0  # D-I: 杀伤链火力全开，突发激活
-                elif (type_i == NodeType.SENSOR and type_j == NodeType.DECIDER) or \
-                        (type_i == NodeType.DECIDER and type_j == NodeType.SENSOR):
-                    match_score = 0.9  # S-D: 目标持续引导
-                elif type_i == NodeType.DECIDER and type_j == NodeType.DECIDER:
-                    match_score = 0.8  # D-D: 火力分配解冲突
-                elif type_i == NodeType.INFLUENCER and type_j == NodeType.INFLUENCER:
-                    match_score = 0.5  # I-I: 末端协同/同时弹着
-                elif type_i == NodeType.SENSOR and type_j == NodeType.SENSOR:
-                    match_score = 0.05  # S-S: 停止闲聊，让出频谱带宽
-                else:
-                    match_score = 0.05  # 其他非核心链路的极小底噪
 
-        if match_score == 0.0:
+            if phase == 1:  # 侦察阶段 (\Phi = 1)
+                # --- 发送方为 SENSOR ---
+                if type_i == NodeType.SENSOR and type_j == NodeType.SENSOR:
+                    match_score = 0.25  # 1/4: S->S 情报共享与局部避让
+                elif type_i == NodeType.SENSOR and type_j == NodeType.DECIDER:
+                    match_score = 0.75  # 3/4: S->D 核心情报汇聚上传
+
+                # --- 发送方为 DECIDER ---
+                elif type_i == NodeType.DECIDER and type_j == NodeType.SENSOR:
+                    match_score = 0.67  # 2/3 (近似): D->S 决策反馈与闭环控制
+                elif type_i == NodeType.DECIDER and type_j == NodeType.DECIDER:
+                    match_score = 0.33  # 1/3 (近似): D->D 骨干态势同步
+
+                # --- 其他链路 ---
+                else:
+                    # 包含所有涉及 INFLUENCER 的链路，以及非主流的 S->I 等，全部降级为底噪
+                    match_score = EPSILON
+
+            else:  # 打击阶段 (\Phi = 2)
+                # --- 发送方为 DECIDER ---
+                if type_i == NodeType.DECIDER and type_j == NodeType.DECIDER:
+                    match_score = 0.20  # 1/5: D->D 火力分配解冲突与协同
+                elif type_i == NodeType.DECIDER and type_j == NodeType.INFLUENCER:
+                    match_score = 0.80  # 4/5: D->I 指令授权与火力下达
+
+                # --- 其他链路 ---
+                else:
+                    # 侦察节点(S)的通信频率大幅下降让出带宽，打击节点(I)专注于接收指令
+                    match_score = EPSILON
+
+        else:
+            match_score = 0.0
+
+        if match_score <= 0.0:
             return 0.0
 
         # 若关闭负载修正，直接返回基础匹配得分

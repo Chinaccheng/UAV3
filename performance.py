@@ -112,6 +112,7 @@ class PerformanceEvaluator:
                     p_ij_list.append(p_ij)
                     
             sum_p = sum(p_ij_list)
+            # print(p_ij_list)
             
             # 2. 计算通信倾向分布 π_ij 和 个体熵 H_i
             if sum_p > 0:
@@ -144,10 +145,9 @@ class PerformanceEvaluator:
             self.initial_values['MU_comm'] = 1.0 / raw_avg_q_comm if raw_avg_q_comm > 0 else 1.0
 
         mu = self.initial_values['MU_comm']
-        final_q_comm = mu * raw_avg_q_comm
-        
+        # 计算通信层性能
+        final_q_comm = mu * raw_avg_q_comm * (N / self.config.N_TOTAL)
         # 确保在 [0, 1] 范围内
-        print('final_q_comm',final_q_comm)
         return max(0.0, min(final_q_comm, 1.0))
     
     def calculate_mission_performance(self, mission_layer: MissionLayer):
