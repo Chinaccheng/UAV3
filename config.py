@@ -58,7 +58,7 @@ class Config:
     # 'random': 随机打击
     # 'topology': 拓扑蓄意打击（按度数降序优先）
     # 'role': 角色导向打击（按节点类型优先）
-    ATTACK_STRATEGY = 'topology'
+    ATTACK_STRATEGY = 'random'
 
     # 拓扑蓄意打击的度数参考网络层
     # 'comm': 参考通信层度数
@@ -90,7 +90,7 @@ class Config:
     DT = 1.0  # 时间步长
     
     # 可视化参数（None表示使用默认值）
-    SNAPSHOT_TIMES = [19,21,50]
+    SNAPSHOT_TIMES = [19,21,50,60,70,90,100]
     # 默认值：攻击前、攻击后、最终时刻
     # 示例：[0, 10, 20, 30, 50, 100] 或 [ATTACK_TIME - 1, ATTACK_TIME + 1, TIME_STEPS]
     
