@@ -1,8 +1,8 @@
 """
-恢复策略模块：实现基于局部通信效能与角色导向的恢复策略
+恢复策略模块：实现基于熵值的恢复策略
 """
 import numpy as np
-from typing import List
+from typing import List, Optional
 from node import Node, NodeType
 from network_layers import CommunicationLayer
 from performance import PerformanceEvaluator
@@ -32,70 +32,73 @@ class RecoveryStrategy:
         if graph.is_directed():
             return list(set(graph.predecessors(node_id)) | set(graph.successors(node_id)))
         return list(graph.neighbors(node_id))
-
-    def calculate_local_communication_utility(self, node: Node, nodes: List[Node],
-                                              comm_layer: CommunicationLayer):
+    
+    def calculate_node_entropy(self, node: Node, nodes: List[Node], 
+                             comm_layer: CommunicationLayer):
         """
-        计算节点局部综合通信效能 U_j(t)
-
+        计算节点局部熵值（优化版：使用numpy和图的度字典）
+        
         Args:
             node: 目标节点
             nodes: 所有节点列表
             comm_layer: 通信层网络
-
+            
         Returns:
-            节点局部综合通信效能（越大越好）
+            节点熵值（熵值越低越好）
         """
         if not node.is_alive:
-            return 0.0
-
-        alive_node_ids = [n.id for n in nodes if n.is_alive and n.id != node.id]
-        if not alive_node_ids:
-            return 0.0
-
-        # 与通信层性能保持一致：按发送方 j 的有向概率 P(j->k) 计算强度与有序度。
-        outgoing_probs = []
-        for other_id in alive_node_ids:
-            p_jk = comm_layer.activation_probabilities.get((node.id, other_id), 0.0)
-            if p_jk > 0:
-                outgoing_probs.append(p_jk)
-
-        sum_p = sum(outgoing_probs)
-        h_max = np.log(len(alive_node_ids)) if len(alive_node_ids) > 1 else 1.0
-        if h_max <= 0:
-            h_max = 1e-10
-
-        if sum_p > 0:
-            probs_array = np.array(outgoing_probs, dtype=np.float64) / sum_p
-            h_j = -np.sum(probs_array * np.log(probs_array + 1e-10))
-        else:
-            h_j = h_max
-
-        intensity_weight = 1.0 - np.exp(-sum_p)
-        order_score = max(0.0, 1.0 - (h_j / h_max))
-        return intensity_weight * order_score
-
-    def find_highest_utility_neighbor(self, node: Node, nodes: List[Node],
-                                      comm_layer: CommunicationLayer,
-                                      use_sensor_range: bool = False):
+            return np.inf
+        
+        # 获取节点的邻居节点
+        if node.id not in comm_layer.graph:
+            return np.inf
+        
+        neighbors = self._get_comm_neighbors(comm_layer, node.id)
+        if len(neighbors) == 0:
+            return np.inf
+        
+        # 计算邻居节点的度分布熵（优化：直接使用图的度字典）
+        degrees_dict = dict(comm_layer.graph.degree())
+        neighbor_degrees = [degrees_dict.get(nid, 0) for nid in neighbors]
+        
+        if len(neighbor_degrees) == 0:
+            return np.inf
+        
+        # 归一化为概率分布
+        total_degree = sum(neighbor_degrees)
+        if total_degree == 0:
+            return np.inf
+        
+        # 计算熵（使用numpy优化）
+        probs_array = np.array(neighbor_degrees, dtype=np.float64) / total_degree
+        probs_array = probs_array[probs_array > 0]  # 只保留非零概率
+        if len(probs_array) == 0:
+            return np.inf
+        entropy = -np.sum(probs_array * np.log2(probs_array + 1e-10))
+        
+        return entropy
+    
+    def find_lowest_entropy_neighbor(self, node: Node, nodes: List[Node],
+                                   comm_layer: CommunicationLayer,
+                                   use_sensor_range: bool = False):
         """
-        找到局部综合通信效能最高的邻居节点
-
+        找到熵值最低的邻居节点（优化版：直接使用图的邻居结构）
+        
         Args:
             node: 当前节点
             nodes: 所有节点列表（用于节点ID到节点的映射）
             comm_layer: 通信层网络
             use_sensor_range: 是否使用感知范围（True）或通信范围（False）
-
+            
         Returns:
-            效能最高的邻居节点，如果没有则返回None
+            熵值最低的邻居节点，如果没有则返回None
         """
         if not node.is_alive:
             return None
-
+        
         # 创建节点ID到节点的映射
         node_dict = {n.id: n for n in nodes if n.is_alive}
-
+        
         # 如果使用通信范围，直接使用图的邻居（更快）
         if not use_sensor_range and node.id in comm_layer.graph:
             neighbor_ids = self._get_comm_neighbors(comm_layer, node.id)
@@ -112,20 +115,20 @@ class RecoveryStrategy:
                 else:
                     if node.is_in_communication_range(other_node):
                         candidate_nodes.append(other_node)
-
+        
         if len(candidate_nodes) == 0:
             return None
-
-        # 计算每个候选节点的局部综合通信效能 U_j(t)，选择最高者。
-        max_utility = -np.inf
+        
+        # 计算每个候选节点的熵值（只计算一次）
+        min_entropy = np.inf
         best_node = None
-
+        
         for candidate in candidate_nodes:
-            utility = self.calculate_local_communication_utility(candidate, nodes, comm_layer)
-            if utility > max_utility:
-                max_utility = utility
+            entropy = self.calculate_node_entropy(candidate, nodes, comm_layer)
+            if entropy < min_entropy:
+                min_entropy = entropy
                 best_node = candidate
-
+        
         return best_node
     
     def calculate_cluster_center(self, nodes: List[Node]):
@@ -170,11 +173,11 @@ class RecoveryStrategy:
                         current_time: int):
         """
         执行恢复策略
-
+        
         策略：
-        1. 如果节点有邻居，向局部综合通信效能最高的邻居移动
-        2. 如果节点完全孤立，执行基于角色与记忆的全局恢复
-
+        1. 如果节点有邻居，向熵值最低的邻居移动
+        2. 如果节点完全孤立，向记忆中的集群重心移动，或执行广域搜索
+        
         Args:
             nodes: 节点列表
             comm_layer: 通信层网络
@@ -206,12 +209,12 @@ class RecoveryStrategy:
 
             if not is_isolated:
                 # 策略1: 节点已连接，优化局部网络结构
-                highest_utility_neighbor = self.find_highest_utility_neighbor(
+                lowest_entropy_neighbor = self.find_lowest_entropy_neighbor(
                     node, alive_nodes, comm_layer, use_sensor_range=False)
-
-                if highest_utility_neighbor is not None:
+                
+                if lowest_entropy_neighbor is not None:
                     target_pos = self._calculate_target_with_min_distance(
-                        node.position, highest_utility_neighbor.position)
+                        node.position, lowest_entropy_neighbor.position)
                 else:
                     target_pos = node.position  # 保持不动
             else:

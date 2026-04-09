@@ -138,19 +138,18 @@ class PerformanceEvaluator:
             
             total_q_comm += q_i
             
-        # 4. 计算未归一化的理论通信性能
-        raw_q_comm = total_q_comm / self.config.N_TOTAL
+        # 4. 计算全网平均绝对通信性能
+        raw_avg_q_comm = total_q_comm / N
 
         # 5. 引入归一化参数 μ：令初始时刻 Q_comm(0)=1
         if 'MU_comm' not in self.initial_values:
-            self.initial_values['MU_comm'] = 1.0 / raw_q_comm if raw_q_comm > 0 else 1.0
+            self.initial_values['MU_comm'] = 1.0 / raw_avg_q_comm if raw_avg_q_comm > 0 else 1.0
 
         mu = self.initial_values['MU_comm']
-        # 计算归一化的通信层性能
-        final_q_comm = mu * raw_q_comm
+        # 计算通信层性能
+        final_q_comm = mu * raw_avg_q_comm * (N / self.config.N_TOTAL)
         # 确保在 [0, 1] 范围内
         return max(0.0, min(final_q_comm, 1.0))
-        # return mu * total_q_comm/N
     
     def calculate_mission_performance(self, mission_layer: MissionLayer):
         """
