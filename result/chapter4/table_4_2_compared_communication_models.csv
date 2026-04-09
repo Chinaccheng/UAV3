@@ -1,0 +1,4 @@
+Model,Code setting,Definition
+Binary distance-threshold model,binary,A directed link is always active when d_ij <= r_c.
+Distance-decay communication model,distance_decay,Link activation follows only the piecewise distance attenuation term.
+Mission-driven probabilistic communication model,mission_driven,"Link activation jointly depends on distance, role compatibility, and mission stage."

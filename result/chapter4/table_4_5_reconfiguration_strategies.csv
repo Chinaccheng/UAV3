@@ -1,0 +1,5 @@
+Strategy,Definition
+No reconfiguration,Nodes remain at their post-attack positions.
+Nearest-neighbor reconfiguration,Each surviving node moves toward its nearest alive peer.
+Centroid-based recovery,All surviving nodes move toward the swarm centroid.
+Utility- and role-driven reconfiguration,Connected nodes follow the highest-utility neighbor while isolated nodes reconnect toward role-compatible deciders or the remembered centroid.
