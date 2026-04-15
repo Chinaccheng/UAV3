@@ -4,7 +4,7 @@
 import numpy as np
 import networkx as nx
 from typing import List
-from node import Node
+from node import Node, NodeType
 from network_layers import PhysicalLayer, CommunicationLayer, MissionLayer
 from config import Config
 
@@ -154,6 +154,12 @@ class PerformanceEvaluator:
     def calculate_mission_performance(self, mission_layer: MissionLayer):
         """
         计算任务层性能 Q_mis(t)
+
+        基于打击节点级别的任务效能聚合：
+        1. 对每个存活的打击节点 i，只考虑所有以 i 为终点的合法杀伤链；
+        2. 单点任务效能 E_i(t) 取这些链路中 1 / L_m(t) 的最大值；
+        3. 全局任务效能 E_total(t) 为所有存活打击节点单点效能之和；
+        4. 最终按初始时刻的 E_total(0) 归一化。
         
         Args:
             mission_layer: 任务层网络
@@ -161,12 +167,33 @@ class PerformanceEvaluator:
         Returns:
             任务层性能值
         """
-        # 计算累计任务效能
-        total_efficiency = 0.0
+        influencer_nodes = [
+            node_id
+            for node_id, attrs in mission_layer.graph.nodes(data=True)
+            if attrs.get('node') is not None
+            and attrs['node'].type == NodeType.INFLUENCER
+        ]
+
+        # 按打击节点聚合任务效能，避免同一终点上的冗余链路重复加分
+        best_efficiency_by_influencer = {node_id: 0.0 for node_id in influencer_nodes}
+
         for path in mission_layer.valid_paths:
-            path_length = len(path) - 1  # 跳数
-            if path_length > 0:
-                total_efficiency += 1.0 / path_length
+            if len(path) < 2:
+                continue
+
+            target_id = path[-1]
+            if target_id not in best_efficiency_by_influencer:
+                continue
+
+            path_length = len(path) - 1  # L_m(t)：链路跳数
+            if path_length <= 0:
+                continue
+
+            path_efficiency = 1.0 / path_length
+            if path_efficiency > best_efficiency_by_influencer[target_id]:
+                best_efficiency_by_influencer[target_id] = path_efficiency
+
+        total_efficiency = sum(best_efficiency_by_influencer.values())
         
         # 初始化时存储初始效能
         if 'E0' not in self.initial_values:

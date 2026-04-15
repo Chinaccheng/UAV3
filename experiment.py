@@ -1,7 +1,6 @@
 """
 主实验流程模块
 """
-import numpy as np
 from typing import List, Dict, Tuple
 from node import Node, NodeType
 from network_layers import PhysicalLayer, CommunicationLayer, MissionLayer
@@ -9,6 +8,12 @@ from performance import PerformanceEvaluator
 from attack import AttackModule
 from recovery import RecoveryStrategy
 from config import Config
+from experiment_common import (
+    calculate_resilience,
+    get_attack_reference_graph,
+    initialize_nodes,
+    update_networks,
+)
 
 class Experiment:
     """实验主类"""
@@ -47,49 +52,22 @@ class Experiment:
     
     def initialize_nodes(self):
         """初始化节点"""
-        np.random.seed(self.config.RANDOM_SEED)
-        
-        self.nodes = []
-        node_id = 0
-        
-        # 创建侦察节点
-        for i in range(self.config.N_SENSOR):
-            position = np.random.uniform(0, self.config.AREA_SIZE, size=2)
-            node = Node(node_id, NodeType.SENSOR, position, self.config)
-            self.nodes.append(node)
-            node_id += 1
-        
-        # 创建通信节点
-        for i in range(self.config.N_DECIDER):
-            position = np.random.uniform(0, self.config.AREA_SIZE, size=2)
-            node = Node(node_id, NodeType.DECIDER, position, self.config)
-            self.nodes.append(node)
-            node_id += 1
-        
-        # 创建打击节点
-        for i in range(self.config.N_INFLUENCER):
-            position = np.random.uniform(0, self.config.AREA_SIZE, size=2)
-            node = Node(node_id, NodeType.INFLUENCER, position, self.config)
-            self.nodes.append(node)
-            node_id += 1
-        
+        self.nodes = initialize_nodes(self.config)
         print(f"初始化完成：{self.config.N_SENSOR}个侦察节点，"
               f"{self.config.N_DECIDER}个通信节点，"
               f"{self.config.N_INFLUENCER}个打击节点")
     
     def update_networks(self, t: int):
         """更新三层网络"""
-        # 1. 更新物理层
-        self.physical_layer.update(self.nodes)
-
-        # 2. 更新通信层（初步生成理论概率和连边）
-        self.comm_layer.update(self.nodes, self.physical_layer, t)
-
-        # 3. 在任务层建立前施加网络压制，确保跨层时序一致
-        self.attack_module.apply_communication_suppression(self.comm_layer, t)
-
-        # 4. 更新任务层（使用已被压制后的通信网）
-        self.mission_layer.update(self.nodes, self.comm_layer)
+        update_networks(
+            self.config,
+            self.nodes,
+            self.physical_layer,
+            self.comm_layer,
+            self.mission_layer,
+            self.attack_module,
+            t,
+        )
     
     def run(self):
         """运行实验"""
@@ -149,10 +127,7 @@ class Experiment:
 
     def _get_attack_reference_graph(self):
         """根据配置返回拓扑蓄意打击使用的度数参考网络层。"""
-        degree_layer = getattr(self.config, 'ATTACK_DEGREE_LAYER', 'comm')
-        if degree_layer == 'physical':
-            return self.physical_layer.graph
-        return self.comm_layer.graph
+        return get_attack_reference_graph(self.config, self.physical_layer, self.comm_layer)
     
     def _record_state(self, t: int, Q_phy: float, Q_comm: float, 
                      Q_mis: float, Q_overall: float):
@@ -199,46 +174,9 @@ class Experiment:
         Returns:
             韧性值
         """
-        t_d = self.config.ATTACK_TIME
-        t_r = self.config.TIME_STEPS
-        
-        # 提取性能曲线
-        times = np.array(self.history['time'])
-        Q_t = np.array(self.history['Q_overall'])
-        
-        # 找到攻击后的时间段
-        mask = (times >= t_d) & (times <= t_r)
-        times_after = times[mask]
-        Q_after = Q_t[mask]
-        
-        if len(times_after) == 0:
-            return 0.0
-        
-        # 理想性能（假设为初始性能）
-        Q_ideal = Q_t[0] if len(Q_t) > 0 else 1.0
-        
-        # 计算分子：实际性能积分（仅统计高于阈值的部分）
-        numerator = 0.0
-        for i, t in enumerate(times_after):
-            if i == 0:
-                continue
-            dt = times_after[i] - times_after[i-1]
-            Q_val = max(0, Q_after[i] - self.config.Q_MIN)
-            weight = np.exp(-self.config.LAMBDA * (t - t_d))
-            numerator += Q_val * weight * dt
-        
-        # 计算分母：理想性能积分
-        denominator = 0.0
-        for i, t in enumerate(times_after):
-            if i == 0:
-                continue
-            dt = times_after[i] - times_after[i-1]
-            Q_val = max(0, Q_ideal - self.config.Q_MIN)
-            weight = np.exp(-self.config.LAMBDA * (t - t_d))
-            denominator += Q_val * weight * dt
-        
-        if denominator == 0:
-            return 0.0
-        
-        R = numerator / denominator
-        return R
+        return calculate_resilience(
+            self.history,
+            trigger_time=self.config.ATTACK_TIME,
+            q_min=self.config.Q_MIN,
+            lambda_=self.config.LAMBDA,
+        )

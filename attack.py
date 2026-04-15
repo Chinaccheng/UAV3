@@ -18,6 +18,9 @@ class AttackModule:
         """
         self.config = config
         self.attack_time = config.ATTACK_TIME
+        self.attack_duration = max(1, int(getattr(config, 'ATTACK_DURATION', 1)))
+        self.attack_start_time = max(1, self.attack_time - self.attack_duration + 1)
+        self.attack_end_time = self.attack_time
 
         # 默认攻击规模：优先使用比例配置
         alive_base = getattr(config, 'N_TOTAL', 0)
@@ -31,6 +34,8 @@ class AttackModule:
         self.attacked_nodes = []          # 物理毁伤节点ID
         self.jammed_nodes = []            # 网络压制节点ID
         self.active_jam_node_ids = set()  # 当前处于压制窗口的节点ID
+        self._attack_batches = None
+        self._last_applied_batch_index = -1
 
     def execute_attack(self,
                        nodes: List[Node],
@@ -47,26 +52,34 @@ class AttackModule:
         Returns:
             是否在本时刻执行了“首次打击动作”
         """
-        # 非打击时刻不选新目标
-        if current_time != self.attack_time:
+        if current_time < self.attack_start_time or current_time > self.attack_end_time:
             return False
 
-        alive_nodes = [n for n in nodes if n.is_alive]
-        if not alive_nodes:
+        if self._attack_batches is None:
+            alive_nodes = [n for n in nodes if n.is_alive]
+            if not alive_nodes:
+                return False
+            targets = self._select_targets(alive_nodes, graph)
+            self._attack_batches = self._split_targets(targets, self.attack_duration)
+
+        batch_index = current_time - self.attack_start_time
+        if batch_index <= self._last_applied_batch_index or batch_index >= len(self._attack_batches):
             return False
 
-        targets = self._select_targets(alive_nodes, graph)
+        targets = self._attack_batches[batch_index]
         attack_mode = str(self.config.ATTACK_MODE).lower()
 
         if attack_mode == 'physical':
-            # 硬杀伤：节点永久剔除
             for node in targets:
-                node.attack()
-                self.attacked_nodes.append(node.id)
+                if node.is_alive:
+                    node.attack()
+                if node.id not in self.attacked_nodes:
+                    self.attacked_nodes.append(node.id)
 
         elif attack_mode == 'cyber':
-            # 软杀伤：节点仍存活，仅压制通信
-            self.jammed_nodes = [node.id for node in targets]
+            for node in targets:
+                if node.id not in self.jammed_nodes:
+                    self.jammed_nodes.append(node.id)
             self.active_jam_node_ids = set(self.jammed_nodes)
 
         else:
@@ -75,7 +88,8 @@ class AttackModule:
                 f"仅支持 'physical' 或 'cyber'"
             )
 
-        return True
+        self._last_applied_batch_index = batch_index
+        return len(targets) > 0
 
     def update_cyber_window(self, current_time: int):
         """根据压制时间窗更新当前生效的受压节点集合。"""
@@ -83,8 +97,8 @@ class AttackModule:
             self.active_jam_node_ids = set()
             return
 
-        recover_time = getattr(self.config, 'ATTACK_RECOVER_TIME', self.attack_time)
-        if self.attack_time <= current_time <= recover_time:
+        recover_time = getattr(self.config, 'ATTACK_RECOVER_TIME', self.attack_end_time)
+        if self.attack_start_time <= current_time <= recover_time:
             self.active_jam_node_ids = set(self.jammed_nodes)
         else:
             self.active_jam_node_ids = set()
@@ -123,14 +137,14 @@ class AttackModule:
             return self._topology_attack(nodes, attack_count, graph)
         if strategy == 'role':
             role_type = str(self.config.ATTACK_ROLE_TARGET).upper()
-            return self._role_attack(nodes, attack_count, role_type)
+            return self._role_attack(nodes, attack_count, role_type, graph)
 
         # 兼容旧配置
         if strategy == 'high_degree':
             return self._topology_attack(nodes, attack_count, graph)
         if strategy == 'critical':
             role_type = str(getattr(self.config, 'ATTACK_TARGET_TYPE', 'DECIDER')).upper()
-            return self._role_attack(nodes, attack_count, role_type)
+            return self._role_attack(nodes, attack_count, role_type, graph)
 
         return self._random_attack(nodes, attack_count)
 
@@ -168,8 +182,8 @@ class AttackModule:
         node_degrees.sort(key=lambda x: (-x[1], x[0].id))
         return [node for node, _ in node_degrees[:attack_count]]
 
-    def _role_attack(self, nodes: List[Node], attack_count: int, target_type='DECIDER'):
-        """角色导向打击：优先指定角色节点，不足则补齐。"""
+    def _role_attack(self, nodes: List[Node], attack_count: int, target_type='DECIDER', graph=None):
+        """角色导向打击：优先指定角色中的关键节点，不足时按级联规则补齐。"""
         type_map = {
             'SENSOR': NodeType.SENSOR,
             'DECIDER': NodeType.DECIDER,
@@ -178,14 +192,79 @@ class AttackModule:
         target_enum = type_map.get(target_type, NodeType.DECIDER)
 
         typed_nodes = [n for n in nodes if n.type == target_enum]
+        if graph is not None and typed_nodes:
+            typed_nodes.sort(key=lambda node: (-graph.degree(node.id) if node.id in graph else 0, node.id))
         if len(typed_nodes) >= attack_count:
-            return np.random.choice(typed_nodes, size=attack_count, replace=False).tolist()
+            return typed_nodes[:attack_count]
 
         targets = typed_nodes.copy()
-        other_nodes = [n for n in nodes if n.type != target_enum]
         remaining = attack_count - len(targets)
-        if remaining > 0 and other_nodes:
-            targets.extend(
-                np.random.choice(other_nodes, size=min(remaining, len(other_nodes)), replace=False).tolist()
-            )
+        if remaining <= 0:
+            return targets
+
+        cascade_enabled = getattr(self.config, 'ATTACK_ROLE_CASCADE_ENABLED', False)
+        cascade_sequence = getattr(self.config, 'ATTACK_ROLE_CASCADE_SEQUENCE', None)
+
+        if cascade_enabled and cascade_sequence:
+            selected_ids = {node.id for node in targets}
+            for rule in cascade_sequence:
+                if remaining <= 0:
+                    break
+
+                available_nodes = [n for n in nodes if n.id not in selected_ids]
+                if not available_nodes:
+                    break
+
+                rule_upper = str(rule).upper()
+                chosen_nodes = []
+
+                if rule_upper in type_map:
+                    cascade_enum = type_map[rule_upper]
+                    role_nodes = [n for n in available_nodes if n.type == cascade_enum]
+                    if role_nodes:
+                        take_count = min(remaining, len(role_nodes))
+                        chosen_nodes = np.random.choice(
+                            role_nodes, size=take_count, replace=False
+                        ).tolist()
+                elif rule_upper in ('TOPOLOGY', 'DEGREE', 'HIGH_DEGREE'):
+                    chosen_nodes = self._topology_attack(available_nodes, remaining, graph)
+                elif rule_upper == 'RANDOM':
+                    take_count = min(remaining, len(available_nodes))
+                    chosen_nodes = np.random.choice(
+                        available_nodes, size=take_count, replace=False
+                    ).tolist()
+
+                if not chosen_nodes:
+                    continue
+
+                targets.extend(chosen_nodes)
+                selected_ids.update(node.id for node in chosen_nodes)
+                remaining = attack_count - len(targets)
+
+        if remaining > 0:
+            selected_ids = {node.id for node in targets}
+            available_nodes = [n for n in nodes if n.id not in selected_ids]
+            if available_nodes:
+                take_count = min(remaining, len(available_nodes))
+                targets.extend(
+                    np.random.choice(available_nodes, size=take_count, replace=False).tolist()
+                )
         return targets
+
+    @staticmethod
+    def _split_targets(targets: List[Node], parts: int) -> List[List[Node]]:
+        """将目标节点均匀分摊到多个连续时间步。"""
+        if parts <= 1:
+            return [list(targets)]
+
+        targets = list(targets)
+        total = len(targets)
+        base_size, remainder = divmod(total, parts)
+        batches: List[List[Node]] = []
+        start = 0
+        for batch_index in range(parts):
+            batch_size = base_size + (1 if batch_index < remainder else 0)
+            end = start + batch_size
+            batches.append(targets[start:end])
+            start = end
+        return batches

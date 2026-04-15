@@ -48,6 +48,7 @@ class Config:
     
     # 攻击参数
     ATTACK_TIME = 20  # 攻击发生时刻 t_d
+    ATTACK_DURATION = 4  # 攻击持续时间步数，向前展开到 ATTACK_TIME，例：17-20
 
     # 攻击方式（打击手段）
     # 'physical': 物理实体打击（硬杀伤，节点永久移除）
@@ -58,7 +59,7 @@ class Config:
     # 'random': 随机打击
     # 'topology': 拓扑蓄意打击（按度数降序优先）
     # 'role': 角色导向打击（按节点类型优先）
-    ATTACK_STRATEGY = 'topology'
+    ATTACK_STRATEGY = 'random'
 
     # 拓扑蓄意打击的度数参考网络层
     # 'comm': 参考通信层度数
@@ -83,6 +84,11 @@ class Config:
     RECOVERY_SPEED = 1.0  # 恢复移动速度
     SEARCH_RADIUS = 50.0  # 广域搜索半径
     MIN_NODE_DISTANCE = None  # 节点间最小距离，None表示使用R_COMM的某个比例
+    # 恢复策略
+    # 'entropy': 原有基于熵值与角色记忆的恢复策略
+    # 'distance_driven': 基于最短距离的重构
+    # 'degree_driven': 基于最高度数的重构
+    RECOVERY_STRATEGY = 'distance_driven'
     # 如果为None，将使用 R_COMM * 0.3 作为最小距离
     
     # 仿真参数
@@ -90,7 +96,7 @@ class Config:
     DT = 1.0  # 时间步长
     
     # 可视化参数（None表示使用默认值）
-    SNAPSHOT_TIMES = [19,21,50]
+    SNAPSHOT_TIMES = [16,20,50,70,100]
     # 默认值：攻击前、攻击后、最终时刻
     # 示例：[0, 10, 20, 30, 50, 100] 或 [ATTACK_TIME - 1, ATTACK_TIME + 1, TIME_STEPS]
     
@@ -139,8 +145,11 @@ class Config:
             "ATTACK_ROLE_TARGET 仅支持 'SENSOR'|'DECIDER'|'INFLUENCER'"
         if cls.ATTACK_RATIO is not None:
             assert 0 <= cls.ATTACK_RATIO <= 1, "ATTACK_RATIO 必须在[0,1]范围内"
+        assert cls.ATTACK_DURATION >= 1, "ATTACK_DURATION 必须不小于1"
         assert cls.ATTACK_RECOVER_TIME >= cls.ATTACK_TIME, \
             "ATTACK_RECOVER_TIME 必须不小于 ATTACK_TIME"
+        assert cls.RECOVERY_STRATEGY in ('entropy', 'distance_driven', 'degree_driven'), \
+            "RECOVERY_STRATEGY 仅支持 'entropy'|'distance_driven'|'degree_driven'"
 
         # 验证任务阶段区间配置
         assert isinstance(cls.TASK_PHASE_SCHEDULE, list) and len(cls.TASK_PHASE_SCHEDULE) > 0, \

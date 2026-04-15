@@ -1,8 +1,0 @@
-Parameter,Resilience spread,Best setting,Worst setting
-Communication radius $r_c$,0.0568,24,20
-Distance influence factor $\eta$,0.0092,0.20,0.10
-Mission baseline $Q_{min}$,0.0895,0.20,0.40
-Time sensitivity $\lambda$,0.0152,0.02,0.08
-Mission-link threshold $\tau_{mis}$,0.1022,0.005,0.020
-Reconfiguration step size $v_s$,0.0967,1.5,0.5
-Role composition ratio S:D:I,0.0274,50:30:20,60:25:15

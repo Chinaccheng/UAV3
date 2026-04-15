@@ -10,7 +10,7 @@ from visualization import Visualizer
 def main():
     """主函数"""
     # 创建结果文件夹
-    result_dir = 'result'
+    result_dir = os.path.join('result', 'main')
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
         print(f"创建结果文件夹: {result_dir}")
@@ -89,4 +89,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

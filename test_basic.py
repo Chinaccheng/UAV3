@@ -2,6 +2,7 @@
 基本功能测试脚本
 """
 import numpy as np
+import networkx as nx
 from config import Config
 from node import Node, NodeType
 from network_layers import PhysicalLayer, CommunicationLayer, MissionLayer
@@ -70,6 +71,32 @@ def test_basic():
     
     print("\n所有基本功能测试通过！")
 
+
+def test_mission_performance_uses_best_chain_per_influencer():
+    """验证同一打击节点的多条冗余链只按最优链计分一次。"""
+    sensor = Node(0, NodeType.SENSOR, [0.0, 0.0], Config)
+    decider_a = Node(1, NodeType.DECIDER, [1.0, 0.0], Config)
+    decider_b = Node(2, NodeType.DECIDER, [2.0, 0.0], Config)
+    influencer = Node(3, NodeType.INFLUENCER, [3.0, 0.0], Config)
+
+    mission_layer = MissionLayer(Config)
+    mission_layer.graph = nx.DiGraph()
+    for node in (sensor, decider_a, decider_b, influencer):
+        mission_layer.graph.add_node(node.id, node=node)
+
+    mission_layer.valid_paths = [
+        [sensor.id, decider_a.id, influencer.id],
+        [sensor.id, decider_a.id, decider_b.id, influencer.id],
+    ]
+
+    evaluator = PerformanceEvaluator(Config)
+    q_mis = evaluator.calculate_mission_performance(mission_layer)
+
+    assert abs(q_mis - 1.0) < 1e-9, f"期望 Q_mis=1.0，实际为 {q_mis}"
+    assert abs(evaluator.initial_values["E0"] - 0.5) < 1e-9, (
+        f"期望初始任务效能 E0=0.5，实际为 {evaluator.initial_values['E0']}"
+    )
+
 if __name__ == '__main__':
     test_basic()
-
+    test_mission_performance_uses_best_chain_per_influencer()

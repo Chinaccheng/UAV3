@@ -1,6 +1,0 @@
-Attack type,Mean R,Std R
-Physical destruction,0.6989,0.0000
-Network suppression,0.8632,0.0000
-Random attack,0.7343,0.0000
-Topology-oriented deliberate attack,0.5539,0.0000
-Role-oriented attack,0.3901,0.0000

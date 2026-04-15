@@ -1,6 +1,0 @@
-Attack type,Implementation
-Physical destruction,Hard-kill removal of nodes nearest the swarm center.
-Network suppression,Soft-kill suppression of all incoming and outgoing links of center-area nodes.
-Random attack,Hard-kill removal of randomly selected nodes.
-Topology-oriented deliberate attack,Hard-kill removal of the highest-degree nodes in the physical layer.
-Role-oriented attack,Hard-kill preferentially targeting decider nodes.

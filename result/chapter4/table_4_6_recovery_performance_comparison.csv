@@ -1,5 +1,0 @@
-Strategy,Minimum Q(t),Recovery time,Final Q_mis(t_r),Mean R
-No reconfiguration,0.5678,nan,0.6380,0.5539
-Nearest-neighbor reconfiguration,0.6548,nan,0.8887,0.6209
-Centroid-based recovery,0.7216,13.00,1.0103,0.8845
-Utility- and role-driven reconfiguration,0.7216,16.00,1.0215,0.8057
