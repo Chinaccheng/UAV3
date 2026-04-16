@@ -7,6 +7,10 @@
 诱发通信层的渐进衰退与任务层的断崖式崩溃。该实验用于直接验证多层解耦框架对
 “隐性退化”和“提前失效”的识别能力。
 
+本实验生成：
+    图1 figure_1_eta_tau_coupling_matrix.png
+        上图为通信层渐进衰退，下图为任务层性能 Q_mis 在不同 eta 与 tau_mis 组合下的崩溃对比图
+
 运行方式：
     python experiment3/run_experiment3_part1.py
     python experiment3/run_experiment3_part1.py --quick

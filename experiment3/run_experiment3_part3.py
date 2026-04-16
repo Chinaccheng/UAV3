@@ -2,6 +2,14 @@
 实验三第三部分入口：
 极限任务约束与自适应重构效能边界测试。
 
+本实验以随机物理节点摧毁为起点，对比最临近重构、最大度重构与效用驱动重构
+三类策略在不同任务底线 Q_min 和时间敏感性 lambda 下的韧性表现，
+并重点展示效用驱动策略相对传统策略的韧性增益边界。
+
+本实验生成：
+    图3 figure_3_constraint_delta_heatmaps.png
+        左图为相对最临近重构的韧性增益 ΔR_1，右图为相对最大度重构的韧性增益 ΔR_2
+
 运行方式：
     python experiment3/run_experiment3_part3.py
     python experiment3/run_experiment3_part3.py --quick

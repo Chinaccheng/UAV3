@@ -1,6 +1,20 @@
 """
 实验二入口：
 基于“破坏模式 × 攻击策略 × 重构策略”组合评估自适应重构的恢复性能与韧性。
+该总入口会先运行基础场景矩阵扫描，再可选运行攻击强度扫描。
+
+本入口生成：
+    基础部分图1、3-9
+        figure_1_dynamic_recovery_matrix.png
+        figure_3_resilience_heatmap.png
+        figure_4_spatial_reconfiguration_snapshots.png
+        figure_5_qphy_recovery_matrix.png
+        figure_6_qcomm_recovery_matrix.png
+        figure_7_qmis_recovery_matrix.png
+        figure_8_final_layer_performance_bars.png
+        figure_9_resilience_grouped_bars.png
+    攻击强度部分
+        仅导出强度扫描结果表，不再生成 figure_10 图像
 
 运行方式：
     python experiment2/run_experiment2.py

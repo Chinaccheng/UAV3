@@ -1,6 +1,12 @@
 """
 实验二强度边界入口：
-仅运行攻击强度扫描并保存结果表。
+仅运行攻击强度扫描，考察在固定焦点攻击场景下，不同攻击比例对各类恢复策略
+韧性与终态性能的影响边界。
+
+本实验生成：
+    不生成图像
+    导出 experiment2_attack_intensity_raw.csv
+    导出 experiment2_attack_intensity_summary.csv
 
 运行方式：
     python experiment2/run_experiment2_intensity.py

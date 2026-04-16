@@ -2,6 +2,13 @@
 实验三第二部分入口：
 多维层级权重敏感度分析：软杀伤下的效能盲区与策略响应。
 
+本实验通过三类网络压制策略与三类层级权重配置的交叉组合，比较不同评估视角下
+系统综合性能 Q 的终态差异，用于展示物理主导型评估在软杀伤场景中的误判风险。
+
+本实验生成：
+    图2 figure_2_softkill_weight_sensitivity_grouped_bars.png
+        三类软杀伤策略下，不同权重配置对应的终态综合性能分组柱状图
+
 运行方式：
     python experiment3/run_experiment3_part2.py
     python experiment3/run_experiment3_part2.py --quick

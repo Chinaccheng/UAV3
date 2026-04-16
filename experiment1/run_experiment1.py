@@ -1,6 +1,17 @@
 """
 实验一入口：
-分阶段独立评估下，扫描不同攻击类型与攻击强度，分析三层性能退化。
+分阶段独立评估下，扫描不同攻击类型与攻击强度，分析侦察阶段与打击阶段中
+物理层、通信层、任务层性能的退化差异，并比较阶段切换后的解耦效应。
+
+本实验生成：
+    图1 figure_1_recon_stage_multilayer_intensity.png
+        侦察阶段三层性能随攻击强度变化的多曲线图
+    图2 figure_2_strike_stage_multilayer_intensity.png
+        打击阶段三层性能随攻击强度变化的多曲线图
+    图3 figure_3_qmis_stage_comparison.png
+        不同攻击类型下任务层性能 Q_mis 的阶段对比图
+    图4 figure_4_decoupling_comparison.png
+        物理层与任务层表现不一致的解耦对比图
 
 运行方式：
     python experiment1/run_experiment1.py
