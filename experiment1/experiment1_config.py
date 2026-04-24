@@ -78,11 +78,11 @@ class Experiment1Config:
 
     STAGE_SCENARIOS = {
         "recon": {
-            "label": "侦察阶段（固定 $\\Phi=1$）",
+            "label": "Intelligence Aggregation Stage ($\\Phi=1$)",
             "schedule": [(0, 101, 1)],
         },
         "strike": {
-            "label": "打击阶段（固定 $\\Phi=2$）",
+            "label": "Tactical Execution Stage ($\\Phi=2$)",
             "schedule": [(0, 101, 2)],
         },
     }
@@ -91,7 +91,7 @@ class Experiment1Config:
     ATTACK_SCENARIOS = [
         {
             "id": "hard_random",
-            "label": "硬杀伤-随机攻击",
+            "label": "Physical Destruction-Random Attack",
             "mode": "physical",
             "strategy": "random",
             "role_target": None,
@@ -101,7 +101,7 @@ class Experiment1Config:
         },
         {
             "id": "hard_topology",
-            "label": "硬杀伤-拓扑导向",
+            "label": "Physical Destruction-Topology-Oriented Deliberate Attack",
             "mode": "physical",
             "strategy": "topology",
             "role_target": None,
@@ -111,7 +111,7 @@ class Experiment1Config:
         },
         {
             "id": "hard_role_decider",
-            "label": "硬杀伤-角色导向(D→拓扑)",
+            "label": "Physical Destruction-Role-Oriented Targeted Attack (D→Topology)",
             "mode": "physical",
             "strategy": "role",
             "role_target": "DECIDER",
@@ -121,7 +121,7 @@ class Experiment1Config:
         },
         {
             "id": "soft_random",
-            "label": "网络压制-随机攻击",
+            "label": "Network Suppression-Random Attack",
             "mode": "cyber",
             "strategy": "random",
             "role_target": None,
@@ -131,7 +131,7 @@ class Experiment1Config:
         },
         {
             "id": "soft_topology",
-            "label": "网络压制-拓扑导向",
+            "label": "Network Suppression-Topology-Oriented Deliberate Attack",
             "mode": "cyber",
             "strategy": "topology",
             "role_target": None,
@@ -141,7 +141,7 @@ class Experiment1Config:
         },
         {
             "id": "soft_role_decider",
-            "label": "网络压制-角色导向(D→拓扑)",
+            "label": "Network Suppression-Role-Oriented Targeted Attack (D→Topology)",
             "mode": "cyber",
             "strategy": "role",
             "role_target": "DECIDER",
@@ -164,7 +164,8 @@ class Experiment1Config:
 
     # 绘图参数
     FIG_DPI = 300
-    FIGSIZE_STAGE = (13, 9)
+    FIGSIZE_STAGE_COMPARISON = (14, 11)
+    FIGSIZE_PHYSICAL = (12, 4.8)
     FIGSIZE_COMPARISON = (15, 4.5)
     FIGSIZE_DECOUPLING = (12, 4.8)
     X_AXIS_MAX = 80.0

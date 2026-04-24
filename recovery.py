@@ -158,6 +158,35 @@ class RecoveryStrategy:
             node.update_memory(cluster_center, current_time)
         return cluster_center
 
+    def _resolve_recovery_speed(self, current_time: int) -> float:
+        """按时间解析当前时刻的恢复移动速度。默认返回固定 RECOVERY_SPEED。"""
+        base_speed = float(getattr(self.config, "RECOVERY_SPEED", 0.0))
+        speed_profile = getattr(self.config, "RECOVERY_SPEED_PROFILE", None)
+        if not speed_profile:
+            return max(0.0, base_speed)
+
+        for start, end, multiplier in speed_profile:
+            if start <= current_time < end:
+                return max(0.0, base_speed * float(multiplier))
+        return max(0.0, base_speed)
+
+    def _move_alive_nodes_to_targets(
+        self,
+        nodes: List[Node],
+        target_positions,
+        current_time: int,
+    ) -> None:
+        """按当前恢复速度统一执行移动。"""
+        current_speed = self._resolve_recovery_speed(current_time)
+        for node in nodes:
+            if not node.is_alive or node.id not in target_positions:
+                continue
+            node.move_towards(
+                target_positions[node.id],
+                speed=current_speed,
+                other_nodes=nodes,
+            )
+
     def _find_local_candidates(self, current_node: Node, nodes: List[Node]):
         """在局部视野内查找除自身外的存活节点。"""
         return [
@@ -230,13 +259,26 @@ class RecoveryStrategy:
         alive_lookup,
         comm_layer: CommunicationLayer,
         jammed_ids,
+        utility_phase: int,
     ) -> bool:
-        """判断节点是否已连接到任务链所需的关键角色。"""
+        """判断节点是否已连接到指定任务阶段所需的关键角色。"""
         neighbor_ids = self._get_comm_neighbors(comm_layer, node.id)
-        if node.type == NodeType.DECIDER:
-            required_types = {NodeType.INFLUENCER}
+        if utility_phase == 1:
+            if node.type == NodeType.SENSOR:
+                required_types = {NodeType.DECIDER}
+            elif node.type == NodeType.DECIDER:
+                required_types = {NodeType.SENSOR, NodeType.DECIDER}
+            else:
+                # 侦察阶段不以 I 节点闭环为首要目标
+                required_types = set()
         else:
-            required_types = {NodeType.DECIDER}
+            if node.type == NodeType.DECIDER:
+                required_types = {NodeType.INFLUENCER}
+            else:
+                required_types = {NodeType.DECIDER}
+
+        if not required_types:
+            return True
 
         for neighbor_id in neighbor_ids:
             if neighbor_id in jammed_ids:
@@ -246,33 +288,68 @@ class RecoveryStrategy:
                 return True
         return False
 
-    def _pick_role_memory_target(self, node: Node, alive_nodes: List[Node], jammed_ids):
+    def _pick_role_memory_target(self, node: Node, alive_nodes: List[Node], jammed_ids, utility_phase: int):
         """为孤立节点选择角色优先的全局恢复目标。"""
         eligible_nodes = [other for other in alive_nodes if other.id not in jammed_ids]
 
-        if node.type == NodeType.DECIDER:
-            influencers = [other for other in eligible_nodes if other.type == NodeType.INFLUENCER]
-            nearest_influencer = self._find_nearest_node(node, influencers)
-            if nearest_influencer is not None:
-                return nearest_influencer.position
+        if utility_phase == 1:
+            if node.type == NodeType.SENSOR:
+                deciders = [other for other in eligible_nodes if other.type == NodeType.DECIDER]
+                nearest_decider = self._find_nearest_node(node, deciders)
+                if nearest_decider is not None:
+                    return nearest_decider.position
 
-            deciders = [other for other in eligible_nodes if other.type == NodeType.DECIDER and other.id != node.id]
-            nearest_decider = self._find_nearest_node(node, deciders)
-            if nearest_decider is not None:
-                return nearest_decider.position
+                remembered_decider = self.role_centers.get(NodeType.DECIDER)
+                if remembered_decider is not None:
+                    return remembered_decider
 
-            remembered_influencer = self.role_centers.get(NodeType.INFLUENCER)
-            if remembered_influencer is not None:
-                return remembered_influencer
+            elif node.type == NodeType.DECIDER:
+                sensors = [other for other in eligible_nodes if other.type == NodeType.SENSOR]
+                nearest_sensor = self._find_nearest_node(node, sensors)
+                if nearest_sensor is not None:
+                    return nearest_sensor.position
+
+                deciders = [other for other in eligible_nodes if other.type == NodeType.DECIDER and other.id != node.id]
+                nearest_decider = self._find_nearest_node(node, deciders)
+                if nearest_decider is not None:
+                    return nearest_decider.position
+
+                remembered_sensor = self.role_centers.get(NodeType.SENSOR)
+                if remembered_sensor is not None:
+                    return remembered_sensor
+
+                remembered_decider = self.role_centers.get(NodeType.DECIDER)
+                if remembered_decider is not None:
+                    return remembered_decider
+            else:
+                # 错配阶段下 I 节点不再被优先纳入闭环，只回归记忆中心/集群中心
+                remembered_decider = self.role_centers.get(NodeType.DECIDER)
+                if remembered_decider is not None:
+                    return remembered_decider
         else:
-            deciders = [other for other in eligible_nodes if other.type == NodeType.DECIDER]
-            nearest_decider = self._find_nearest_node(node, deciders)
-            if nearest_decider is not None:
-                return nearest_decider.position
+            if node.type == NodeType.DECIDER:
+                influencers = [other for other in eligible_nodes if other.type == NodeType.INFLUENCER]
+                nearest_influencer = self._find_nearest_node(node, influencers)
+                if nearest_influencer is not None:
+                    return nearest_influencer.position
 
-            remembered_decider = self.role_centers.get(NodeType.DECIDER)
-            if remembered_decider is not None:
-                return remembered_decider
+                deciders = [other for other in eligible_nodes if other.type == NodeType.DECIDER and other.id != node.id]
+                nearest_decider = self._find_nearest_node(node, deciders)
+                if nearest_decider is not None:
+                    return nearest_decider.position
+
+                remembered_influencer = self.role_centers.get(NodeType.INFLUENCER)
+                if remembered_influencer is not None:
+                    return remembered_influencer
+            else:
+                deciders = [other for other in eligible_nodes if other.type == NodeType.DECIDER]
+                nearest_decider = self._find_nearest_node(node, deciders)
+                if nearest_decider is not None:
+                    return nearest_decider.position
+
+                remembered_decider = self.role_centers.get(NodeType.DECIDER)
+                if remembered_decider is not None:
+                    return remembered_decider
 
         if node.memory_center is not None:
             return node.memory_center
@@ -313,9 +390,10 @@ class RecoveryStrategy:
         physical_layer: PhysicalLayer,
         comm_layer: CommunicationLayer,
         current_time: int,
+        utility_phase_override: Optional[int] = None,
     ) -> float:
         """计算效用与角色驱动策略中的局部重构效用。"""
-        phase = self._get_phase(current_time)
+        phase = utility_phase_override if utility_phase_override is not None else self._get_phase(current_time)
         distance = node.get_distance(candidate)
         p_phy = comm_layer._f_phy(distance)
         if p_phy <= 0.0:
@@ -360,26 +438,41 @@ class RecoveryStrategy:
         comm_layer: CommunicationLayer,
         current_time: int,
         jammed_ids,
+        utility_phase_override: Optional[int] = None,
     ):
         """选择效用与角色驱动策略的目标位置。"""
         if node.id in jammed_ids:
             return node.position
 
+        utility_phase = utility_phase_override if utility_phase_override is not None else self._get_phase(current_time)
         candidate_pool = [other for other in alive_nodes if other.id not in jammed_ids]
         local_candidates = self._find_local_candidates(node, candidate_pool)
         best_node = None
         best_utility = -np.inf
         for candidate in local_candidates:
-            utility = self._calculate_pair_utility(node, candidate, physical_layer, comm_layer, current_time)
+            utility = self._calculate_pair_utility(
+                node,
+                candidate,
+                physical_layer,
+                comm_layer,
+                current_time,
+                utility_phase_override=utility_phase,
+            )
             if utility > best_utility:
                 best_utility = utility
                 best_node = candidate
 
         is_isolated = node.id not in comm_layer.graph or comm_layer.graph.degree(node.id) == 0
-        has_required_partner = self._has_required_role_partner(node, alive_lookup, comm_layer, jammed_ids)
+        has_required_partner = self._has_required_role_partner(
+            node,
+            alive_lookup,
+            comm_layer,
+            jammed_ids,
+            utility_phase,
+        )
 
         if is_isolated or not has_required_partner:
-            return self._pick_role_memory_target(node, alive_nodes, jammed_ids)
+            return self._pick_role_memory_target(node, alive_nodes, jammed_ids, utility_phase)
         if best_node is None or best_utility < getattr(self.config, "UTILITY_MIN_ACCEPTANCE", 0.0):
             return node.position
         return best_node.position
@@ -463,11 +556,7 @@ class RecoveryStrategy:
             target_positions[node.id] = target_pos
         
         # 统一执行移动，传入其他节点列表以进行碰撞避免
-        for node in nodes:
-            if not node.is_alive or node.id not in target_positions:
-                continue
-            
-            node.move_towards(target_positions[node.id], other_nodes=nodes)
+        self._move_alive_nodes_to_targets(nodes, target_positions, current_time)
 
     def _execute_distance_driven_recovery(
         self,
@@ -499,10 +588,7 @@ class RecoveryStrategy:
                 nearest_node.position,
             )
 
-        for node in nodes:
-            if not node.is_alive or node.id not in target_positions:
-                continue
-            node.move_towards(target_positions[node.id], other_nodes=nodes)
+        self._move_alive_nodes_to_targets(nodes, target_positions, current_time)
 
     def _execute_degree_driven_recovery(
         self,
@@ -533,10 +619,7 @@ class RecoveryStrategy:
                 hub_node.position,
             )
 
-        for node in nodes:
-            if not node.is_alive or node.id not in target_positions:
-                continue
-            node.move_towards(target_positions[node.id], other_nodes=nodes)
+        self._move_alive_nodes_to_targets(nodes, target_positions, current_time)
 
     def _execute_utility_role_recovery(
         self,
@@ -545,6 +628,7 @@ class RecoveryStrategy:
         current_time: int,
         physical_layer: PhysicalLayer,
         jammed_ids,
+        utility_phase_override: Optional[int] = None,
     ):
         """执行实验二中的效用与角色驱动恢复。"""
         alive_nodes = [n for n in nodes if n.is_alive]
@@ -561,12 +645,10 @@ class RecoveryStrategy:
                 comm_layer,
                 current_time,
                 jammed_ids,
+                utility_phase_override=utility_phase_override,
             )
 
-        for node in nodes:
-            if not node.is_alive or node.id not in target_positions:
-                continue
-            node.move_towards(target_positions[node.id], other_nodes=nodes)
+        self._move_alive_nodes_to_targets(nodes, target_positions, current_time)
 
     def execute_recovery(
         self,
@@ -605,6 +687,18 @@ class RecoveryStrategy:
                 current_time,
                 physical_layer,
                 effective_jammed_ids,
+            )
+        elif strategy == 'utility_role_mismatch_recon':
+            if physical_layer is None:
+                raise ValueError("utility_role_mismatch_recon 恢复需要 physical_layer")
+            # 反面教材：在打击任务中仍按侦察阶段的链路偏好恢复，导致 S-D 被过度修复而 D-I 被忽视。
+            self._execute_utility_role_recovery(
+                nodes,
+                comm_layer,
+                current_time,
+                physical_layer,
+                effective_jammed_ids,
+                utility_phase_override=1,
             )
         else:
             raise ValueError(f"不支持的恢复策略: {strategy}")

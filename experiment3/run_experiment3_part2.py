@@ -43,7 +43,7 @@ def plot_part2_grouped_bars(config, final_rows: List[Dict], output_path: Path) -
 
     fig, ax = plt.subplots(figsize=config.FIGSIZE_PART2_BARS)
     fig.suptitle(
-        "软杀伤场景下评估权重差异导致的韧性误判与效能盲区",
+        "Evaluation-Weight-Induced Blind Spots Under Electronic Soft-Kill Attacks",
         fontsize=15,
         fontweight="bold",
         y=0.98,
@@ -93,10 +93,10 @@ def plot_part2_grouped_bars(config, final_rows: List[Dict], output_path: Path) -
 
     ax.set_xticks(x)
     ax.set_xticklabels(
-        [f"{scenario['label']}\n({int(round(scenario['attack_ratio'] * 100))}%压制)" for scenario in scenarios]
+        [f"{scenario['label']}\n({int(round(scenario['attack_ratio'] * 100))}% suppressed)" for scenario in scenarios]
     )
-    ax.set_xlabel("网络压制策略")
-    ax.set_ylabel("终态综合性能 $Q$")
+    ax.set_xlabel("Network Suppression Strategy")
+    ax.set_ylabel("Final Integrated Performance $Q$")
     ax.set_ylim(0.0, 1.08)
     ax.grid(True, axis="y", alpha=0.28, zorder=0)
     ax.legend(frameon=False, ncol=len(profiles), loc="upper center", bbox_to_anchor=(0.5, 1.02))
@@ -108,7 +108,7 @@ def plot_part2_grouped_bars(config, final_rows: List[Dict], output_path: Path) -
     ax.text(
         role_index + 0.02,
         0.985,
-        "角色导向压制下“物理高估、任务低估”最显著",
+        "Role-oriented suppression:\nstrongest physical-overestimation / mission-underestimation gap",
         ha="center",
         va="center",
         fontsize=9.5,

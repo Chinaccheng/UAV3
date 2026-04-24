@@ -1,376 +1,501 @@
 ﻿strategy_id,strategy_label,seed,q_min,lambda,resilience
-distance_driven,最临近重构,11,0.3,0.01,0.36711193616797305
-distance_driven,最临近重构,17,0.3,0.01,0.44137678262608776
-distance_driven,最临近重构,23,0.3,0.01,0.5420252874171655
-distance_driven,最临近重构,29,0.3,0.01,0.60946123784587
-distance_driven,最临近重构,35,0.3,0.01,0.587307042617005
-distance_driven,最临近重构,11,0.3,0.03,0.3677356287040956
-distance_driven,最临近重构,17,0.3,0.03,0.4411453384871184
-distance_driven,最临近重构,23,0.3,0.03,0.539333640240191
-distance_driven,最临近重构,29,0.3,0.03,0.6028227711132781
-distance_driven,最临近重构,35,0.3,0.03,0.5851778566168834
-distance_driven,最临近重构,11,0.3,0.05,0.36860786270955825
-distance_driven,最临近重构,17,0.3,0.05,0.4408850756976313
-distance_driven,最临近重构,23,0.3,0.05,0.5364606570147793
-distance_driven,最临近重构,29,0.3,0.05,0.5953701865331207
-distance_driven,最临近重构,35,0.3,0.05,0.5829793300645025
-distance_driven,最临近重构,11,0.3,0.07,0.3696632116582846
-distance_driven,最临近重构,17,0.3,0.07,0.4406238533838606
-distance_driven,最临近重构,23,0.3,0.07,0.5337097117742163
-distance_driven,最临近重构,29,0.3,0.07,0.5879734873096326
-distance_driven,最临近重构,35,0.3,0.07,0.5809585739087798
-distance_driven,最临近重构,11,0.3,0.1,0.3714711074966917
-distance_driven,最临近重构,17,0.3,0.1,0.4402530500736989
-distance_driven,最临近重构,23,0.3,0.1,0.5299952906251663
-distance_driven,最临近重构,29,0.3,0.1,0.5777468766563878
-distance_driven,最临近重构,35,0.3,0.1,0.5783836251854538
-distance_driven,最临近重构,11,0.4,0.01,0.2616305921959685
-distance_driven,最临近重构,17,0.4,0.01,0.3482729130637687
-distance_driven,最临近重构,23,0.4,0.01,0.46569616865335933
-distance_driven,最临近重构,29,0.4,0.01,0.5443714441535148
-distance_driven,最临近重构,35,0.4,0.01,0.5185248830531721
-distance_driven,最临近重构,11,0.4,0.03,0.26235823348811177
-distance_driven,最临近重构,17,0.4,0.03,0.348002894901638
-distance_driven,最临近重构,23,0.4,0.03,0.46255591361355625
-distance_driven,最临近重构,29,0.4,0.03,0.536626566298825
-distance_driven,最临近重构,35,0.4,0.03,0.5160408327196978
-distance_driven,最临近重构,11,0.4,0.05,0.263375839827818
-distance_driven,最临近重构,17,0.4,0.05,0.34769925498056997
-distance_driven,最临近重构,23,0.4,0.05,0.4592040998505759
-distance_driven,最临近重构,29,0.4,0.05,0.5279318842886408
-distance_driven,最临近重构,35,0.4,0.05,0.5134758850752527
-distance_driven,最临近重构,11,0.4,0.07,0.2646070802679989
-distance_driven,最临近重构,17,0.4,0.07,0.34739449561450414
-distance_driven,最临近重构,23,0.4,0.07,0.45599466373658554
-distance_driven,最临近重构,29,0.4,0.07,0.5193024018612385
-distance_driven,最临近重构,35,0.4,0.07,0.51111833622691
-distance_driven,最临近重构,11,0.4,0.1,0.26671629207947345
-distance_driven,最临近重构,17,0.4,0.1,0.3469618917526486
-distance_driven,最临近重构,23,0.4,0.1,0.45166117239602765
-distance_driven,最临近重构,29,0.4,0.1,0.507371356099119
-distance_driven,最临近重构,35,0.4,0.1,0.5081142293830293
-distance_driven,最临近重构,11,0.5,0.01,0.11395671063516226
-distance_driven,最临近重构,17,0.5,0.01,0.21792749567652256
-distance_driven,最临近重构,23,0.5,0.01,0.35883540238403117
-distance_driven,最临近重构,29,0.5,0.01,0.4532457329842177
-distance_driven,最临近重构,35,0.5,0.01,0.4222298596638068
-distance_driven,最临近重构,11,0.5,0.03,0.11482988018573394
-distance_driven,最临近重构,17,0.5,0.03,0.2176034738819655
-distance_driven,最临近重构,23,0.5,0.03,0.35506709633626743
-distance_driven,最临近重构,29,0.5,0.03,0.44395187955858945
-distance_driven,最临近重构,35,0.5,0.03,0.419248999263637
-distance_driven,最临近重构,11,0.5,0.05,0.11605100779338162
-distance_driven,最临近重构,17,0.5,0.05,0.2172391059766839
-distance_driven,最临近重构,23,0.5,0.05,0.35104491982069136
-distance_driven,最临近重构,29,0.5,0.05,0.4335182611463692
-distance_driven,最临近重构,35,0.5,0.05,0.41617106209030325
-distance_driven,最临近重构,11,0.5,0.07,0.11752849632159848
-distance_driven,最临近重构,17,0.5,0.07,0.2168733947374049
-distance_driven,最临近重构,23,0.5,0.07,0.3471935964839026
-distance_driven,最临近重构,29,0.5,0.07,0.423162882233486
-distance_driven,最临近重构,35,0.5,0.07,0.41334200347229205
-distance_driven,最临近重构,11,0.5,0.1,0.12005955049536828
-distance_driven,最临近重构,17,0.5,0.1,0.21635427010317831
-distance_driven,最临近重构,23,0.5,0.1,0.34199340687523333
-distance_driven,最临近重构,29,0.5,0.1,0.40884562731894253
-distance_driven,最临近重构,35,0.5,0.1,0.4097370752596349
-distance_driven,最临近重构,11,0.6,0.01,0.0007836265208915463
-distance_driven,最临近重构,17,0.6,0.01,0.022409369595653175
-distance_driven,最临近重构,23,0.6,0.01,0.19854425298003925
-distance_driven,最临近重构,29,0.6,0.01,0.31655716623027247
-distance_driven,最临近重构,35,0.6,0.01,0.2777873245797586
-distance_driven,最临近重构,11,0.6,0.03,0.0013816869007554089
-distance_driven,最临近重构,17,0.6,0.03,0.02200434235245681
-distance_driven,最临近重构,23,0.6,0.03,0.19383387042033445
-distance_driven,最临近重构,29,0.6,0.03,0.30493984944823693
-distance_driven,最临近重构,35,0.6,0.03,0.2740612490795462
-distance_driven,最临近重构,11,0.6,0.05,0.0020700710479213042
-distance_driven,最临近重构,17,0.6,0.05,0.02154888247085503
-distance_driven,最临近重构,23,0.6,0.05,0.18880614977586427
-distance_driven,最临近重构,29,0.6,0.05,0.2918978264329614
-distance_driven,最临近重构,35,0.6,0.05,0.27021382761287915
-distance_driven,最临近重构,11,0.6,0.07,0.002771460480974279
-distance_driven,最临近重构,17,0.6,0.07,0.021091743421756244
-distance_driven,最临近重构,23,0.6,0.07,0.1839919956048785
-distance_driven,最临近重构,29,0.6,0.07,0.2789536027918576
-distance_driven,最临近重构,35,0.6,0.07,0.26667750434036513
-distance_driven,最临近重构,11,0.6,0.1,0.0037730837934835
-distance_driven,最临近重构,17,0.6,0.1,0.020442837628973035
-distance_driven,最临近重构,23,0.6,0.1,0.17749175859404165
-distance_driven,最临近重构,29,0.6,0.1,0.2610570341486785
-distance_driven,最临近重构,35,0.6,0.1,0.262171344074544
-distance_driven,最临近重构,11,0.7,0.01,0.0
-distance_driven,最临近重构,17,0.7,0.01,0.0
-distance_driven,最临近重构,23,0.7,0.01,0.0
-distance_driven,最临近重构,29,0.7,0.01,0.09876070280634669
-distance_driven,最临近重构,35,0.7,0.01,0.03799466469828877
-distance_driven,最临近重构,11,0.7,0.03,0.0
-distance_driven,最临近重构,17,0.7,0.03,0.0
-distance_driven,最临近重构,23,0.7,0.03,0.0
-distance_driven,最临近重构,29,0.7,0.03,0.09085738424151059
-distance_driven,最临近重构,35,0.7,0.03,0.033762690550967575
-distance_driven,最临近重构,11,0.7,0.05,0.0
-distance_driven,最临近重构,17,0.7,0.05,0.0
-distance_driven,最临近重构,23,0.7,0.05,0.0
-distance_driven,最临近重构,29,0.7,0.05,0.08216279176780782
-distance_driven,最临近重构,35,0.7,0.05,0.029493461361750625
-distance_driven,最临近重构,11,0.7,0.07,0.0
-distance_driven,最临近重构,17,0.7,0.07,0.0
-distance_driven,最临近重构,23,0.7,0.07,0.0
-distance_driven,最临近重构,29,0.7,0.07,0.07372919878242856
-distance_driven,最临近重构,35,0.7,0.07,0.025671481861313055
-distance_driven,最临近重构,11,0.7,0.1,0.0
-distance_driven,最临近重构,17,0.7,0.1,0.0
-distance_driven,最临近重构,23,0.7,0.1,0.0
-distance_driven,最临近重构,29,0.7,0.1,0.062427788414846426
-distance_driven,最临近重构,35,0.7,0.1,0.020972289411174183
-degree_driven,最大度重构,11,0.3,0.01,0.46641390595805077
-degree_driven,最大度重构,17,0.3,0.01,0.5722110417476939
-degree_driven,最大度重构,23,0.3,0.01,0.6251844122501803
-degree_driven,最大度重构,29,0.3,0.01,0.5575068648758423
-degree_driven,最大度重构,35,0.3,0.01,0.6541325323965143
-degree_driven,最大度重构,11,0.3,0.03,0.4528053128042549
-degree_driven,最大度重构,17,0.3,0.03,0.5665574980434253
-degree_driven,最大度重构,23,0.3,0.03,0.6192935767276373
-degree_driven,最大度重构,29,0.3,0.03,0.5472222598868054
-degree_driven,最大度重构,35,0.3,0.03,0.6400364492612276
-degree_driven,最大度重构,11,0.3,0.05,0.4463421669662191
-degree_driven,最大度重构,17,0.3,0.05,0.5592252454542544
-degree_driven,最大度重构,23,0.3,0.05,0.6087900767324579
-degree_driven,最大度重构,29,0.3,0.05,0.5367490444802373
-degree_driven,最大度重构,35,0.3,0.05,0.6272483978854153
-degree_driven,最大度重构,11,0.3,0.07,0.44423870045670844
-degree_driven,最大度重构,17,0.3,0.07,0.5512027110509753
-degree_driven,最大度重构,23,0.3,0.07,0.5961630746908522
-degree_driven,最大度重构,29,0.3,0.07,0.5274383332608684
-degree_driven,最大度重构,35,0.3,0.07,0.6165905158883384
-degree_driven,最大度重构,11,0.3,0.1,0.4437944933201748
-degree_driven,最大度重构,17,0.3,0.1,0.5394735882800442
-degree_driven,最大度重构,23,0.3,0.1,0.5776188723460015
-degree_driven,最大度重构,29,0.3,0.1,0.5161293641192273
-degree_driven,最大度重构,35,0.3,0.1,0.604234387832262
-degree_driven,最大度重构,11,0.4,0.01,0.3774828902843922
-degree_driven,最大度重构,17,0.4,0.01,0.5009128820389759
-degree_driven,最大度重构,23,0.4,0.01,0.5627151476252099
-degree_driven,最大度重构,29,0.4,0.01,0.48375800902181587
-degree_driven,最大度重构,35,0.4,0.01,0.5964879544625997
-degree_driven,最大度重构,11,0.4,0.03,0.36160619827163076
-degree_driven,最大度重构,17,0.4,0.03,0.49431708105066313
-degree_driven,最大度重构,23,0.4,0.03,0.5558425061822438
-degree_driven,最大度重构,29,0.4,0.03,0.4717593032012729
-degree_driven,最大度重构,35,0.4,0.03,0.5800425241380992
-degree_driven,最大度重构,11,0.4,0.05,0.35406586146058894
-degree_driven,最大度重构,17,0.4,0.05,0.48576278636329656
-degree_driven,最大度重构,23,0.4,0.05,0.5435884228545343
-degree_driven,最大度重构,29,0.4,0.05,0.4595405518936106
-degree_driven,最大度重构,35,0.4,0.05,0.5651231308663175
-degree_driven,最大度重构,11,0.4,0.07,0.3516118171994934
-degree_driven,最大度重构,17,0.4,0.07,0.4764031628928048
-degree_driven,最大度重构,23,0.4,0.07,0.5288569204726611
-degree_driven,最大度重构,29,0.4,0.07,0.4486780554710128
-degree_driven,最大度重构,35,0.4,0.07,0.5526889352030622
-degree_driven,最大度重构,11,0.4,0.1,0.3510935755402034
-degree_driven,最大度重构,17,0.4,0.1,0.46271918632671816
-degree_driven,最大度重构,23,0.4,0.1,0.5072220177370015
-degree_driven,最大度重构,29,0.4,0.1,0.43548425813909786
-degree_driven,最大度重构,35,0.4,0.1,0.5382734524709721
-degree_driven,最大度重构,11,0.5,0.01,0.2529794683412707
-degree_driven,最大度重构,17,0.5,0.01,0.40109545844677075
-degree_driven,最大度重构,23,0.5,0.01,0.47525817715025204
-degree_driven,最大度重构,29,0.5,0.01,0.38050961082617923
-degree_driven,最大度重构,35,0.5,0.01,0.5157855453551196
-degree_driven,最大度重构,11,0.5,0.03,0.23392743792595672
-degree_driven,最大度重构,17,0.5,0.03,0.39318049726079535
-degree_driven,最大度重构,23,0.5,0.03,0.4670110074186919
-degree_driven,最大度重构,29,0.5,0.03,0.36611116384152737
-degree_driven,最大度重构,35,0.5,0.03,0.4960510289657188
-degree_driven,最大度重构,11,0.5,0.05,0.2248790337527066
-degree_driven,最大度重构,17,0.5,0.05,0.38291534363595614
-degree_driven,最大度重构,23,0.5,0.05,0.45230610742544114
-degree_driven,最大度重构,29,0.5,0.05,0.3514486622723327
-degree_driven,最大度重构,35,0.5,0.05,0.4781477570395811
-degree_driven,最大度重构,11,0.5,0.07,0.22193418063939221
-degree_driven,最大度重构,17,0.5,0.07,0.37168379547136543
-degree_driven,最大度重构,23,0.5,0.07,0.4346283045671931
-degree_driven,最大度重构,29,0.5,0.07,0.3384136665652154
-degree_driven,最大度重构,35,0.5,0.07,0.46322672224367417
-degree_driven,最大度重构,11,0.5,0.1,0.22131229064824418
-degree_driven,最大度重构,17,0.5,0.1,0.3552630235920618
-degree_driven,最大度重构,23,0.5,0.1,0.40866642128440184
-degree_driven,最大度重构,29,0.5,0.1,0.3225811097669178
-degree_driven,最大度重构,35,0.5,0.1,0.4459281429651667
-degree_driven,最大度重构,11,0.6,0.01,0.08564092003248705
-degree_driven,最大度重构,17,0.6,0.01,0.25136932305846377
-degree_driven,最大度重构,23,0.6,0.01,0.34407272143781503
-degree_driven,最大度重构,29,0.6,0.01,0.22606747593115728
-degree_driven,最大度重构,35,0.6,0.01,0.3947319316938995
-degree_driven,最大度重构,11,0.6,0.03,0.062193338208255455
-degree_driven,最大度重构,17,0.6,0.03,0.2414756215759944
-degree_driven,最大度重构,23,0.6,0.03,0.3337637592733652
-degree_driven,最大度重构,29,0.6,0.03,0.20836402315118116
-degree_driven,最大度重构,35,0.6,0.03,0.3700637862071485
-degree_driven,最大度重构,11,0.6,0.05,0.04892307400269421
-degree_driven,最大度重构,17,0.6,0.05,0.22864417954494523
-degree_driven,最大度重构,23,0.6,0.05,0.31538263428180113
-degree_driven,最大度重构,29,0.6,0.05,0.19034867427911142
-degree_driven,最大度重构,35,0.6,0.05,0.34768469629947685
-degree_driven,最大度重构,11,0.6,0.07,0.04258153087533414
-degree_driven,最大度重构,17,0.6,0.07,0.2146047443392072
-degree_driven,最大度重构,23,0.6,0.07,0.2932853807089916
-degree_driven,最大度重构,29,0.6,0.07,0.17434469194026672
-degree_driven,最大度重构,35,0.6,0.07,0.3290334028045931
-degree_driven,最大度重构,11,0.6,0.1,0.03863118943591127
-degree_driven,最大度重构,17,0.6,0.1,0.19407877949007749
-degree_driven,最大度重构,23,0.6,0.1,0.2608330266055028
-degree_driven,最大度重构,29,0.6,0.1,0.1549146622200833
-degree_driven,最大度重构,35,0.6,0.1,0.3074101787064587
-degree_driven,最大度重构,11,0.7,0.01,0.0
-degree_driven,最大度重构,17,0.7,0.01,0.031037257671600156
-degree_driven,最大度重构,23,0.7,0.01,0.1420457245313503
-degree_driven,最大度重构,29,0.7,0.01,0.020626860104114846
-degree_driven,最大度重构,35,0.7,0.01,0.19518825338320075
-degree_driven,最大度重构,11,0.7,0.03,0.0
-degree_driven,最大度重构,17,0.7,0.03,0.03111500189202042
-degree_driven,最大度重构,23,0.7,0.03,0.14004739012820447
-degree_driven,最大度重构,29,0.7,0.03,0.018054496449429348
-degree_driven,最大度重构,35,0.7,0.03,0.16397547084461814
-degree_driven,最大度重构,11,0.7,0.05,0.0
-degree_driven,最大度重构,17,0.7,0.05,0.028633527515372067
-degree_driven,最大度重构,23,0.7,0.05,0.12846242903878866
-degree_driven,最大度重构,29,0.7,0.05,0.015636027671877852
-degree_driven,最大度重构,35,0.7,0.05,0.1360619740147433
-degree_driven,最大度重构,11,0.7,0.07,0.0
-degree_driven,最大度重构,17,0.7,0.07,0.024691901054040063
-degree_driven,最大度重构,23,0.7,0.07,0.11156926731508328
-degree_driven,最大度重构,29,0.7,0.07,0.013604605609150972
-degree_driven,最大度重构,35,0.7,0.07,0.11315003822717927
-degree_driven,最大度重构,11,0.7,0.1,0.0
-degree_driven,最大度重构,17,0.7,0.1,0.01840328806499852
-degree_driven,最大度重构,23,0.7,0.1,0.08527388304829459
-degree_driven,最大度重构,29,0.7,0.1,0.011064818152833241
-degree_driven,最大度重构,35,0.7,0.1,0.08710771238719052
-utility_role_driven,效用驱动重构,11,0.3,0.01,0.5862749952712355
-utility_role_driven,效用驱动重构,17,0.3,0.01,0.6238913573422836
-utility_role_driven,效用驱动重构,23,0.3,0.01,0.7381793067392513
-utility_role_driven,效用驱动重构,29,0.3,0.01,0.6419261766117415
-utility_role_driven,效用驱动重构,35,0.3,0.01,0.7011167837459351
-utility_role_driven,效用驱动重构,11,0.3,0.03,0.5672717651122895
-utility_role_driven,效用驱动重构,17,0.3,0.03,0.6136886532809629
-utility_role_driven,效用驱动重构,23,0.3,0.03,0.7169299042079277
-utility_role_driven,效用驱动重构,29,0.3,0.03,0.6375170263112417
-utility_role_driven,效用驱动重构,35,0.3,0.03,0.6896717707844287
-utility_role_driven,效用驱动重构,11,0.3,0.05,0.5487793572333025
-utility_role_driven,效用驱动重构,17,0.3,0.05,0.6027226726368552
-utility_role_driven,效用驱动重构,23,0.3,0.05,0.6949077028493121
-utility_role_driven,效用驱动重构,29,0.3,0.05,0.6286515766243359
-utility_role_driven,效用驱动重构,35,0.3,0.05,0.6782838991251713
-utility_role_driven,效用驱动重构,11,0.3,0.07,0.5328216910357028
-utility_role_driven,效用驱动重构,17,0.3,0.07,0.5922721720177178
-utility_role_driven,效用驱动重构,23,0.3,0.07,0.6746163132085591
-utility_role_driven,效用驱动重构,29,0.3,0.07,0.6178708626536429
-utility_role_driven,效用驱动重构,35,0.3,0.07,0.6681437726036964
-utility_role_driven,效用驱动重构,11,0.3,0.1,0.5140317565456085
-utility_role_driven,效用驱动重构,17,0.3,0.1,0.5784330784710836
-utility_role_driven,效用驱动重构,23,0.3,0.1,0.6487789725859107
-utility_role_driven,效用驱动重构,29,0.3,0.1,0.6017897301341842
-utility_role_driven,效用驱动重构,35,0.3,0.1,0.6556616587461871
-utility_role_driven,效用驱动重构,11,0.4,0.01,0.5173208278164411
-utility_role_driven,效用驱动重构,17,0.4,0.01,0.5612065835659974
-utility_role_driven,效用驱动重构,23,0.4,0.01,0.6945425245291259
-utility_role_driven,效用驱动重构,29,0.4,0.01,0.5822472060470315
-utility_role_driven,效用驱动重构,35,0.4,0.01,0.6513029143702569
-utility_role_driven,效用驱动重构,11,0.4,0.03,0.49515039263100497
-utility_role_driven,效用驱动重构,17,0.4,0.03,0.5493034288277899
-utility_role_driven,效用驱动重构,23,0.4,0.03,0.6697515549092494
-utility_role_driven,效用驱动重构,29,0.4,0.03,0.5771031973631157
-utility_role_driven,效用驱动重构,35,0.4,0.03,0.6379503992485002
-utility_role_driven,效用驱动重构,11,0.4,0.05,0.4735759167721865
-utility_role_driven,效用驱动重构,17,0.4,0.05,0.5365097847429977
-utility_role_driven,效用驱动重构,23,0.4,0.05,0.6440589866575308
-utility_role_driven,效用驱动重构,29,0.4,0.05,0.5667601727283914
-utility_role_driven,效用驱动重构,35,0.4,0.05,0.6246645489793659
-utility_role_driven,效用驱动重构,11,0.4,0.07,0.4549586395416533
-utility_role_driven,效用驱动重构,17,0.4,0.07,0.5243175340206712
-utility_role_driven,效用驱动重构,23,0.4,0.07,0.6203856987433183
-utility_role_driven,效用驱动重构,29,0.4,0.07,0.5541826730959167
-utility_role_driven,效用驱动重构,35,0.4,0.07,0.6128344013709789
-utility_role_driven,效用驱动重构,11,0.4,0.1,0.4330370493032094
-utility_role_driven,效用驱动重构,17,0.4,0.1,0.5081719248829303
-utility_role_driven,效用驱动重构,23,0.4,0.1,0.5902421346835619
-utility_role_driven,效用驱动重构,29,0.4,0.1,0.5354213518232152
-utility_role_driven,效用驱动重构,35,0.4,0.1,0.5982719352038844
-utility_role_driven,效用驱动重构,11,0.5,0.01,0.42078499337972947
-utility_role_driven,效用驱动重构,17,0.5,0.01,0.47344790027919714
-utility_role_driven,效用驱动重构,23,0.5,0.01,0.633451029434951
-utility_role_driven,效用驱动重构,29,0.5,0.01,0.4986966472564379
-utility_role_driven,效用驱动重构,35,0.5,0.01,0.5815634972443086
-utility_role_driven,效用驱动重构,11,0.5,0.03,0.39418047115720534
-utility_role_driven,效用驱动重构,17,0.5,0.03,0.4591641145933479
-utility_role_driven,效用驱动重构,23,0.5,0.03,0.6037018658910992
-utility_role_driven,效用驱动重构,29,0.5,0.03,0.4925238368357384
-utility_role_driven,效用驱动重构,35,0.5,0.03,0.5655404790981999
-utility_role_driven,效用驱动重构,11,0.5,0.05,0.3682911001266238
-utility_role_driven,效用驱动重构,17,0.5,0.05,0.4438117416915975
-utility_role_driven,效用驱动重构,23,0.5,0.05,0.5728707839890365
-utility_role_driven,效用驱动重构,29,0.5,0.05,0.4801122072740702
-utility_role_driven,效用驱动重构,35,0.5,0.05,0.5495974587752395
-utility_role_driven,效用驱动重构,11,0.5,0.07,0.345950367449984
-utility_role_driven,效用驱动重构,17,0.5,0.07,0.4291810408248052
-utility_role_driven,效用驱动重构,23,0.5,0.07,0.5444628384919822
-utility_role_driven,效用驱动重构,29,0.5,0.07,0.4650192077151003
-utility_role_driven,效用驱动重构,35,0.5,0.07,0.5354012816451748
-utility_role_driven,效用驱动重构,11,0.5,0.1,0.3196444591638515
-utility_role_driven,效用驱动重构,17,0.5,0.1,0.4098063098595163
-utility_role_driven,效用驱动重构,23,0.5,0.1,0.5082905616202748
-utility_role_driven,效用驱动重构,29,0.5,0.1,0.44250562218785827
-utility_role_driven,效用驱动重构,35,0.5,0.1,0.5179263222446613
-utility_role_driven,效用驱动重构,11,0.6,0.01,0.2766943295206091
-utility_role_driven,效用驱动重构,17,0.6,0.01,0.34180987534899643
-utility_role_driven,效用驱动重构,23,0.6,0.01,0.5418137867936889
-utility_role_driven,效用驱动重构,29,0.6,0.01,0.3733708090705476
-utility_role_driven,效用驱动重构,35,0.6,0.01,0.47695437155538606
-utility_role_driven,效用驱动重构,11,0.6,0.03,0.24400830168577664
-utility_role_driven,效用驱动重构,17,0.6,0.03,0.32395514324168523
-utility_role_driven,效用驱动重构,23,0.6,0.03,0.5046273323638739
-utility_role_driven,效用驱动重构,29,0.6,0.03,0.3656547960446736
-utility_role_driven,效用驱动重构,35,0.6,0.03,0.45692559887275036
-utility_role_driven,效用驱动重构,11,0.6,0.05,0.21232448378274538
-utility_role_driven,效用驱动重构,17,0.6,0.05,0.3047646771144966
-utility_role_driven,效用驱动重构,23,0.6,0.05,0.4660884799862958
-utility_role_driven,效用驱动重构,29,0.6,0.05,0.35014025909258767
-utility_role_driven,效用驱动重构,35,0.6,0.05,0.43699682346904917
-utility_role_driven,效用驱动重构,11,0.6,0.07,0.18511589558166802
-utility_role_driven,效用驱动重构,17,0.6,0.07,0.286476301031007
-utility_role_driven,效用驱动重构,23,0.6,0.07,0.43057854811497803
-utility_role_driven,效用驱动重构,29,0.6,0.07,0.33127400964387527
-utility_role_driven,效用驱动重构,35,0.6,0.07,0.4192516020564683
-utility_role_driven,效用驱动重构,11,0.6,0.1,0.15331236319764888
-utility_role_driven,效用驱动重构,17,0.6,0.1,0.26225788732439576
-utility_role_driven,效用驱动重构,23,0.6,0.1,0.3853632020253429
-utility_role_driven,效用驱动重构,29,0.6,0.1,0.30313202773482284
-utility_role_driven,效用驱动重构,35,0.6,0.1,0.3974079028058269
-utility_role_driven,效用驱动重构,11,0.7,0.01,0.07476188207026833
-utility_role_driven,效用驱动重构,17,0.7,0.01,0.1344938852227181
-utility_role_driven,效用驱动重构,23,0.7,0.01,0.396498160409241
-utility_role_driven,效用驱动重构,29,0.7,0.01,0.17432340864793736
-utility_role_driven,效用驱动重构,35,0.7,0.01,0.30303050078286903
-utility_role_driven,效用驱动重构,11,0.7,0.03,0.05688584250195817
-utility_role_driven,效用驱动重构,17,0.7,0.03,0.1198560074708346
-utility_role_driven,效用驱动重构,23,0.7,0.03,0.3526722576276796
-utility_role_driven,效用驱动重构,29,0.7,0.03,0.17162945237618504
-utility_role_driven,效用驱动重构,35,0.7,0.03,0.2766647047674988
-utility_role_driven,效用驱动重构,11,0.7,0.05,0.04148043552080153
-utility_role_driven,效用驱动重构,17,0.7,0.05,0.1047986805797791
-utility_role_driven,效用驱动重构,23,0.7,0.05,0.30800152947339826
-utility_role_driven,效用驱动重构,29,0.7,0.05,0.1597703685984472
-utility_role_driven,效用驱动重构,35,0.7,0.05,0.250496718094068
-utility_role_driven,效用驱动重构,11,0.7,0.07,0.02985239373322765
-utility_role_driven,效用驱动重构,17,0.7,0.07,0.0911322291751754
-utility_role_driven,效用驱动重构,23,0.7,0.07,0.2676051344942406
-utility_role_driven,效用驱动重构,29,0.7,0.07,0.1437158876492294
-utility_role_driven,效用驱动重构,35,0.7,0.07,0.22726361991761965
-utility_role_driven,效用驱动重构,11,0.7,0.1,0.018353178837555415
-utility_role_driven,效用驱动重构,17,0.7,0.1,0.0741644793566452
-utility_role_driven,效用驱动重构,23,0.7,0.1,0.2174717292213029
-utility_role_driven,效用驱动重构,29,0.7,0.1,0.11941701561548558
-utility_role_driven,效用驱动重构,35,0.7,0.1,0.19878118728448133
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.3,0.01,0.36711193616797305
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.3,0.01,0.44137678262608776
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.3,0.01,0.5420252874171655
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.3,0.01,0.60946123784587
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.3,0.01,0.587307042617005
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.3,0.03,0.3677356287040956
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.3,0.03,0.4411453384871184
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.3,0.03,0.539333640240191
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.3,0.03,0.6028227711132781
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.3,0.03,0.5851778566168834
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.3,0.05,0.36860786270955825
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.3,0.05,0.4408850756976313
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.3,0.05,0.5364606570147793
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.3,0.05,0.5953701865331207
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.3,0.05,0.5829793300645025
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.3,0.07,0.3696632116582846
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.3,0.07,0.4406238533838606
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.3,0.07,0.5337097117742163
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.3,0.07,0.5879734873096326
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.3,0.07,0.5809585739087798
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.3,0.1,0.3714711074966917
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.3,0.1,0.4402530500736989
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.3,0.1,0.5299952906251663
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.3,0.1,0.5777468766563878
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.3,0.1,0.5783836251854538
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.4,0.01,0.2616305921959685
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.4,0.01,0.3482729130637687
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.4,0.01,0.46569616865335933
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.4,0.01,0.5443714441535148
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.4,0.01,0.5185248830531721
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.4,0.03,0.26235823348811177
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.4,0.03,0.348002894901638
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.4,0.03,0.46255591361355625
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.4,0.03,0.536626566298825
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.4,0.03,0.5160408327196978
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.4,0.05,0.263375839827818
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.4,0.05,0.34769925498056997
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.4,0.05,0.4592040998505759
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.4,0.05,0.5279318842886408
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.4,0.05,0.5134758850752527
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.4,0.07,0.2646070802679989
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.4,0.07,0.34739449561450414
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.4,0.07,0.45599466373658554
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.4,0.07,0.5193024018612385
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.4,0.07,0.51111833622691
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.4,0.1,0.26671629207947345
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.4,0.1,0.3469618917526486
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.4,0.1,0.45166117239602765
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.4,0.1,0.507371356099119
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.4,0.1,0.5081142293830293
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.5,0.01,0.11395671063516226
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.5,0.01,0.21792749567652256
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.5,0.01,0.35883540238403117
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.5,0.01,0.4532457329842177
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.5,0.01,0.4222298596638068
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.5,0.03,0.11482988018573394
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.5,0.03,0.2176034738819655
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.5,0.03,0.35506709633626743
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.5,0.03,0.44395187955858945
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.5,0.03,0.419248999263637
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.5,0.05,0.11605100779338162
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.5,0.05,0.2172391059766839
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.5,0.05,0.35104491982069136
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.5,0.05,0.4335182611463692
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.5,0.05,0.41617106209030325
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.5,0.07,0.11752849632159848
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.5,0.07,0.2168733947374049
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.5,0.07,0.3471935964839026
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.5,0.07,0.423162882233486
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.5,0.07,0.41334200347229205
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.5,0.1,0.12005955049536828
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.5,0.1,0.21635427010317831
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.5,0.1,0.34199340687523333
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.5,0.1,0.40884562731894253
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.5,0.1,0.4097370752596349
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.6,0.01,0.0007836265208915463
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.6,0.01,0.022409369595653175
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.6,0.01,0.19854425298003925
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.6,0.01,0.31655716623027247
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.6,0.01,0.2777873245797586
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.6,0.03,0.0013816869007554089
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.6,0.03,0.02200434235245681
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.6,0.03,0.19383387042033445
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.6,0.03,0.30493984944823693
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.6,0.03,0.2740612490795462
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.6,0.05,0.0020700710479213042
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.6,0.05,0.02154888247085503
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.6,0.05,0.18880614977586427
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.6,0.05,0.2918978264329614
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.6,0.05,0.27021382761287915
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.6,0.07,0.002771460480974279
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.6,0.07,0.021091743421756244
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.6,0.07,0.1839919956048785
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.6,0.07,0.2789536027918576
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.6,0.07,0.26667750434036513
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.6,0.1,0.0037730837934835
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.6,0.1,0.020442837628973035
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.6,0.1,0.17749175859404165
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.6,0.1,0.2610570341486785
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.6,0.1,0.262171344074544
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.7,0.01,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.7,0.01,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.7,0.01,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.7,0.01,0.09876070280634669
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.7,0.01,0.03799466469828877
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.7,0.03,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.7,0.03,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.7,0.03,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.7,0.03,0.09085738424151059
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.7,0.03,0.033762690550967575
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.7,0.05,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.7,0.05,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.7,0.05,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.7,0.05,0.08216279176780782
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.7,0.05,0.029493461361750625
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.7,0.07,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.7,0.07,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.7,0.07,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.7,0.07,0.07372919878242856
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.7,0.07,0.025671481861313055
+distance_driven,Nearest-Neighbor Reconfiguration,11,0.7,0.1,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,17,0.7,0.1,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,23,0.7,0.1,0.0
+distance_driven,Nearest-Neighbor Reconfiguration,29,0.7,0.1,0.062427788414846426
+distance_driven,Nearest-Neighbor Reconfiguration,35,0.7,0.1,0.020972289411174183
+degree_driven,Maximum-Degree Reconfiguration,11,0.3,0.01,0.46641390595805077
+degree_driven,Maximum-Degree Reconfiguration,17,0.3,0.01,0.5722110417476939
+degree_driven,Maximum-Degree Reconfiguration,23,0.3,0.01,0.6251844122501803
+degree_driven,Maximum-Degree Reconfiguration,29,0.3,0.01,0.5575068648758423
+degree_driven,Maximum-Degree Reconfiguration,35,0.3,0.01,0.6541325323965143
+degree_driven,Maximum-Degree Reconfiguration,11,0.3,0.03,0.4528053128042549
+degree_driven,Maximum-Degree Reconfiguration,17,0.3,0.03,0.5665574980434253
+degree_driven,Maximum-Degree Reconfiguration,23,0.3,0.03,0.6192935767276373
+degree_driven,Maximum-Degree Reconfiguration,29,0.3,0.03,0.5472222598868054
+degree_driven,Maximum-Degree Reconfiguration,35,0.3,0.03,0.6400364492612276
+degree_driven,Maximum-Degree Reconfiguration,11,0.3,0.05,0.4463421669662191
+degree_driven,Maximum-Degree Reconfiguration,17,0.3,0.05,0.5592252454542544
+degree_driven,Maximum-Degree Reconfiguration,23,0.3,0.05,0.6087900767324579
+degree_driven,Maximum-Degree Reconfiguration,29,0.3,0.05,0.5367490444802373
+degree_driven,Maximum-Degree Reconfiguration,35,0.3,0.05,0.6272483978854153
+degree_driven,Maximum-Degree Reconfiguration,11,0.3,0.07,0.44423870045670844
+degree_driven,Maximum-Degree Reconfiguration,17,0.3,0.07,0.5512027110509753
+degree_driven,Maximum-Degree Reconfiguration,23,0.3,0.07,0.5961630746908522
+degree_driven,Maximum-Degree Reconfiguration,29,0.3,0.07,0.5274383332608684
+degree_driven,Maximum-Degree Reconfiguration,35,0.3,0.07,0.6165905158883384
+degree_driven,Maximum-Degree Reconfiguration,11,0.3,0.1,0.4437944933201748
+degree_driven,Maximum-Degree Reconfiguration,17,0.3,0.1,0.5394735882800442
+degree_driven,Maximum-Degree Reconfiguration,23,0.3,0.1,0.5776188723460015
+degree_driven,Maximum-Degree Reconfiguration,29,0.3,0.1,0.5161293641192273
+degree_driven,Maximum-Degree Reconfiguration,35,0.3,0.1,0.604234387832262
+degree_driven,Maximum-Degree Reconfiguration,11,0.4,0.01,0.3774828902843922
+degree_driven,Maximum-Degree Reconfiguration,17,0.4,0.01,0.5009128820389759
+degree_driven,Maximum-Degree Reconfiguration,23,0.4,0.01,0.5627151476252099
+degree_driven,Maximum-Degree Reconfiguration,29,0.4,0.01,0.48375800902181587
+degree_driven,Maximum-Degree Reconfiguration,35,0.4,0.01,0.5964879544625997
+degree_driven,Maximum-Degree Reconfiguration,11,0.4,0.03,0.36160619827163076
+degree_driven,Maximum-Degree Reconfiguration,17,0.4,0.03,0.49431708105066313
+degree_driven,Maximum-Degree Reconfiguration,23,0.4,0.03,0.5558425061822438
+degree_driven,Maximum-Degree Reconfiguration,29,0.4,0.03,0.4717593032012729
+degree_driven,Maximum-Degree Reconfiguration,35,0.4,0.03,0.5800425241380992
+degree_driven,Maximum-Degree Reconfiguration,11,0.4,0.05,0.35406586146058894
+degree_driven,Maximum-Degree Reconfiguration,17,0.4,0.05,0.48576278636329656
+degree_driven,Maximum-Degree Reconfiguration,23,0.4,0.05,0.5435884228545343
+degree_driven,Maximum-Degree Reconfiguration,29,0.4,0.05,0.4595405518936106
+degree_driven,Maximum-Degree Reconfiguration,35,0.4,0.05,0.5651231308663175
+degree_driven,Maximum-Degree Reconfiguration,11,0.4,0.07,0.3516118171994934
+degree_driven,Maximum-Degree Reconfiguration,17,0.4,0.07,0.4764031628928048
+degree_driven,Maximum-Degree Reconfiguration,23,0.4,0.07,0.5288569204726611
+degree_driven,Maximum-Degree Reconfiguration,29,0.4,0.07,0.4486780554710128
+degree_driven,Maximum-Degree Reconfiguration,35,0.4,0.07,0.5526889352030622
+degree_driven,Maximum-Degree Reconfiguration,11,0.4,0.1,0.3510935755402034
+degree_driven,Maximum-Degree Reconfiguration,17,0.4,0.1,0.46271918632671816
+degree_driven,Maximum-Degree Reconfiguration,23,0.4,0.1,0.5072220177370015
+degree_driven,Maximum-Degree Reconfiguration,29,0.4,0.1,0.43548425813909786
+degree_driven,Maximum-Degree Reconfiguration,35,0.4,0.1,0.5382734524709721
+degree_driven,Maximum-Degree Reconfiguration,11,0.5,0.01,0.2529794683412707
+degree_driven,Maximum-Degree Reconfiguration,17,0.5,0.01,0.40109545844677075
+degree_driven,Maximum-Degree Reconfiguration,23,0.5,0.01,0.47525817715025204
+degree_driven,Maximum-Degree Reconfiguration,29,0.5,0.01,0.38050961082617923
+degree_driven,Maximum-Degree Reconfiguration,35,0.5,0.01,0.5157855453551196
+degree_driven,Maximum-Degree Reconfiguration,11,0.5,0.03,0.23392743792595672
+degree_driven,Maximum-Degree Reconfiguration,17,0.5,0.03,0.39318049726079535
+degree_driven,Maximum-Degree Reconfiguration,23,0.5,0.03,0.4670110074186919
+degree_driven,Maximum-Degree Reconfiguration,29,0.5,0.03,0.36611116384152737
+degree_driven,Maximum-Degree Reconfiguration,35,0.5,0.03,0.4960510289657188
+degree_driven,Maximum-Degree Reconfiguration,11,0.5,0.05,0.2248790337527066
+degree_driven,Maximum-Degree Reconfiguration,17,0.5,0.05,0.38291534363595614
+degree_driven,Maximum-Degree Reconfiguration,23,0.5,0.05,0.45230610742544114
+degree_driven,Maximum-Degree Reconfiguration,29,0.5,0.05,0.3514486622723327
+degree_driven,Maximum-Degree Reconfiguration,35,0.5,0.05,0.4781477570395811
+degree_driven,Maximum-Degree Reconfiguration,11,0.5,0.07,0.22193418063939221
+degree_driven,Maximum-Degree Reconfiguration,17,0.5,0.07,0.37168379547136543
+degree_driven,Maximum-Degree Reconfiguration,23,0.5,0.07,0.4346283045671931
+degree_driven,Maximum-Degree Reconfiguration,29,0.5,0.07,0.3384136665652154
+degree_driven,Maximum-Degree Reconfiguration,35,0.5,0.07,0.46322672224367417
+degree_driven,Maximum-Degree Reconfiguration,11,0.5,0.1,0.22131229064824418
+degree_driven,Maximum-Degree Reconfiguration,17,0.5,0.1,0.3552630235920618
+degree_driven,Maximum-Degree Reconfiguration,23,0.5,0.1,0.40866642128440184
+degree_driven,Maximum-Degree Reconfiguration,29,0.5,0.1,0.3225811097669178
+degree_driven,Maximum-Degree Reconfiguration,35,0.5,0.1,0.4459281429651667
+degree_driven,Maximum-Degree Reconfiguration,11,0.6,0.01,0.08564092003248705
+degree_driven,Maximum-Degree Reconfiguration,17,0.6,0.01,0.25136932305846377
+degree_driven,Maximum-Degree Reconfiguration,23,0.6,0.01,0.34407272143781503
+degree_driven,Maximum-Degree Reconfiguration,29,0.6,0.01,0.22606747593115728
+degree_driven,Maximum-Degree Reconfiguration,35,0.6,0.01,0.3947319316938995
+degree_driven,Maximum-Degree Reconfiguration,11,0.6,0.03,0.062193338208255455
+degree_driven,Maximum-Degree Reconfiguration,17,0.6,0.03,0.2414756215759944
+degree_driven,Maximum-Degree Reconfiguration,23,0.6,0.03,0.3337637592733652
+degree_driven,Maximum-Degree Reconfiguration,29,0.6,0.03,0.20836402315118116
+degree_driven,Maximum-Degree Reconfiguration,35,0.6,0.03,0.3700637862071485
+degree_driven,Maximum-Degree Reconfiguration,11,0.6,0.05,0.04892307400269421
+degree_driven,Maximum-Degree Reconfiguration,17,0.6,0.05,0.22864417954494523
+degree_driven,Maximum-Degree Reconfiguration,23,0.6,0.05,0.31538263428180113
+degree_driven,Maximum-Degree Reconfiguration,29,0.6,0.05,0.19034867427911142
+degree_driven,Maximum-Degree Reconfiguration,35,0.6,0.05,0.34768469629947685
+degree_driven,Maximum-Degree Reconfiguration,11,0.6,0.07,0.04258153087533414
+degree_driven,Maximum-Degree Reconfiguration,17,0.6,0.07,0.2146047443392072
+degree_driven,Maximum-Degree Reconfiguration,23,0.6,0.07,0.2932853807089916
+degree_driven,Maximum-Degree Reconfiguration,29,0.6,0.07,0.17434469194026672
+degree_driven,Maximum-Degree Reconfiguration,35,0.6,0.07,0.3290334028045931
+degree_driven,Maximum-Degree Reconfiguration,11,0.6,0.1,0.03863118943591127
+degree_driven,Maximum-Degree Reconfiguration,17,0.6,0.1,0.19407877949007749
+degree_driven,Maximum-Degree Reconfiguration,23,0.6,0.1,0.2608330266055028
+degree_driven,Maximum-Degree Reconfiguration,29,0.6,0.1,0.1549146622200833
+degree_driven,Maximum-Degree Reconfiguration,35,0.6,0.1,0.3074101787064587
+degree_driven,Maximum-Degree Reconfiguration,11,0.7,0.01,0.0
+degree_driven,Maximum-Degree Reconfiguration,17,0.7,0.01,0.031037257671600156
+degree_driven,Maximum-Degree Reconfiguration,23,0.7,0.01,0.1420457245313503
+degree_driven,Maximum-Degree Reconfiguration,29,0.7,0.01,0.020626860104114846
+degree_driven,Maximum-Degree Reconfiguration,35,0.7,0.01,0.19518825338320075
+degree_driven,Maximum-Degree Reconfiguration,11,0.7,0.03,0.0
+degree_driven,Maximum-Degree Reconfiguration,17,0.7,0.03,0.03111500189202042
+degree_driven,Maximum-Degree Reconfiguration,23,0.7,0.03,0.14004739012820447
+degree_driven,Maximum-Degree Reconfiguration,29,0.7,0.03,0.018054496449429348
+degree_driven,Maximum-Degree Reconfiguration,35,0.7,0.03,0.16397547084461814
+degree_driven,Maximum-Degree Reconfiguration,11,0.7,0.05,0.0
+degree_driven,Maximum-Degree Reconfiguration,17,0.7,0.05,0.028633527515372067
+degree_driven,Maximum-Degree Reconfiguration,23,0.7,0.05,0.12846242903878866
+degree_driven,Maximum-Degree Reconfiguration,29,0.7,0.05,0.015636027671877852
+degree_driven,Maximum-Degree Reconfiguration,35,0.7,0.05,0.1360619740147433
+degree_driven,Maximum-Degree Reconfiguration,11,0.7,0.07,0.0
+degree_driven,Maximum-Degree Reconfiguration,17,0.7,0.07,0.024691901054040063
+degree_driven,Maximum-Degree Reconfiguration,23,0.7,0.07,0.11156926731508328
+degree_driven,Maximum-Degree Reconfiguration,29,0.7,0.07,0.013604605609150972
+degree_driven,Maximum-Degree Reconfiguration,35,0.7,0.07,0.11315003822717927
+degree_driven,Maximum-Degree Reconfiguration,11,0.7,0.1,0.0
+degree_driven,Maximum-Degree Reconfiguration,17,0.7,0.1,0.01840328806499852
+degree_driven,Maximum-Degree Reconfiguration,23,0.7,0.1,0.08527388304829459
+degree_driven,Maximum-Degree Reconfiguration,29,0.7,0.1,0.011064818152833241
+degree_driven,Maximum-Degree Reconfiguration,35,0.7,0.1,0.08710771238719052
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.3,0.01,0.5222966128120679
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.3,0.01,0.5491376918877678
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.3,0.01,0.6054285747814749
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.3,0.01,0.5635958453993061
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.3,0.01,0.6209049059332338
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.3,0.03,0.5054536508125917
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.3,0.03,0.5358200691040923
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.3,0.03,0.5802255219754044
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.3,0.03,0.5717817204331272
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.3,0.03,0.6198583038027385
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.3,0.05,0.4907941254746932
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.3,0.05,0.5231471622665876
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.3,0.05,0.5584632091588672
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.3,0.05,0.5774538592066861
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.3,0.05,0.6179330299859461
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.3,0.07,0.47955105512861873
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.3,0.07,0.5124626636597613
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.3,0.07,0.5414846137127247
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.3,0.07,0.5801167715596732
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.3,0.07,0.6154874455347301
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.3,0.1,0.468112454735146
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.3,0.1,0.5001491541864058
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.3,0.1,0.5234248721494278
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.3,0.1,0.5801688308897961
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.3,0.1,0.611504128325189
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.4,0.01,0.4426793816140789
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.4,0.01,0.4739939738690621
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.4,0.01,0.5396666705783874
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.4,0.01,0.49086181963252284
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.4,0.01,0.5577223902554386
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.4,0.03,0.42302925928135754
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.4,0.03,0.4584567472881078
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.4,0.03,0.5102631089713059
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.4,0.03,0.5004120071719824
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.4,0.03,0.5565013544365285
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.4,0.05,0.4059264797204758
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.4,0.05,0.44367168931101886
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.4,0.05,0.48487374401867855
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.4,0.05,0.5070295024078
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.4,0.05,0.5542552016502705
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.4,0.07,0.39280956431672187
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.4,0.07,0.4312064409363879
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.4,0.07,0.46506538266484504
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.4,0.07,0.5101362334862856
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.4,0.07,0.5514020197905186
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.4,0.1,0.3794645305243367
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.4,0.1,0.4168406798841397
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.4,0.1,0.4439956841743327
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.4,0.1,0.5101969693714284
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.4,0.1,0.5467548163793873
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.5,0.01,0.3312152579368948
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.5,0.01,0.3687927686428746
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.5,0.01,0.4476000046940647
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.5,0.01,0.3890341835590279
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.5,0.01,0.46926686830652636
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.5,0.03,0.30763511113762876
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.5,0.03,0.3501480967457291
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.5,0.03,0.41231573076556666
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.5,0.03,0.40049440860637847
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.5,0.03,0.4678016253238341
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.5,0.05,0.28711177566457136
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.5,0.05,0.3324060271732228
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.5,0.05,0.3818484928224147
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.5,0.05,0.4084354028893605
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.5,0.05,0.465106241980325
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.5,0.07,0.27137147718006605
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.5,0.07,0.3174477291236654
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.5,0.07,0.358078459197814
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.5,0.07,0.41216348018354243
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.5,0.07,0.4616824237486217
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.5,0.1,0.255357436629204
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.5,0.1,0.3002088158609679
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.5,0.1,0.3327948210091989
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.5,0.1,0.4122363632457139
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.5,0.1,0.4561057796552645
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.6,0.01,0.16401907242111832
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.6,0.01,0.21114093627876243
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.6,0.01,0.3095000058675808
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.6,0.01,0.23629272944878485
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.6,0.01,0.3365835853831583
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.6,0.03,0.13454388892203578
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.6,0.03,0.1879548990067141
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.6,0.03,0.26539466345695845
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.6,0.03,0.2506180107579734
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.6,0.03,0.3347520316547927
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.6,0.05,0.10888971958071401
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.6,0.05,0.16591988601033875
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.6,0.05,0.2273106160280182
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.6,0.05,0.2605442536117006
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.6,0.05,0.3313828024754066
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.6,0.07,0.08921434647508274
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.6,0.07,0.14737288064171764
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.6,0.07,0.1975980739972678
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.6,0.07,0.2652043502294282
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.6,0.07,0.3271030296857774
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.6,0.1,0.0691967957865055
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.6,0.1,0.12605114168077886
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.6,0.1,0.16599352626149905
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.6,0.1,0.2652954540571427
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.6,0.1,0.320132224569081
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.7,0.01,0.0
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.7,0.01,0.003417203671322079
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.7,0.01,0.11760320497032992
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.7,0.01,0.024369382996552117
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.7,0.01,0.11639508970755799
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.7,0.03,0.0
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.7,0.03,0.002206851263521912
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.7,0.03,0.0829925070907757
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.7,0.03,0.03398747173646418
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.7,0.03,0.11471213893167649
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.7,0.05,0.0
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.7,0.05,0.0012460374730621383
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.7,0.05,0.056794654789181304
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.7,0.05,0.041187152517498125
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.7,0.05,0.11112324342697465
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.7,0.07,0.0
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.7,0.07,0.0006444684044543743
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.7,0.07,0.039024851887593165
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.7,0.07,0.04543234940634038
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.7,0.07,0.10637283921440102
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,11,0.7,0.1,0.0
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,17,0.7,0.1,0.0002190951755768345
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,23,0.7,0.1,0.023007830982819093
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,29,0.7,0.1,0.047566061740397035
+utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,35,0.7,0.1,0.09851618509040228
+utility_role_driven,Utility-Guided Reconfiguration,11,0.3,0.01,0.5862749952712355
+utility_role_driven,Utility-Guided Reconfiguration,17,0.3,0.01,0.6238913573422836
+utility_role_driven,Utility-Guided Reconfiguration,23,0.3,0.01,0.7381793067392513
+utility_role_driven,Utility-Guided Reconfiguration,29,0.3,0.01,0.6419261766117415
+utility_role_driven,Utility-Guided Reconfiguration,35,0.3,0.01,0.7011167837459351
+utility_role_driven,Utility-Guided Reconfiguration,11,0.3,0.03,0.5672717651122895
+utility_role_driven,Utility-Guided Reconfiguration,17,0.3,0.03,0.6136886532809629
+utility_role_driven,Utility-Guided Reconfiguration,23,0.3,0.03,0.7169299042079277
+utility_role_driven,Utility-Guided Reconfiguration,29,0.3,0.03,0.6375170263112417
+utility_role_driven,Utility-Guided Reconfiguration,35,0.3,0.03,0.6896717707844287
+utility_role_driven,Utility-Guided Reconfiguration,11,0.3,0.05,0.5487793572333025
+utility_role_driven,Utility-Guided Reconfiguration,17,0.3,0.05,0.6027226726368552
+utility_role_driven,Utility-Guided Reconfiguration,23,0.3,0.05,0.6949077028493121
+utility_role_driven,Utility-Guided Reconfiguration,29,0.3,0.05,0.6286515766243359
+utility_role_driven,Utility-Guided Reconfiguration,35,0.3,0.05,0.6782838991251713
+utility_role_driven,Utility-Guided Reconfiguration,11,0.3,0.07,0.5328216910357028
+utility_role_driven,Utility-Guided Reconfiguration,17,0.3,0.07,0.5922721720177178
+utility_role_driven,Utility-Guided Reconfiguration,23,0.3,0.07,0.6746163132085591
+utility_role_driven,Utility-Guided Reconfiguration,29,0.3,0.07,0.6178708626536429
+utility_role_driven,Utility-Guided Reconfiguration,35,0.3,0.07,0.6681437726036964
+utility_role_driven,Utility-Guided Reconfiguration,11,0.3,0.1,0.5140317565456085
+utility_role_driven,Utility-Guided Reconfiguration,17,0.3,0.1,0.5784330784710836
+utility_role_driven,Utility-Guided Reconfiguration,23,0.3,0.1,0.6487789725859107
+utility_role_driven,Utility-Guided Reconfiguration,29,0.3,0.1,0.6017897301341842
+utility_role_driven,Utility-Guided Reconfiguration,35,0.3,0.1,0.6556616587461871
+utility_role_driven,Utility-Guided Reconfiguration,11,0.4,0.01,0.5173208278164411
+utility_role_driven,Utility-Guided Reconfiguration,17,0.4,0.01,0.5612065835659974
+utility_role_driven,Utility-Guided Reconfiguration,23,0.4,0.01,0.6945425245291259
+utility_role_driven,Utility-Guided Reconfiguration,29,0.4,0.01,0.5822472060470315
+utility_role_driven,Utility-Guided Reconfiguration,35,0.4,0.01,0.6513029143702569
+utility_role_driven,Utility-Guided Reconfiguration,11,0.4,0.03,0.49515039263100497
+utility_role_driven,Utility-Guided Reconfiguration,17,0.4,0.03,0.5493034288277899
+utility_role_driven,Utility-Guided Reconfiguration,23,0.4,0.03,0.6697515549092494
+utility_role_driven,Utility-Guided Reconfiguration,29,0.4,0.03,0.5771031973631157
+utility_role_driven,Utility-Guided Reconfiguration,35,0.4,0.03,0.6379503992485002
+utility_role_driven,Utility-Guided Reconfiguration,11,0.4,0.05,0.4735759167721865
+utility_role_driven,Utility-Guided Reconfiguration,17,0.4,0.05,0.5365097847429977
+utility_role_driven,Utility-Guided Reconfiguration,23,0.4,0.05,0.6440589866575308
+utility_role_driven,Utility-Guided Reconfiguration,29,0.4,0.05,0.5667601727283914
+utility_role_driven,Utility-Guided Reconfiguration,35,0.4,0.05,0.6246645489793659
+utility_role_driven,Utility-Guided Reconfiguration,11,0.4,0.07,0.4549586395416533
+utility_role_driven,Utility-Guided Reconfiguration,17,0.4,0.07,0.5243175340206712
+utility_role_driven,Utility-Guided Reconfiguration,23,0.4,0.07,0.6203856987433183
+utility_role_driven,Utility-Guided Reconfiguration,29,0.4,0.07,0.5541826730959167
+utility_role_driven,Utility-Guided Reconfiguration,35,0.4,0.07,0.6128344013709789
+utility_role_driven,Utility-Guided Reconfiguration,11,0.4,0.1,0.4330370493032094
+utility_role_driven,Utility-Guided Reconfiguration,17,0.4,0.1,0.5081719248829303
+utility_role_driven,Utility-Guided Reconfiguration,23,0.4,0.1,0.5902421346835619
+utility_role_driven,Utility-Guided Reconfiguration,29,0.4,0.1,0.5354213518232152
+utility_role_driven,Utility-Guided Reconfiguration,35,0.4,0.1,0.5982719352038844
+utility_role_driven,Utility-Guided Reconfiguration,11,0.5,0.01,0.42078499337972947
+utility_role_driven,Utility-Guided Reconfiguration,17,0.5,0.01,0.47344790027919714
+utility_role_driven,Utility-Guided Reconfiguration,23,0.5,0.01,0.633451029434951
+utility_role_driven,Utility-Guided Reconfiguration,29,0.5,0.01,0.4986966472564379
+utility_role_driven,Utility-Guided Reconfiguration,35,0.5,0.01,0.5815634972443086
+utility_role_driven,Utility-Guided Reconfiguration,11,0.5,0.03,0.39418047115720534
+utility_role_driven,Utility-Guided Reconfiguration,17,0.5,0.03,0.4591641145933479
+utility_role_driven,Utility-Guided Reconfiguration,23,0.5,0.03,0.6037018658910992
+utility_role_driven,Utility-Guided Reconfiguration,29,0.5,0.03,0.4925238368357384
+utility_role_driven,Utility-Guided Reconfiguration,35,0.5,0.03,0.5655404790981999
+utility_role_driven,Utility-Guided Reconfiguration,11,0.5,0.05,0.3682911001266238
+utility_role_driven,Utility-Guided Reconfiguration,17,0.5,0.05,0.4438117416915975
+utility_role_driven,Utility-Guided Reconfiguration,23,0.5,0.05,0.5728707839890365
+utility_role_driven,Utility-Guided Reconfiguration,29,0.5,0.05,0.4801122072740702
+utility_role_driven,Utility-Guided Reconfiguration,35,0.5,0.05,0.5495974587752395
+utility_role_driven,Utility-Guided Reconfiguration,11,0.5,0.07,0.345950367449984
+utility_role_driven,Utility-Guided Reconfiguration,17,0.5,0.07,0.4291810408248052
+utility_role_driven,Utility-Guided Reconfiguration,23,0.5,0.07,0.5444628384919822
+utility_role_driven,Utility-Guided Reconfiguration,29,0.5,0.07,0.4650192077151003
+utility_role_driven,Utility-Guided Reconfiguration,35,0.5,0.07,0.5354012816451748
+utility_role_driven,Utility-Guided Reconfiguration,11,0.5,0.1,0.3196444591638515
+utility_role_driven,Utility-Guided Reconfiguration,17,0.5,0.1,0.4098063098595163
+utility_role_driven,Utility-Guided Reconfiguration,23,0.5,0.1,0.5082905616202748
+utility_role_driven,Utility-Guided Reconfiguration,29,0.5,0.1,0.44250562218785827
+utility_role_driven,Utility-Guided Reconfiguration,35,0.5,0.1,0.5179263222446613
+utility_role_driven,Utility-Guided Reconfiguration,11,0.6,0.01,0.2766943295206091
+utility_role_driven,Utility-Guided Reconfiguration,17,0.6,0.01,0.34180987534899643
+utility_role_driven,Utility-Guided Reconfiguration,23,0.6,0.01,0.5418137867936889
+utility_role_driven,Utility-Guided Reconfiguration,29,0.6,0.01,0.3733708090705476
+utility_role_driven,Utility-Guided Reconfiguration,35,0.6,0.01,0.47695437155538606
+utility_role_driven,Utility-Guided Reconfiguration,11,0.6,0.03,0.24400830168577664
+utility_role_driven,Utility-Guided Reconfiguration,17,0.6,0.03,0.32395514324168523
+utility_role_driven,Utility-Guided Reconfiguration,23,0.6,0.03,0.5046273323638739
+utility_role_driven,Utility-Guided Reconfiguration,29,0.6,0.03,0.3656547960446736
+utility_role_driven,Utility-Guided Reconfiguration,35,0.6,0.03,0.45692559887275036
+utility_role_driven,Utility-Guided Reconfiguration,11,0.6,0.05,0.21232448378274538
+utility_role_driven,Utility-Guided Reconfiguration,17,0.6,0.05,0.3047646771144966
+utility_role_driven,Utility-Guided Reconfiguration,23,0.6,0.05,0.4660884799862958
+utility_role_driven,Utility-Guided Reconfiguration,29,0.6,0.05,0.35014025909258767
+utility_role_driven,Utility-Guided Reconfiguration,35,0.6,0.05,0.43699682346904917
+utility_role_driven,Utility-Guided Reconfiguration,11,0.6,0.07,0.18511589558166802
+utility_role_driven,Utility-Guided Reconfiguration,17,0.6,0.07,0.286476301031007
+utility_role_driven,Utility-Guided Reconfiguration,23,0.6,0.07,0.43057854811497803
+utility_role_driven,Utility-Guided Reconfiguration,29,0.6,0.07,0.33127400964387527
+utility_role_driven,Utility-Guided Reconfiguration,35,0.6,0.07,0.4192516020564683
+utility_role_driven,Utility-Guided Reconfiguration,11,0.6,0.1,0.15331236319764888
+utility_role_driven,Utility-Guided Reconfiguration,17,0.6,0.1,0.26225788732439576
+utility_role_driven,Utility-Guided Reconfiguration,23,0.6,0.1,0.3853632020253429
+utility_role_driven,Utility-Guided Reconfiguration,29,0.6,0.1,0.30313202773482284
+utility_role_driven,Utility-Guided Reconfiguration,35,0.6,0.1,0.3974079028058269
+utility_role_driven,Utility-Guided Reconfiguration,11,0.7,0.01,0.07476188207026833
+utility_role_driven,Utility-Guided Reconfiguration,17,0.7,0.01,0.1344938852227181
+utility_role_driven,Utility-Guided Reconfiguration,23,0.7,0.01,0.396498160409241
+utility_role_driven,Utility-Guided Reconfiguration,29,0.7,0.01,0.17432340864793736
+utility_role_driven,Utility-Guided Reconfiguration,35,0.7,0.01,0.30303050078286903
+utility_role_driven,Utility-Guided Reconfiguration,11,0.7,0.03,0.05688584250195817
+utility_role_driven,Utility-Guided Reconfiguration,17,0.7,0.03,0.1198560074708346
+utility_role_driven,Utility-Guided Reconfiguration,23,0.7,0.03,0.3526722576276796
+utility_role_driven,Utility-Guided Reconfiguration,29,0.7,0.03,0.17162945237618504
+utility_role_driven,Utility-Guided Reconfiguration,35,0.7,0.03,0.2766647047674988
+utility_role_driven,Utility-Guided Reconfiguration,11,0.7,0.05,0.04148043552080153
+utility_role_driven,Utility-Guided Reconfiguration,17,0.7,0.05,0.1047986805797791
+utility_role_driven,Utility-Guided Reconfiguration,23,0.7,0.05,0.30800152947339826
+utility_role_driven,Utility-Guided Reconfiguration,29,0.7,0.05,0.1597703685984472
+utility_role_driven,Utility-Guided Reconfiguration,35,0.7,0.05,0.250496718094068
+utility_role_driven,Utility-Guided Reconfiguration,11,0.7,0.07,0.02985239373322765
+utility_role_driven,Utility-Guided Reconfiguration,17,0.7,0.07,0.0911322291751754
+utility_role_driven,Utility-Guided Reconfiguration,23,0.7,0.07,0.2676051344942406
+utility_role_driven,Utility-Guided Reconfiguration,29,0.7,0.07,0.1437158876492294
+utility_role_driven,Utility-Guided Reconfiguration,35,0.7,0.07,0.22726361991761965
+utility_role_driven,Utility-Guided Reconfiguration,11,0.7,0.1,0.018353178837555415
+utility_role_driven,Utility-Guided Reconfiguration,17,0.7,0.1,0.0741644793566452
+utility_role_driven,Utility-Guided Reconfiguration,23,0.7,0.1,0.2174717292213029
+utility_role_driven,Utility-Guided Reconfiguration,29,0.7,0.1,0.11941701561548558
+utility_role_driven,Utility-Guided Reconfiguration,35,0.7,0.1,0.19878118728448133

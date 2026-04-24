@@ -46,9 +46,10 @@ class Experiment2Config:
     Q_MIN = 0.45
     LAMBDA = 0.05
 
-    # 攻击强度：默认上调至 25%，使性能跌落更显著，同时保留少量 D 节点作为重构空间
+    # 攻击强度：在 t=20 前采用更离散的不均匀打击批次，形成更明显的阶段性跌落
     ATTACK_TIME = 20
-    ATTACK_DURATION = 4
+    ATTACK_DURATION = 10
+    ATTACK_BATCH_WEIGHTS = [0, 2, 0, 4, 1, 0, 6, 3, 0, 9]
     ATTACK_RATIO = 0.25
     ATTACK_NODES = 25
     ATTACK_DEGREE_LAYER = "physical"
@@ -60,8 +61,18 @@ class Experiment2Config:
     # 任务层阈值
     MISSION_PROB_THRESHOLD = 0.01
 
-    # 重构参数
-    RECOVERY_SPEED = 1.6
+    # 重构参数：前段先短暂停滞，再多次间歇式恢复，后段回到正常速度
+    RECOVERY_SPEED = 1.25
+    RECOVERY_SPEED_PROFILE = [
+        (21, 24, 0.0),
+        (24, 28, 0.38),
+        (28, 30, 0.0),
+        (30, 35, 0.55),
+        (35, 37, 0.0),
+        (37, 43, 0.78),
+        (43, 45, 0.0),
+        (45, TIME_STEPS + 1, 1.0),
+    ]
     SEARCH_RADIUS = 40.0
     MIN_NODE_DISTANCE = None
     RECONFIGURE_TRIGGER_TIME = ATTACK_TIME
@@ -79,54 +90,54 @@ class Experiment2Config:
     ATTACK_SCENARIOS = [
         {
             "id": "physical_random",
-            "label": "物理摧毁-随机攻击",
-            "mode_label": "物理摧毁",
-            "targeting_label": "随机攻击",
+            "label": "Physical Destruction-Random Attack",
+            "mode_label": "Physical Destruction",
+            "targeting_label": "Random Attack",
             "mode": "physical",
             "strategy": "random",
             "role_target": None,
         },
         {
             "id": "physical_topology",
-            "label": "物理摧毁-拓扑蓄意攻击",
-            "mode_label": "物理摧毁",
-            "targeting_label": "拓扑蓄意攻击",
+            "label": "Physical Destruction-Topology-Oriented Deliberate Attack",
+            "mode_label": "Physical Destruction",
+            "targeting_label": "Topology-Oriented Deliberate Attack",
             "mode": "physical",
             "strategy": "topology",
             "role_target": None,
         },
         {
             "id": "physical_role_decider",
-            "label": "物理摧毁-角色蓄意攻击(D)",
-            "mode_label": "物理摧毁",
-            "targeting_label": "角色蓄意攻击",
+            "label": "Physical Destruction-Role-Oriented Targeted Attack (D)",
+            "mode_label": "Physical Destruction",
+            "targeting_label": "Role-Oriented Targeted Attack",
             "mode": "physical",
             "strategy": "role",
             "role_target": "DECIDER",
         },
         {
             "id": "cyber_random",
-            "label": "网络压制-随机攻击",
-            "mode_label": "网络压制",
-            "targeting_label": "随机攻击",
+            "label": "Network Suppression-Random Attack",
+            "mode_label": "Network Suppression",
+            "targeting_label": "Random Attack",
             "mode": "cyber",
             "strategy": "random",
             "role_target": None,
         },
         {
             "id": "cyber_topology",
-            "label": "网络压制-拓扑蓄意攻击",
-            "mode_label": "网络压制",
-            "targeting_label": "拓扑蓄意攻击",
+            "label": "Network Suppression-Topology-Oriented Deliberate Attack",
+            "mode_label": "Network Suppression",
+            "targeting_label": "Topology-Oriented Deliberate Attack",
             "mode": "cyber",
             "strategy": "topology",
             "role_target": None,
         },
         {
             "id": "cyber_role_decider",
-            "label": "网络压制-角色蓄意攻击(D)",
-            "mode_label": "网络压制",
-            "targeting_label": "角色蓄意攻击",
+            "label": "Network Suppression-Role-Oriented Targeted Attack (D)",
+            "mode_label": "Network Suppression",
+            "targeting_label": "Role-Oriented Targeted Attack",
             "mode": "cyber",
             "strategy": "role",
             "role_target": "DECIDER",
@@ -136,28 +147,35 @@ class Experiment2Config:
     RECOVERY_STRATEGIES = [
         {
             "id": "no_reconfiguration",
-            "label": "静态无重构",
+            "label": "Static Baseline",
             "color": "#4d4d4d",
             "linestyle": "-",
             "marker": "o",
         },
         {
             "id": "distance_driven",
-            "label": "最短距离重构",
+            "label": "Nearest-Neighbor Reconfiguration",
             "color": "#1f77b4",
             "linestyle": "--",
             "marker": "s",
         },
         {
             "id": "degree_driven",
-            "label": "最高度数重构",
+            "label": "Maximum-Degree Reconfiguration",
             "color": "#ff7f0e",
             "linestyle": "-.",
             "marker": "^",
         },
         {
+            "id": "utility_role_mismatch_recon",
+            "label": "Phase-Mismatched Utility Reconfiguration",
+            "color": "#2ca02c",
+            "linestyle": ":",
+            "marker": "P",
+        },
+        {
             "id": "utility_role_driven",
-            "label": "效用与角色重构",
+            "label": "Utility-Guided and Role-Driven Reconfiguration",
             "color": "#d62728",
             "linestyle": "-",
             "marker": "D",
@@ -179,7 +197,7 @@ class Experiment2Config:
     FIGSIZE_DYNAMIC = (16, 8.8)
     FIGSIZE_DECOUPLING = (13, 5.2)
     FIGSIZE_RESILIENCE = (13, 4.8)
-    FIGSIZE_SNAPSHOTS = (16, 5.4)
+    FIGSIZE_SNAPSHOTS = (16.2, 8.6)
     FIGSIZE_LAYER_DYNAMIC = (16, 8.8)
     FIGSIZE_LAYER_FINAL = (16, 5.6)
     FIGSIZE_RESILIENCE_BARS = (14.5, 5.8)
@@ -210,6 +228,14 @@ class Experiment2Config:
         assert cls.SEARCH_RADIUS > 0.0
         assert cls.BASELINE_TRIGGER_PHYSICAL_DEGREE >= 0
         assert cls.UTILITY_MIN_ACCEPTANCE >= 0.0
+        if getattr(cls, "ATTACK_BATCH_WEIGHTS", None) is not None:
+            assert len(cls.ATTACK_BATCH_WEIGHTS) == cls.ATTACK_DURATION
+            assert sum(max(0.0, float(weight)) for weight in cls.ATTACK_BATCH_WEIGHTS) > 0.0
+        if getattr(cls, "RECOVERY_SPEED_PROFILE", None):
+            for start, end, multiplier in cls.RECOVERY_SPEED_PROFILE:
+                assert cls.RECONFIGURE_TRIGGER_TIME < end
+                assert start < end
+                assert multiplier >= 0.0
         assert isinstance(cls.TASK_PHASE_SCHEDULE, list) and cls.TASK_PHASE_SCHEDULE
         schedule = sorted(cls.TASK_PHASE_SCHEDULE, key=lambda item: item[0])
         expected_start = 0

@@ -1,0 +1,70 @@
+{
+  "attack_time": 20,
+  "attack_duration": 10,
+  "attack_nodes": 25,
+  "attack_batch_weights": [
+    0,
+    2,
+    0,
+    4,
+    1,
+    0,
+    6,
+    3,
+    0,
+    9
+  ],
+  "reconfigure_trigger_time": 20,
+  "recovery_speed": 1.25,
+  "recovery_speed_profile": [
+    [
+      21,
+      24,
+      0.0
+    ],
+    [
+      24,
+      28,
+      0.38
+    ],
+    [
+      28,
+      30,
+      0.0
+    ],
+    [
+      30,
+      35,
+      0.55
+    ],
+    [
+      35,
+      37,
+      0.0
+    ],
+    [
+      37,
+      43,
+      0.78
+    ],
+    [
+      43,
+      45,
+      0.0
+    ],
+    [
+      45,
+      101,
+      1.0
+    ]
+  ],
+  "preview_scenarios": [
+    "physical_role_decider",
+    "cyber_role_decider"
+  ],
+  "preview_seeds": [
+    11,
+    17,
+    23
+  ]
+}

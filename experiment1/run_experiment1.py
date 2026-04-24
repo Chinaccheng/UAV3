@@ -4,10 +4,10 @@
 物理层、通信层、任务层性能的退化差异，并比较阶段切换后的解耦效应。
 
 本实验生成：
-    图1 figure_1_recon_stage_multilayer_intensity.png
-        侦察阶段三层性能随攻击强度变化的多曲线图
-    图2 figure_2_strike_stage_multilayer_intensity.png
-        打击阶段三层性能随攻击强度变化的多曲线图
+    图1 figure_1_stage_comparison_multilayer_intensity.png
+        侦察/打击阶段下通信层、任务层与综合性能的 3x2 对比图
+    图2 figure_2_physical_layer_intensity.png
+        不区分阶段的物理层退化强度图
     图3 figure_3_qmis_stage_comparison.png
         不同攻击类型下任务层性能 Q_mis 的阶段对比图
     图4 figure_4_decoupling_comparison.png
@@ -57,7 +57,23 @@ matplotlib.rcParams["axes.unicode_minus"] = False
 
 
 def build_scenario_legend_handles(scenarios: Iterable[Dict], linewidth: float = 2.0, markersize: float = 5):
-    """显式构造场景图例，避免虚线在总图例中被压缩成近似实线。"""
+    """显式构造场景图例，并按 2x3 图例的视觉阅读顺序重排。"""
+    scenario_list = list(scenarios)
+    scenario_map = {scenario["id"]: scenario for scenario in scenario_list}
+    preferred_order = [
+        "hard_random",
+        "soft_random",
+        "hard_topology",
+        "soft_topology",
+        "hard_role_decider",
+        "soft_role_decider",
+    ]
+
+    ordered_scenarios = [scenario_map[scenario_id] for scenario_id in preferred_order if scenario_id in scenario_map]
+    ordered_scenarios.extend(
+        scenario for scenario in scenario_list if scenario["id"] not in {item["id"] for item in ordered_scenarios}
+    )
+
     return [
         Line2D(
             [0],
@@ -69,7 +85,7 @@ def build_scenario_legend_handles(scenarios: Iterable[Dict], linewidth: float = 
             linewidth=linewidth,
             markersize=markersize,
         )
-        for scenario in scenarios
+        for scenario in ordered_scenarios
     ]
 
 
@@ -90,9 +106,9 @@ def build_stage_legend_handles(stage_styles: Iterable[Dict], linewidth: float = 
     ]
 
 
-def build_decoupling_legend_handles(metric_specs: Iterable[Tuple[str, str, str]], linewidth: float = 2.2):
-    """同时给出颜色含义和实/虚线攻击机制含义。"""
-    metric_handles = [
+def build_decoupling_metric_legend_handles(metric_specs: Iterable[Tuple[str, str, str]], linewidth: float = 2.2):
+    """图4上方第一行：颜色对应的性能指标。"""
+    return [
         Line2D(
             [0],
             [0],
@@ -105,11 +121,14 @@ def build_decoupling_legend_handles(metric_specs: Iterable[Tuple[str, str, str]]
         )
         for _, metric_label, color in metric_specs
     ]
-    style_handles = [
-        Line2D([0], [0], label="硬杀伤（实线）", color="#444444", linestyle="-", linewidth=linewidth),
-        Line2D([0], [0], label="网络压制（虚线）", color="#444444", linestyle="--", linewidth=linewidth),
+
+
+def build_decoupling_style_legend_handles(linewidth: float = 2.2):
+    """图4上方第二行：线型对应的攻击机制。"""
+    return [
+        Line2D([0], [0], label="Physical Destruction (Solid)", color="#444444", linestyle="-", linewidth=linewidth),
+        Line2D([0], [0], label="Network Suppression (Dashed)", color="#444444", linestyle="--", linewidth=linewidth),
     ]
-    return metric_handles + style_handles
 
 
 def build_run_config(base_config, stage_name: str, attack_scenario: Dict, attack_ratio: float, seed: int):
@@ -323,51 +342,136 @@ def get_metric_markevery(metric_key: str, total_points: int) -> List[int]:
     return get_staggered_marker_indices(total_points, offset_map.get(metric_key, 0), 6)
 
 
-def plot_stage_multilayer(
+def get_metric_plot_style(metric_key: str, scenario_id: str) -> Dict[str, float | str]:
+    """为易重合的指标提供更强的可读性设置。"""
+    if metric_key != "Q_mis_mean":
+        return {
+            "linewidth": 2.0,
+            "markersize": 5.0,
+            "markerfacecolor": "auto",
+            "markeredgecolor": "auto",
+            "markeredgewidth": 0.0,
+            "zorder": 2.0,
+        }
+
+    order_map = {
+        "soft_random": 2.0,
+        "hard_random": 2.2,
+        "soft_topology": 2.4,
+        "hard_topology": 2.6,
+        "soft_role_decider": 2.8,
+        "hard_role_decider": 3.0,
+    }
+    role_scenarios = {"soft_role_decider", "hard_role_decider"}
+    return {
+        "linewidth": 2.35 if scenario_id in role_scenarios else 2.2,
+        "markersize": 6.2 if scenario_id in role_scenarios else 5.8,
+        "markerfacecolor": "white",
+        "markeredgecolor": "auto",
+        "markeredgewidth": 1.3 if scenario_id in role_scenarios else 1.1,
+        "zorder": order_map.get(scenario_id, 2.0),
+    }
+
+
+def get_metric_display_offset(metric_key: str, scenario_id: str) -> float:
+    """
+    为严重重合的任务层曲线增加极小的仅显示偏移，
+    不改变原始数据，只改善图面可分辨性。
+    """
+    if metric_key != "Q_mis_mean":
+        return 0.0
+
+    offset_map = {
+        "hard_random": 0.012,
+        "hard_topology": -0.012,
+        "soft_random": 0.008,
+        "soft_topology": -0.008,
+        "hard_role_decider": 0.014,
+        "soft_role_decider": -0.014,
+    }
+    return offset_map.get(scenario_id, 0.0)
+
+
+def plot_attack_scenario_metric_curves(
+    ax,
+    config,
+    lookup: Dict[Tuple[str, str, float], Dict],
+    stage_name: str,
+    metric_key: str,
+    intensities: List[float],
+) -> None:
+    """在给定坐标轴上绘制某阶段、某指标的六类攻击曲线。"""
+    x = np.array(intensities) * 100.0
+    for scenario in config.ATTACK_SCENARIOS:
+        style = get_metric_plot_style(metric_key, scenario["id"])
+        y = []
+        for attack_ratio in intensities:
+            row = lookup[(stage_name, scenario["id"], attack_ratio)]
+            y.append(row[metric_key])
+        display_offset = get_metric_display_offset(metric_key, scenario["id"])
+        if display_offset != 0.0:
+            y = [float(np.clip(value + display_offset, 0.0, 1.02)) for value in y]
+        markerfacecolor = style["markerfacecolor"]
+        markeredgecolor = scenario["color"] if style["markeredgecolor"] == "auto" else style["markeredgecolor"]
+        ax.plot(
+            x,
+            y,
+            color=scenario["color"],
+            linestyle=scenario["linestyle"],
+            marker=scenario["marker"],
+            linewidth=style["linewidth"],
+            markersize=style["markersize"],
+            markevery=get_attack_scenario_markevery(scenario["id"], len(intensities)),
+            markerfacecolor=scenario["color"] if markerfacecolor == "auto" else markerfacecolor,
+            markeredgecolor=markeredgecolor,
+            markeredgewidth=style["markeredgewidth"],
+            zorder=style["zorder"],
+        )
+
+
+def plot_stage_comparison_multilayer(
     config,
     summary_rows: List[Dict],
-    stage_name: str,
     intensities: List[float],
     output_path: Path,
 ) -> None:
-    """为单一阶段绘制 2x2 多层退化强度曲线。"""
+    """绘制侦察/打击阶段下通信层、任务层与综合性能的 3x2 对比图。"""
     lookup = build_lookup(summary_rows)
+    stage_names = ["recon", "strike"]
     metrics = [
-        ("Q_phy_mean", "物理层性能 $Q_{phy}$"),
-        ("Q_comm_mean", "通信层性能 $Q_{comm}$"),
-        ("Q_mis_mean", "任务层性能 $Q_{mis}$"),
-        ("Q_overall_mean", "综合性能 $Q$"),
+        ("Q_comm_mean", "Communication-Layer Performance\n$Q_{comm}$"),
+        ("Q_mis_mean", "Mission-Layer Performance\n$Q_{mis}$"),
+        ("Q_overall_mean", "Integrated Performance\n$Q$"),
     ]
 
-    fig, axes = plt.subplots(2, 2, figsize=config.FIGSIZE_STAGE)
+    fig, axes = plt.subplots(
+        len(metrics),
+        len(stage_names),
+        figsize=config.FIGSIZE_STAGE_COMPARISON,
+        sharex=True,
+        sharey="row",
+    )
     fig.suptitle(
-        f"{config.STAGE_SCENARIOS[stage_name]['label']}下不同攻击强度的多层退化特性",
+        "Stage Comparison of Communication, Mission, and Integrated Performance Under Different Attack Intensities",
         fontsize=15,
         fontweight="bold",
         y=0.985,
     )
-    axes = axes.flatten()
 
-    x = np.array(intensities) * 100.0
-    for ax, (metric_key, title) in zip(axes, metrics):
-        for scenario in config.ATTACK_SCENARIOS:
-            y = []
-            for attack_ratio in intensities:
-                row = lookup[(stage_name, scenario["id"], attack_ratio)]
-                y.append(row[metric_key])
-            ax.plot(
-                x,
-                y,
-                label=scenario["label"],
-                color=scenario["color"],
-                linestyle=scenario["linestyle"],
-                marker=scenario["marker"],
-                linewidth=2.0,
-                markersize=5,
-                markevery=get_attack_scenario_markevery(scenario["id"], len(intensities)),
+    for col_index, stage_name in enumerate(stage_names):
+        axes[0, col_index].set_title(config.STAGE_SCENARIOS[stage_name]["label"], fontsize=12, pad=10)
+        for row_index, (metric_key, ylabel) in enumerate(metrics):
+            ax = axes[row_index, col_index]
+            plot_attack_scenario_metric_curves(ax, config, lookup, stage_name, metric_key, intensities)
+            configure_axis(
+                ax,
+                "Disrupted Node Ratio in the Swarm (%)" if row_index == len(metrics) - 1 else "",
+                ylabel if col_index == 0 else "",
             )
-        ax.set_title(title, fontsize=12)
-        configure_axis(ax, "集群总节点受损比例（%）", "归一化性能值")
+            if row_index != len(metrics) - 1:
+                ax.tick_params(axis="x", labelbottom=False)
+            if col_index > 0:
+                ax.tick_params(axis="y", labelleft=False)
 
     fig.legend(
         handles=build_scenario_legend_handles(config.ATTACK_SCENARIOS),
@@ -377,7 +481,76 @@ def plot_stage_multilayer(
         bbox_to_anchor=(0.5, 0.945),
         handlelength=3.0,
     )
-    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.84))
+    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.86))
+    fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_physical_layer_intensity(
+    config,
+    summary_rows: List[Dict],
+    intensities: List[float],
+    output_path: Path,
+) -> None:
+    """绘制不区分阶段的物理层退化强度图。"""
+    lookup = build_lookup(summary_rows)
+    stage_names = ["recon", "strike"]
+    x = np.array(intensities) * 100.0
+
+    fig, ax = plt.subplots(figsize=config.FIGSIZE_PHYSICAL)
+    fig.suptitle(
+        "Stage-Invariant Physical-Layer Degradation Under Different Attack Intensities",
+        fontsize=15,
+        fontweight="bold",
+        y=0.98,
+    )
+
+    for scenario in config.ATTACK_SCENARIOS:
+        style = get_metric_plot_style("Q_phy_mean", scenario["id"])
+        y = []
+        for attack_ratio in intensities:
+            stage_values = [lookup[(stage_name, scenario["id"], attack_ratio)]["Q_phy_mean"] for stage_name in stage_names]
+            y.append(float(np.mean(stage_values)))
+        markerfacecolor = style["markerfacecolor"]
+        markeredgecolor = scenario["color"] if style["markeredgecolor"] == "auto" else style["markeredgecolor"]
+        ax.plot(
+            x,
+            y,
+            color=scenario["color"],
+            linestyle=scenario["linestyle"],
+            marker=scenario["marker"],
+            linewidth=style["linewidth"],
+            markersize=style["markersize"],
+            markevery=get_attack_scenario_markevery(scenario["id"], len(intensities)),
+            markerfacecolor=scenario["color"] if markerfacecolor == "auto" else markerfacecolor,
+            markeredgecolor=markeredgecolor,
+            markeredgewidth=style["markeredgewidth"],
+            zorder=style["zorder"],
+            label=scenario["label"],
+        )
+
+    configure_axis(ax, "Disrupted Node Ratio in the Swarm (%)", "Physical-Layer Performance $Q_{phy}$")
+    ax.text(
+        0.985,
+        0.06,
+        "Recon and strike stages coincide\nat the physical layer",
+        transform=ax.transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=10,
+        color="#555555",
+        bbox={"boxstyle": "round,pad=0.25", "facecolor": "white", "edgecolor": "#cccccc", "alpha": 0.85},
+    )
+
+    fig.legend(
+        handles=build_scenario_legend_handles(config.ATTACK_SCENARIOS),
+        loc="upper center",
+        ncol=3,
+        frameon=False,
+        bbox_to_anchor=(0.5, 0.91),
+        handlelength=3.0,
+    )
+    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.82))
     fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
     plt.close(fig)
 
@@ -398,7 +571,7 @@ def plot_qmis_stage_comparison(
         axes = [axes]
 
     fig.suptitle(
-        "不同任务阶段下任务层脆弱性的对比",
+        "Comparison of Mission-Layer Vulnerability Across Mission Stages",
         fontsize=15,
         fontweight="bold",
         y=0.99,
@@ -406,8 +579,8 @@ def plot_qmis_stage_comparison(
 
     x = np.array(intensities) * 100.0
     stage_styles = {
-        "recon": {"label": "侦察阶段", "color": "#1f77b4", "linestyle": "-"},
-        "strike": {"label": "打击阶段", "color": "#d62728", "linestyle": "--"},
+        "recon": {"label": "Intelligence Aggregation Stage", "color": "#1f77b4", "linestyle": "-"},
+        "strike": {"label": "Tactical Execution Stage", "color": "#d62728", "linestyle": "--"},
     }
     decider_exhaustion_percent = 100.0 * config.N_DECIDER / config.N_TOTAL
     for ax, scenario_id in zip(axes, selected_ids):
@@ -440,7 +613,7 @@ def plot_qmis_stage_comparison(
             ax.text(
                 decider_exhaustion_percent + 1.5,
                 0.94,
-                f"D 节点耗尽阈值（{decider_exhaustion_percent:.0f}%）",
+                f"Decider Exhaustion Threshold ({decider_exhaustion_percent:.0f}%)",
                 color="#555555",
                 fontsize=10,
                 ha="left",
@@ -448,7 +621,7 @@ def plot_qmis_stage_comparison(
             )
 
         ax.set_title(scenario["label"], fontsize=12)
-        configure_axis(ax, "集群总节点受损比例（%）", "任务层性能 $Q_{mis}$")
+        configure_axis(ax, "Disrupted Node Ratio in the Swarm (%)", "Mission-Layer Performance $Q_{mis}$")
 
     fig.legend(
         handles=build_stage_legend_handles(stage_styles.values()),
@@ -486,7 +659,7 @@ def plot_decoupling_comparison(
         axes = [axes]
 
     fig.suptitle(
-        f"{config.STAGE_SCENARIOS[stage_name]['label']}下不同攻击机制的分层响应差异",
+        f"Layer-Wise Response Differences Under Distinct Attack Mechanisms in the {config.STAGE_SCENARIOS[stage_name]['label']}",
         fontsize=15,
         fontweight="bold",
         y=0.99,
@@ -512,17 +685,27 @@ def plot_decoupling_comparison(
                 markevery=get_metric_markevery(metric_key, len(intensities)),
             )
         ax.set_title(scenario["label"], fontsize=12)
-        configure_axis(ax, "集群总节点受损比例（%）", "归一化性能值")
+        configure_axis(ax, "Disrupted Node Ratio in the Swarm (%)", "Normalized Performance")
 
-    fig.legend(
-        handles=build_decoupling_legend_handles(metric_specs),
+    metric_legend = fig.legend(
+        handles=build_decoupling_metric_legend_handles(metric_specs),
         loc="upper center",
         ncol=3,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.935),
+        bbox_to_anchor=(0.5, 0.945),
         handlelength=3.0,
     )
-    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.84))
+    fig.add_artist(metric_legend)
+    fig.legend(
+        handles=build_decoupling_style_legend_handles(),
+        loc="upper center",
+        ncol=2,
+        frameon=False,
+        bbox_to_anchor=(0.5, 0.905),
+        handlelength=3.0,
+        columnspacing=2.0,
+    )
+    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.80))
     fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
     plt.close(fig)
 
@@ -659,19 +842,17 @@ def main() -> None:
             indent=2,
         )
 
-    plot_stage_multilayer(
+    plot_stage_comparison_multilayer(
         config,
         summary_rows,
-        stage_name="recon",
         intensities=intensities,
-        output_path=config.OUTPUT_DIR / "figure_1_recon_stage_multilayer_intensity.png",
+        output_path=config.OUTPUT_DIR / "figure_1_stage_comparison_multilayer_intensity.png",
     )
-    plot_stage_multilayer(
+    plot_physical_layer_intensity(
         config,
         summary_rows,
-        stage_name="strike",
         intensities=intensities,
-        output_path=config.OUTPUT_DIR / "figure_2_strike_stage_multilayer_intensity.png",
+        output_path=config.OUTPUT_DIR / "figure_2_physical_layer_intensity.png",
     )
     plot_qmis_stage_comparison(
         config,
@@ -685,6 +866,12 @@ def main() -> None:
         intensities=intensities,
         output_path=config.OUTPUT_DIR / "figure_4_decoupling_comparison.png",
     )
+
+    for obsolete_path in (
+        config.OUTPUT_DIR / "figure_1_recon_stage_multilayer_intensity.png",
+        config.OUTPUT_DIR / "figure_2_strike_stage_multilayer_intensity.png",
+    ):
+        obsolete_path.unlink(missing_ok=True)
 
     print(f"实验一完成，结果保存在: {config.OUTPUT_DIR}")
 

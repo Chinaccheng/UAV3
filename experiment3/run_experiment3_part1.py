@@ -321,7 +321,7 @@ def plot_part1_eta_tau_coupling(
         gridspec_kw={"height_ratios": [1.0, 1.2]},
     )
     fig.suptitle(
-        "物理距离衰减与任务阈值耦合下的隐性退化与提前崩溃",
+        "Latent Degradation and Early Collapse Under Distance Attenuation and Mission-Threshold Coupling",
         fontsize=15,
         fontweight="bold",
         y=0.98,
@@ -365,7 +365,7 @@ def plot_part1_eta_tau_coupling(
         ax.set_xticks(np.arange(0, config.TIME_STEPS + 1, config.TIME_AXIS_TICK_STEP))
         ax.grid(True, alpha=0.28)
 
-    ax_comm.set_ylabel("通信层性能 $Q_{comm}(t)$")
+    ax_comm.set_ylabel("Communication-Layer Performance $Q_{comm}(t)$")
     ax_comm.legend(
         frameon=False,
         loc="lower center",
@@ -373,7 +373,7 @@ def plot_part1_eta_tau_coupling(
         ncol=len(config.PART1_ETA_VALUES),
     )
     ax_comm.annotate(
-        "物理层首次断连参考时刻",
+        "Reference Time of First Physical-Layer Disconnection",
         xy=(physical_disconnect_time, 0.80),
         xytext=(physical_disconnect_time + 6.0, 0.96),
         color=reference_line_color,
@@ -395,8 +395,8 @@ def plot_part1_eta_tau_coupling(
         },
     )
 
-    ax_mis.set_xlabel("时间步 $t$")
-    ax_mis.set_ylabel("任务层性能 $Q_{mis}(t)$")
+    ax_mis.set_xlabel("Time Step $t$")
+    ax_mis.set_ylabel("Mission-Layer Performance $Q_{mis}(t)$")
     tau_handles = [
         Line2D([0], [0], color=tau_colors[tau_value], linewidth=2.2, label=fr"$\tau_{{mis}}={tau_value:.2f}$")
         for tau_value in config.PART1_TAU_VALUES

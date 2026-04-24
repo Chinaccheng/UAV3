@@ -1,101 +1,126 @@
 ﻿scenario_id,scenario_label,mode_label,targeting_label,strategy_id,strategy_label,attack_ratio,seed,resilience,final_Q_phy,final_Q_comm,final_Q_mis,final_Q_overall
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.1,11,0.5353985221481774,1.0,0.7407957246008584,0.7222222222222222,0.7444691871814975
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.1,17,0.5849129479433929,1.0,0.7541092893164344,0.7647058823529411,0.771702121368866
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.1,23,0.6507085583598461,1.0,0.7582734231805522,0.8333333333333334,0.8078897070979152
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.1,29,0.8209229189661614,1.0,0.7811280120697515,1.0,0.9015076054313882
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.1,35,0.7023122277533651,1.0,0.7472705005874454,0.9,0.8362717252643505
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.2,11,0.0893806108346354,1.0,0.5043046971929493,0.4444444444444444,0.49915933595904943
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.2,17,0.1131101674956495,1.0,0.5042588321678855,0.47058823529411764,0.5122105921226072
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.2,23,0.04751867291009073,1.0,0.5148685014580121,0.3888888888888889,0.4761352701005499
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.2,29,0.4578391502602778,1.0,0.584272541676142,0.7777777777777778,0.7018115326431528
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.2,35,0.10097225899341679,1.0,0.5122994276586205,0.45,0.5055347424463792
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.3,11,0.0,1.0,0.32422522786081226,0.0,0.19590135253736551
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.3,17,0.0,1.0,0.3172088712834148,0.0,0.19274399207753667
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.3,23,0.0,1.0,0.32711053666037476,0.0,0.19719974149716862
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.3,29,0.0,1.0,0.31649508787150815,0.0,0.19242278954217867
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.3,35,0.0,1.0,0.30918231893463255,0.0,0.18913204352058466
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.4,11,0.0,1.0,0.23553663627493446,0.0,0.1559914863237205
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.4,17,0.0,1.0,0.2431256046905862,0.0,0.15940652211076378
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.4,23,0.0,1.0,0.2488539551641239,0.0,0.16198427982385577
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.4,29,0.0,1.0,0.24617322955528115,0.0,0.16077795329987654
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.4,35,0.0,1.0,0.23369461004178146,0.0,0.15516257451880167
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.5,11,0.0,1.0,0.18278126099724576,0.0,0.1322515674487606
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.5,17,0.0,1.0,0.19353645297043515,0.0,0.13709140383669582
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.5,23,0.0,1.0,0.17819852707499764,0.0,0.13018933718374895
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.5,29,0.0,1.0,0.1899222940585534,0.0,0.13546503232634904
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,no_reconfiguration,静态无重构,0.5,35,0.0,1.0,0.16917969594560944,0.0,0.12613086317552424
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.1,11,0.5367528729777502,1.0,0.7420946356170753,0.7222222222222222,0.7452892289615342
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.1,17,0.5849129479433929,1.0,0.7541092893164344,0.7647058823529411,0.771702121368866
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.1,23,0.6535689167018712,1.0,0.7613834720427859,0.8333333333333334,0.8096036108263744
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.1,29,0.8209229189661614,1.0,0.7811280120697515,1.0,0.9015076054313882
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.1,35,0.7043997446971084,1.0,0.7493867794311759,0.9,0.8375726164797263
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.2,11,0.09081494601244644,1.0,0.5057093099019154,0.4444444444444444,0.5000269435008233
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.2,17,0.1131101674956495,1.0,0.5042588321678855,0.47058823529411764,0.5122105921226072
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.2,23,0.05049497399054728,1.0,0.5181290646806712,0.3888888888888889,0.47791690529120057
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.2,29,0.4578391502602778,1.0,0.584272541676142,0.7777777777777778,0.7018115326431528
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.2,35,0.10305977593716047,1.0,0.5144157065023512,0.45,0.5068356336617551
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.3,11,0.0,1.0,0.32422522786081226,0.0,0.19613688436010468
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.3,17,0.0,1.0,0.3172088712834148,0.0,0.19274399207753667
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.3,23,0.0,1.0,0.3299295637736369,0.0,0.19878268543859068
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.3,29,0.0,1.0,0.31649508787150815,0.0,0.19242278954217867
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.3,35,0.0,1.0,0.3114528804270134,0.0,0.19050236192785314
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.4,11,0.0,1.0,0.23553663627493446,0.0,0.15622701814645965
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.4,17,0.0,1.0,0.2431256046905862,0.0,0.15940652211076378
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.4,23,0.0,1.0,0.25168453491304776,0.0,0.16357242245132556
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.4,29,0.0,1.0,0.24617322955528115,0.0,0.16077795329987654
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.4,35,0.0,1.0,0.23596517153416227,0.0,0.1565328929260701
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.5,11,0.0,1.0,0.18278126099724576,0.0,0.13248709927149974
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.5,17,0.0,1.0,0.19353645297043515,0.0,0.13709140383669582
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.5,23,0.0,1.0,0.1810291068239216,0.0,0.1317774798112188
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.5,29,0.0,1.0,0.1899222940585534,0.0,0.13546503232634904
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,distance_driven,最短距离重构,0.5,35,0.0,1.0,0.17145025743799033,0.0,0.12750118158279272
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.1,11,0.5365790492428439,1.0,0.7420400333765501,0.7222222222222222,0.7451838479968209
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.1,17,0.5849129479433929,1.0,0.7541092893164344,0.7647058823529411,0.771702121368866
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.1,23,0.6532660307031894,1.0,0.7612256323257849,0.8333333333333334,0.8094557017290263
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.1,29,0.8209229189661614,1.0,0.7811280120697515,1.0,0.9015076054313882
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.1,35,0.7030514936383114,1.0,0.7475538744368433,0.9,0.8367980521575269
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.2,11,0.09060239752655519,1.0,0.5056029621342795,0.4444444444444444,0.49989827704891027
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.2,17,0.1131101674956495,1.0,0.5042588321678855,0.47058823529411764,0.5122105921226072
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.2,23,0.050389318408946025,1.0,0.5182371790732608,0.3888888888888889,0.47788867554316816
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.2,29,0.4578391502602778,1.0,0.584272541676142,0.7777777777777778,0.7018115326431528
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.2,35,0.10172475756411033,1.0,0.5126054826306337,0.45,0.5060712758447324
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.3,11,0.0,1.0,0.32422522786081226,0.0,0.19605607440362782
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.3,17,0.0,1.0,0.3172088712834148,0.0,0.19274399207753667
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.3,23,0.0,1.0,0.32811230100773486,0.0,0.19788803596923701
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.3,29,0.0,1.0,0.31649508787150815,0.0,0.19242278954217867
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.3,35,0.0,1.0,0.30957877270688927,0.0,0.18970925637904745
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.4,11,0.0,1.0,0.23553663627493446,0.0,0.1561462081899828
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.4,17,0.0,1.0,0.2431256046905862,0.0,0.15940652211076378
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.4,23,0.0,1.0,0.2498682978884848,0.0,0.16267823456557448
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.4,29,0.0,1.0,0.24617322955528115,0.0,0.16077795329987654
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.4,35,0.0,1.0,0.23409106381403813,0.0,0.15573978737726446
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.5,11,0.0,1.0,0.18278126099724576,0.0,0.13240628931502288
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.5,17,0.0,1.0,0.19353645297043515,0.0,0.13709140383669582
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.5,23,0.0,1.0,0.17950301410064678,0.0,0.13101385686104736
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.5,29,0.0,1.0,0.1899222940585534,0.0,0.13546503232634904
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,degree_driven,最高度数重构,0.5,35,0.0,1.0,0.1695761497178662,0.0,0.1267080760339871
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.1,11,0.9243993147023728,1.0,0.9322523611981539,1.0,1.0
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.1,17,0.9347453386926992,1.0,0.9760321640386174,1.0,1.0
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.1,23,0.9369676246731453,1.0,1.0,1.0,1.0
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.1,29,0.8989644503467061,1.0,0.9950203266130162,0.9444444444444444,0.9726998541383199
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.1,35,0.916866947327304,1.0,0.9373553898577802,0.9833333333333334,0.9658313794113034
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.2,11,0.6315105293417278,1.0,0.696277098027529,1.0,0.8991699239574044
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.2,17,0.6446459735543557,1.0,0.7343826596935379,1.0,0.9508371128514828
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.2,23,0.6365377699222344,1.0,0.7592450679042421,1.0,0.9589300738502824
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.2,29,0.7758375623052746,1.0,0.7989567737843762,1.0,0.9710153506728074
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.2,35,0.5250250505885294,1.0,0.713988890016168,0.95,0.851101633855209
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.3,11,0.0,1.0,0.49007348232808084,0.0,0.2979614201222906
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.3,17,0.0,1.0,0.48929836890827405,0.0,0.30174073481097863
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.3,23,0.0,1.0,0.48523943977736445,0.0,0.29194611335922904
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.3,29,0.0,1.0,0.5164258599790883,0.0,0.31141188786263546
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.3,35,0.0,1.0,0.47369857142859695,0.0,0.285751766787949
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.4,11,0.0,1.0,0.4003108269110335,0.0,0.25365025323521506
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.4,17,0.0,1.0,0.40894753245586507,0.0,0.2612832987247879
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.4,23,0.0,1.0,0.3898190960967454,0.0,0.2467181171843634
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.4,29,0.0,1.0,0.4234400885313447,0.0,0.2647854600077043
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.4,35,0.0,1.0,0.3807631464720358,0.0,0.24214729733098594
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.5,11,0.0,1.0,0.34632093982358353,0.0,0.22912289438007835
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.5,17,0.0,1.0,0.3288444645988295,0.0,0.22334752361080906
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.5,23,0.0,1.0,0.3149848962032967,0.0,0.212023288497675
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.5,29,0.0,1.0,0.3261713052033889,0.0,0.21912155528367339
-cyber_role_decider,网络压制-角色蓄意攻击(D),网络压制,角色蓄意攻击,utility_role_driven,效用与角色重构,0.5,35,0.0,1.0,0.29084686145523325,0.0,0.1995579668493628
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.1,11,0.5353985221481774,1.0,0.7407957246008584,0.7222222222222222,0.7444691871814975
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.1,17,0.5849129479433929,1.0,0.7541092893164344,0.7647058823529411,0.771702121368866
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.1,23,0.6507085583598461,1.0,0.7582734231805522,0.8333333333333334,0.8078897070979152
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.1,29,0.8209229189661614,1.0,0.7811280120697515,1.0,0.9015076054313882
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.1,35,0.7023122277533651,1.0,0.7472705005874454,0.9,0.8362717252643505
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.2,11,0.0893806108346354,1.0,0.5043046971929493,0.4444444444444444,0.49915933595904943
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.2,17,0.1131101674956495,1.0,0.5042588321678855,0.47058823529411764,0.5122105921226072
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.2,23,0.04751867291009073,1.0,0.5148685014580121,0.3888888888888889,0.4761352701005499
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.2,29,0.4578391502602778,1.0,0.584272541676142,0.7777777777777778,0.7018115326431528
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.2,35,0.10097225899341679,1.0,0.5122994276586205,0.45,0.5055347424463792
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.3,11,0.0,1.0,0.32422522786081226,0.0,0.19590135253736551
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.3,17,0.0,1.0,0.3172088712834148,0.0,0.19274399207753667
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.3,23,0.0,1.0,0.32711053666037476,0.0,0.19719974149716862
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.3,29,0.0,1.0,0.31649508787150815,0.0,0.19242278954217867
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.3,35,0.0,1.0,0.30918231893463255,0.0,0.18913204352058466
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.4,11,0.0,1.0,0.23553663627493446,0.0,0.1559914863237205
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.4,17,0.0,1.0,0.2431256046905862,0.0,0.15940652211076378
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.4,23,0.0,1.0,0.2488539551641239,0.0,0.16198427982385577
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.4,29,0.0,1.0,0.24617322955528115,0.0,0.16077795329987654
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.4,35,0.0,1.0,0.23369461004178146,0.0,0.15516257451880167
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.5,11,0.0,1.0,0.18278126099724576,0.0,0.1322515674487606
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.5,17,0.0,1.0,0.19353645297043515,0.0,0.13709140383669582
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.5,23,0.0,1.0,0.17819852707499764,0.0,0.13018933718374895
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.5,29,0.0,1.0,0.1899222940585534,0.0,0.13546503232634904
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,no_reconfiguration,Static Baseline,0.5,35,0.0,1.0,0.16917969594560944,0.0,0.12613086317552424
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.1,11,0.5362333748771795,1.0,0.742072322560668,0.7222222222222222,0.7452791880861509
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.1,17,0.5849129479433929,1.0,0.7541092893164344,0.7647058823529411,0.771702121368866
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.1,23,0.6523618110145677,1.0,0.7609522463357677,0.8333333333333334,0.8093845075946227
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.1,29,0.8209229189661614,1.0,0.7811280120697515,1.0,0.9015076054313882
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.1,35,0.7035997696280594,1.0,0.749469956472113,0.9,0.8376100461481479
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.2,11,0.09026720828394041,1.0,0.5056847118512624,0.4444444444444444,0.5000158743780294
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.2,17,0.1131101674956495,1.0,0.5042588321678855,0.47058823529411764,0.5122105921226072
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.2,23,0.04920714344582116,1.0,0.5176161423981002,0.3888888888888889,0.47766103860044995
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.2,29,0.4578391502602778,1.0,0.584272541676142,0.7777777777777778,0.7018115326431528
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.2,35,0.1022598008681114,1.0,0.5144988835432881,0.45,0.5068730633301768
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.3,11,0.0,1.0,0.32422522786081226,0.0,0.19613688436010468
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.3,17,0.0,1.0,0.3172088712834148,0.0,0.19274399207753667
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.3,23,0.0,1.0,0.32943197142155306,0.0,0.19853371721655927
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.3,29,0.0,1.0,0.31649508787150815,0.0,0.19242278954217867
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.3,35,0.0,1.0,0.31154346858779813,0.0,0.19054312660020623
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.4,11,0.0,1.0,0.23553663627493446,0.0,0.15622701814645965
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.4,17,0.0,1.0,0.2431256046905862,0.0,0.15940652211076378
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.4,23,0.0,1.0,0.25117711226022826,0.0,0.16331903059396313
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.4,29,0.0,1.0,0.24617322955528115,0.0,0.16077795329987654
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.4,35,0.0,1.0,0.23605575969494705,0.0,0.15657365759842326
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.5,11,0.0,1.0,0.18278126099724576,0.0,0.13248709927149974
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.5,17,0.0,1.0,0.19353645297043515,0.0,0.13709140383669582
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.5,23,0.0,1.0,0.18052168417110206,0.0,0.13152408795385634
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.5,29,0.0,1.0,0.1899222940585534,0.0,0.13546503232634904
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,distance_driven,Nearest-Neighbor Reconfiguration,0.5,35,0.0,1.0,0.17154084559877505,0.0,0.12754194625514587
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.1,11,0.5360556216751822,1.0,0.7417704135972782,0.7222222222222222,0.7450625190961486
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.1,17,0.5849129479433929,1.0,0.7541092893164344,0.7647058823529411,0.771702121368866
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.1,23,0.6509594222161036,1.0,0.7584238184080638,0.8333333333333334,0.8080511405434034
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.1,29,0.8209229189661614,1.0,0.7811280120697515,1.0,0.9015076054313882
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.1,35,0.7026875446000763,1.0,0.7474958115362121,0.9,0.8367719238522429
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.2,11,0.09006308730686874,1.0,0.5053262867841634,0.4444444444444444,0.499773773141358
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.2,17,0.1131101674956495,1.0,0.5042588321678855,0.47058823529411764,0.5122105921226072
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.2,23,0.04778113287877932,1.0,0.515035911607367,0.3888888888888889,0.47630436026086753
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.2,29,0.4578391502602778,1.0,0.584272541676142,0.7777777777777778,0.7018115326431528
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.2,35,0.10135244534990433,1.0,0.5125439124235357,0.45,0.5060435692515384
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.3,11,0.0,1.0,0.32422522786081226,0.0,0.19605607440362782
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.3,17,0.0,1.0,0.3172088712834148,0.0,0.19274399207753667
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.3,23,0.0,1.0,0.32737508400531606,0.0,0.1974125433955002
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.3,29,0.0,1.0,0.31649508787150815,0.0,0.19242278954217867
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.3,35,0.0,1.0,0.3095062265289739,0.0,0.18967661059898555
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.4,11,0.0,1.0,0.23553663627493446,0.0,0.1561462081899828
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.4,17,0.0,1.0,0.2431256046905862,0.0,0.15940652211076378
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.4,23,0.0,1.0,0.24911870805022227,0.0,0.16219717421570798
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.4,29,0.0,1.0,0.24617322955528115,0.0,0.16077795329987654
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.4,35,0.0,1.0,0.23401851763612286,0.0,0.15570714159720256
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.5,11,0.0,1.0,0.18278126099724576,0.0,0.13240628931502288
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.5,17,0.0,1.0,0.19353645297043515,0.0,0.13709140383669582
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.5,23,0.0,1.0,0.17846882859696422,0.0,0.13040472846174186
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.5,29,0.0,1.0,0.1899222940585534,0.0,0.13546503232634904
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,degree_driven,Maximum-Degree Reconfiguration,0.5,35,0.0,1.0,0.16950360353995086,0.0,0.1266754302539252
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.1,11,0.6274150776792075,1.0,0.8214449284736424,1.0,0.9833494486911829
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.1,17,0.6892108610810936,1.0,0.7975464417019085,0.8823529411764706,0.8597799993244137
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.1,23,0.6808889230051675,1.0,0.8346403903489094,1.0,0.9330200546151807
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.1,29,0.8541214615286312,1.0,0.9126184329850747,1.0,1.0
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.1,35,0.6723236325000697,1.0,0.7838991237718165,0.6,0.7089517691884148
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.2,11,0.18256454430175983,1.0,0.581491514960979,0.7222222222222222,0.6819934343889222
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.2,17,0.12340774164631557,1.0,0.5748698027568306,0.5294117647058824,0.582746676020246
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.2,23,0.11919509692756958,1.0,0.5804785904339058,0.5555555555555556,0.5990646655252081
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.2,29,0.543427732965258,1.0,0.6964421835576093,0.6666666666666666,0.704658408815743
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.2,35,0.05411424711366886,1.0,0.5597045663170072,0.15,0.3803601805068073
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.3,11,0.0,1.0,0.48969762262690864,0.0,0.29770557403931097
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.3,17,0.0,1.0,0.4753751396919932,0.0,0.2924752252106074
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.3,23,0.0,1.0,0.4808953686472006,0.0,0.288591949049219
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.3,29,0.0,1.0,0.5029044114966801,0.0,0.30144058158752307
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.3,35,0.0,1.0,0.4710367754073352,0.0,0.28412245408901726
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.4,11,0.0,1.0,0.38581078219454323,0.0,0.24395310294029415
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.4,17,0.0,1.0,0.3974720522273302,0.0,0.25421859196743907
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.4,23,0.0,1.0,0.3821250080094293,0.0,0.2394082478193829
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.4,29,0.0,1.0,0.4166296169666358,0.0,0.26069028593947857
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.4,35,0.0,1.0,0.37893641002986983,0.0,0.2407644294676523
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.5,11,0.0,1.0,0.32107527480757,0.0,0.21431173846290263
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.5,17,0.0,1.0,0.3173694357391189,0.0,0.21782446597498956
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.5,23,0.0,1.0,0.31030571324659134,0.0,0.20693260522137014
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.5,29,0.0,1.0,0.31153038550082157,0.0,0.21128706571564582
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_mismatch_recon,Phase-Mismatched Utility Reconfiguration,0.5,35,0.0,1.0,0.28699944969758184,0.0,0.19767465206121132
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.1,11,0.7943984429416082,1.0,0.9369835142326257,1.0,1.0
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.1,17,0.7963555819417373,1.0,0.9642699747668413,1.0,1.0
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.1,23,0.8078128099122454,1.0,0.9825083277020384,1.0,1.0
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.1,29,0.8386151876333584,1.0,1.0,0.925925925925926,0.9680456735441243
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.1,35,0.8096985994176423,1.0,0.9309158366144864,0.95,0.9451356258763461
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.2,11,0.41363810143553725,1.0,0.7005136606046154,1.0,0.8734903504018552
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.2,17,0.4119293186408116,1.0,0.7326105459106805,1.0,0.9495262620068794
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.2,23,0.3439266149078604,1.0,0.7304817755328592,1.0,0.9149100860538755
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.2,29,0.6130514314859538,1.0,0.7929038644910857,0.9444444444444444,0.884598364988542
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.2,35,0.29554127134222324,1.0,0.7048040721857383,0.9,0.8200504506647397
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.3,11,0.0,1.0,0.49210243353866084,0.0,0.2992616544110953
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.3,17,0.0,1.0,0.4791222242519077,0.0,0.29477919239187134
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.3,23,0.0,1.0,0.4784378526082735,0.0,0.2875728253910741
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.3,29,0.0,1.0,0.5062124430473143,0.0,0.3053466370379983
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.3,35,0.0,1.0,0.47302801754445517,0.0,0.28535674657904564
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.4,11,0.0,1.0,0.3951650570419777,0.0,0.2491499113161767
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.4,17,0.0,1.0,0.4006671607765859,0.0,0.25589739642910836
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.4,23,0.0,1.0,0.39068018843223856,0.0,0.24614186105666364
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.4,29,0.0,1.0,0.4214134088472744,0.0,0.26262974330383065
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.4,35,0.0,1.0,0.3790518918664586,0.0,0.24058845407549806
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.5,11,0.0,1.0,0.3257280704916479,0.0,0.21723296263926117
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.5,17,0.0,1.0,0.3186831528081175,0.0,0.21826064824988534
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.5,23,0.0,1.0,0.30596314042170164,0.0,0.20588978994920537
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.5,29,0.0,1.0,0.3120947921647376,0.0,0.21049748019262748
+cyber_role_decider,Network Suppression-Role-Oriented Targeted Attack (D),Network Suppression,Role-Oriented Targeted Attack,utility_role_driven,Utility-Guided and Role-Driven Reconfiguration,0.5,35,0.0,1.0,0.2899721857574638,0.0,0.19931303186691712

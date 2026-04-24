@@ -93,7 +93,7 @@ class Experiment3Config:
     PART2_SCENARIOS = [
         {
             "id": "cyber_random",
-            "label": "随机压制",
+            "label": "Random Suppression",
             "strategy_label": "Random",
             "attack_ratio": 0.40,
             "mode": "cyber",
@@ -103,7 +103,7 @@ class Experiment3Config:
         },
         {
             "id": "cyber_topology",
-            "label": "拓扑导向压制",
+            "label": "Topology-Oriented Suppression",
             "strategy_label": "Topology-oriented",
             "attack_ratio": 0.40,
             "mode": "cyber",
@@ -113,7 +113,7 @@ class Experiment3Config:
         },
         {
             "id": "cyber_role_decider",
-            "label": "角色导向压制",
+            "label": "Role-Oriented Suppression",
             "strategy_label": "Role-oriented",
             "attack_ratio": 0.25,
             "mode": "cyber",
@@ -125,7 +125,7 @@ class Experiment3Config:
     PART2_WEIGHT_PROFILES = [
         {
             "id": "physical_dominant",
-            "label": "物理主导型",
+            "label": "Physical-Dominant",
             "weights": (0.8, 0.1, 0.1),
             "color": "#1f77b4",
             "linestyle": "-",
@@ -133,7 +133,7 @@ class Experiment3Config:
         },
         {
             "id": "communication_dominant",
-            "label": "通信主导型",
+            "label": "Communication-Dominant",
             "weights": (0.1, 0.8, 0.1),
             "color": "#2ca02c",
             "linestyle": "--",
@@ -141,7 +141,7 @@ class Experiment3Config:
         },
         {
             "id": "mission_dominant",
-            "label": "任务主导型",
+            "label": "Mission-Dominant",
             "weights": (0.1, 0.1, 0.8),
             "color": "#d62728",
             "linestyle": "-.",
@@ -153,7 +153,7 @@ class Experiment3Config:
     PART3_ATTACK_RATIO = 0.30
     PART3_SCENARIO = {
         "id": "physical_random",
-        "label": "随机物理节点摧毁",
+        "label": "Random Physical Destruction",
         "mode": "physical",
         "strategy": "random",
         "role_target": None,
@@ -161,21 +161,28 @@ class Experiment3Config:
     PART3_RECOVERY_STRATEGIES = [
         {
             "id": "distance_driven",
-            "label": "最临近重构",
+            "label": "Nearest-Neighbor Reconfiguration",
             "color": "#1f77b4",
             "linestyle": "--",
             "marker": "s",
         },
         {
             "id": "degree_driven",
-            "label": "最大度重构",
+            "label": "Maximum-Degree Reconfiguration",
             "color": "#ff7f0e",
             "linestyle": "-.",
             "marker": "^",
         },
         {
+            "id": "utility_role_mismatch_recon",
+            "label": "Phase-Mismatched Utility Reconfiguration",
+            "color": "#2ca02c",
+            "linestyle": ":",
+            "marker": "P",
+        },
+        {
             "id": "utility_role_driven",
-            "label": "效用驱动重构",
+            "label": "Utility-Guided Reconfiguration",
             "color": "#d62728",
             "linestyle": "-",
             "marker": "D",
@@ -190,7 +197,7 @@ class Experiment3Config:
     FIGSIZE_PART2_TIMESERIES = (10.5, 5.4)
     FIGSIZE_PART2_BARS = (11.5, 5.4)
     FIGSIZE_PART3_TRAJECTORY = (10.5, 5.4)
-    FIGSIZE_PART3_HEATMAP = (13.5, 5.2)
+    FIGSIZE_PART3_HEATMAP = (18.0, 5.4)
     TIME_AXIS_TICK_STEP = 10
 
     @classmethod

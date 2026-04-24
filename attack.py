@@ -252,18 +252,52 @@ class AttackModule:
         return targets
 
     @staticmethod
-    def _split_targets(targets: List[Node], parts: int) -> List[List[Node]]:
-        """将目标节点均匀分摊到多个连续时间步。"""
+    def _allocate_weighted_batch_sizes(total: int, weights: List[float]) -> List[int]:
+        """按权重分配每个时刻的打击数量，并保证总数守恒。"""
+        if total <= 0:
+            return [0 for _ in weights]
+
+        safe_weights = [max(0.0, float(weight)) for weight in weights]
+        weight_sum = sum(safe_weights)
+        if weight_sum <= 0.0:
+            raise ValueError("ATTACK_BATCH_WEIGHTS 的权重和必须大于 0")
+
+        raw_sizes = [total * weight / weight_sum for weight in safe_weights]
+        batch_sizes = [int(np.floor(size)) for size in raw_sizes]
+        remainder = total - sum(batch_sizes)
+        if remainder > 0:
+            ranked_indices = sorted(
+                range(len(raw_sizes)),
+                key=lambda index: (raw_sizes[index] - batch_sizes[index], safe_weights[index], -index),
+                reverse=True,
+            )
+            for index in ranked_indices[:remainder]:
+                batch_sizes[index] += 1
+        return batch_sizes
+
+    def _split_targets(self, targets: List[Node], parts: int) -> List[List[Node]]:
+        """将目标节点分摊到多个连续时间步，可按显式权重生成不均匀批次。"""
         if parts <= 1:
             return [list(targets)]
 
         targets = list(targets)
         total = len(targets)
-        base_size, remainder = divmod(total, parts)
+        configured_weights = getattr(self.config, 'ATTACK_BATCH_WEIGHTS', None)
+        if configured_weights is not None:
+            if len(configured_weights) != parts:
+                raise ValueError(
+                    f"ATTACK_BATCH_WEIGHTS 长度必须与 ATTACK_DURATION 一致: {len(configured_weights)} != {parts}"
+                )
+            batch_sizes = self._allocate_weighted_batch_sizes(total, configured_weights)
+        else:
+            base_size, remainder = divmod(total, parts)
+            batch_sizes = []
+            for batch_index in range(parts):
+                batch_sizes.append(base_size + (1 if batch_index < remainder else 0))
+
         batches: List[List[Node]] = []
         start = 0
-        for batch_index in range(parts):
-            batch_size = base_size + (1 if batch_index < remainder else 0)
+        for batch_size in batch_sizes:
             end = start + batch_size
             batches.append(targets[start:end])
             start = end

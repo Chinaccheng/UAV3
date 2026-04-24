@@ -3,12 +3,12 @@
 极限任务约束与自适应重构效能边界测试。
 
 本实验以随机物理节点摧毁为起点，对比最临近重构、最大度重构与效用驱动重构
-三类策略在不同任务底线 Q_min 和时间敏感性 lambda 下的韧性表现，
+以及相位失配效用重构在不同任务底线 Q_min 和时间敏感性 lambda 下的韧性表现，
 并重点展示效用驱动策略相对传统策略的韧性增益边界。
 
 本实验生成：
     图3 figure_3_constraint_delta_heatmaps.png
-        左图为相对最临近重构的韧性增益 ΔR_1，右图为相对最大度重构的韧性增益 ΔR_2
+        依次展示相对最临近、最大度与错配效用重构的韧性增益热力图
 
 运行方式：
     python experiment3/run_experiment3_part3.py
@@ -38,8 +38,9 @@ def compute_part3_delta_rows(
     """基于同种子配对结果计算效用策略相对传统策略的韧性增益。"""
     lookup = build_lookup(resilience_rows, ["strategy_id", "seed", "q_min", "lambda"])
     delta_specs = [
-        ("distance_driven", "delta_vs_nearest", "相对最临近重构的韧性增益 $\\Delta R_1$"),
-        ("degree_driven", "delta_vs_degree", "相对最大度重构的韧性增益 $\\Delta R_2$"),
+        ("distance_driven", "delta_vs_nearest", "Resilience Gain over Nearest-Neighbor Reconfiguration $\\Delta R_1$"),
+        ("degree_driven", "delta_vs_degree", "Resilience Gain over Maximum-Degree Reconfiguration $\\Delta R_2$"),
+        ("utility_role_mismatch_recon", "delta_vs_mismatch", "Resilience Gain over Phase-Mismatched Utility Reconfiguration $\\Delta R_3$"),
     ]
 
     delta_rows: List[Dict] = []
@@ -74,14 +75,15 @@ def compute_part3_delta_rows(
 
 
 def plot_part3_constraint_heatmaps(config, delta_rows: List[Dict], output_path: Path) -> None:
-    """图 3：效用驱动重构相对传统策略的双热力图。"""
+    """图 3：效用驱动重构相对三类基线策略的三联热力图。"""
     lookup = build_lookup(delta_rows, ["delta_id", "q_min", "lambda"])
     q_values = config.PART3_QMIN_VALUES
     lambda_values = config.PART3_LAMBDA_VALUES
 
     delta_specs = [
-        ("delta_vs_nearest", "相对最临近重构的韧性增益 $\\Delta R_1$"),
-        ("delta_vs_degree", "相对最大度重构的韧性增益 $\\Delta R_2$"),
+        ("delta_vs_nearest", "Resilience Gain over Nearest-Neighbor Reconfiguration $\\Delta R_1$"),
+        ("delta_vs_degree", "Resilience Gain over Maximum-Degree Reconfiguration $\\Delta R_2$"),
+        ("delta_vs_mismatch", "Resilience Gain over Phase-Mismatched Utility Reconfiguration $\\Delta R_3$"),
     ]
 
     matrices = []
@@ -96,9 +98,9 @@ def plot_part3_constraint_heatmaps(config, delta_rows: List[Dict], output_path: 
     max_abs = max(max_abs, 1e-6)
     norm = TwoSlopeNorm(vmin=-max_abs, vcenter=0.0, vmax=max_abs)
 
-    fig, axes = plt.subplots(1, 2, figsize=config.FIGSIZE_PART3_HEATMAP, sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=config.FIGSIZE_PART3_HEATMAP, sharey=True)
     fig.suptitle(
-        "极限任务约束下效用驱动重构的相对韧性增益边界",
+        "Relative Resilience-Gain Boundary of Utility-Guided Reconfiguration Under Extreme Mission Constraints",
         fontsize=15,
         fontweight="bold",
         y=0.98,
@@ -126,10 +128,10 @@ def plot_part3_constraint_heatmaps(config, delta_rows: List[Dict], output_path: 
         ax.set_xlabel("$Q_{min}$")
         ax.set_ylabel("$\\lambda$")
 
-    fig.subplots_adjust(left=0.07, right=0.84, bottom=0.12, top=0.80, wspace=0.12)
-    cbar_ax = fig.add_axes([0.87, 0.14, 0.018, 0.68])
+    fig.subplots_adjust(left=0.06, right=0.88, bottom=0.12, top=0.80, wspace=0.15)
+    cbar_ax = fig.add_axes([0.90, 0.14, 0.015, 0.68])
     colorbar = fig.colorbar(image, cax=cbar_ax)
-    colorbar.set_label("相对韧性增益 $\\Delta R$")
+    colorbar.set_label("Relative Resilience Gain $\\Delta R$")
     fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
     plt.close(fig)
 

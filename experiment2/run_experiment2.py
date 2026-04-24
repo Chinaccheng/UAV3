@@ -180,6 +180,14 @@ def maybe_store_snapshot(
             mission_layer,
             jammed_ids,
         )
+    if strategy["id"] == "utility_role_mismatch_recon" and current_time == config.SNAPSHOT_COMPARE_TIME:
+        snapshot_store["mismatch_compare"] = build_snapshot_payload(
+            nodes,
+            physical_layer,
+            comm_layer,
+            mission_layer,
+            jammed_ids,
+        )
     if strategy["id"] == "utility_role_driven" and current_time == config.SNAPSHOT_COMPARE_TIME:
         snapshot_store["utility_compare"] = build_snapshot_payload(
             nodes,
@@ -478,15 +486,25 @@ def build_strategy_patch_handles(strategy_specs: Iterable[Dict]) -> List[Patch]:
 
 def get_scenario_compact_labels(config) -> List[str]:
     """生成紧凑场景标签。"""
+    mode_abbrev = {
+        "Physical Destruction": "PD",
+        "Network Suppression": "NS",
+    }
+    targeting_abbrev = {
+        "Random Attack": "Random",
+        "Topology-Oriented Deliberate Attack": "Topo",
+        "Role-Oriented Targeted Attack": "Role",
+    }
     return [
-        f"{scenario['mode_label'].replace('摧毁', '').replace('压制', '')}-{scenario['targeting_label'].replace('攻击', '')}"
+        f"{mode_abbrev.get(scenario['mode_label'], scenario['mode_label'])}-"
+        f"{targeting_abbrev.get(scenario['targeting_label'], scenario['targeting_label'])}"
         for scenario in config.ATTACK_SCENARIOS
     ]
 
 
 def configure_time_axis(ax, config, ylabel: str, ylim: Tuple[float, float] = (0.0, 1.05)) -> None:
     """统一时间轴样式。"""
-    ax.set_xlabel("时间步 $t$")
+    ax.set_xlabel("Time Step $t$")
     ax.set_ylabel(ylabel)
     ax.set_xlim(0.0, config.TIME_STEPS)
     ax.set_ylim(*ylim)
@@ -509,7 +527,7 @@ def plot_dynamic_recovery_matrix(config, time_summary_rows: List[Dict], output_p
 
     fig, axes = plt.subplots(2, 3, figsize=config.FIGSIZE_DYNAMIC, sharex=True, sharey=True)
     fig.suptitle(
-        "不同破坏模式与攻击策略下综合性能 $Q(t)$ 的动态恢复对比",
+        "Dynamic Recovery of Integrated Performance $Q(t)$ Under Different Disruption Modes and Attack Strategies",
         fontsize=15,
         fontweight="bold",
         y=0.985,
@@ -546,14 +564,14 @@ def plot_dynamic_recovery_matrix(config, time_summary_rows: List[Dict], output_p
                     alpha=0.08,
                 )
 
-            configure_time_axis(ax, config, "综合性能 $Q(t)$")
+            configure_time_axis(ax, config, "Integrated Performance $Q(t)$")
             ax.axhline(y=config.Q_MIN, color="#999999", linestyle="--", linewidth=1.1, alpha=0.8)
             ax.set_title(f"{scenario['mode_label']} | {scenario['targeting_label']}", fontsize=11)
 
     fig.legend(
         handles=build_strategy_legend_handles(config.RECOVERY_STRATEGIES),
         loc="upper center",
-        ncol=4,
+        ncol=len(config.RECOVERY_STRATEGIES),
         frameon=False,
         bbox_to_anchor=(0.5, 0.945),
         handlelength=3.0,
@@ -621,7 +639,7 @@ def plot_layer_recovery_matrix(
     fig.legend(
         handles=build_strategy_legend_handles(config.RECOVERY_STRATEGIES),
         loc="upper center",
-        ncol=4,
+        ncol=len(config.RECOVERY_STRATEGIES),
         frameon=False,
         bbox_to_anchor=(0.5, 0.945),
         handlelength=3.0,
@@ -646,7 +664,7 @@ def plot_resilience_heatmap(config, resilience_summary_rows: List[Dict], output_
 
     fig, ax = plt.subplots(figsize=config.FIGSIZE_RESILIENCE)
     fig.suptitle(
-        "不同破坏模式与攻击策略下综合韧性指标 $R$ 对比",
+        "Comparison of Integrated Resilience $R$ Under Different Disruption Modes and Attack Strategies",
         fontsize=15,
         fontweight="bold",
         y=0.98,
@@ -668,10 +686,10 @@ def plot_resilience_heatmap(config, resilience_summary_rows: List[Dict], output_
     ax.set_xticklabels(scenario_labels, rotation=18)
     ax.set_yticks(np.arange(len(strategy_ids)))
     ax.set_yticklabels(strategy_labels)
-    ax.set_xlabel("攻击场景")
-    ax.set_ylabel("重构策略")
+    ax.set_xlabel("Attack Scenario")
+    ax.set_ylabel("Recovery Strategy")
     cbar = fig.colorbar(image, ax=ax)
-    cbar.set_label("积分韧性得分 $R$")
+    cbar.set_label("Integrated Resilience Score $R$")
     plt.tight_layout()
     fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
     plt.close(fig)
@@ -685,7 +703,7 @@ def plot_resilience_grouped_bars(config, resilience_summary_rows: List[Dict], ou
 
     fig, ax = plt.subplots(figsize=config.FIGSIZE_RESILIENCE_BARS)
     fig.suptitle(
-        "不同恢复策略与攻击模式下的综合韧性得分对比",
+        "Comparison of Integrated Resilience Scores Across Recovery Strategies and Attack Scenarios",
         fontsize=15,
         fontweight="bold",
         y=0.98,
@@ -717,18 +735,25 @@ def plot_resilience_grouped_bars(config, resilience_summary_rows: List[Dict], ou
 
     ax.set_xticks(x)
     ax.set_xticklabels(scenario_labels, rotation=18)
-    ax.set_xlabel("攻击场景")
-    ax.set_ylabel("任务导向韧性综合指标 $R$")
+    ax.set_xlabel("Attack Scenario")
+    ax.set_ylabel("Mission-Oriented Integrated Resilience $R$")
     ax.set_ylim(0.0, 1.05)
     ax.grid(True, axis="y", alpha=0.3)
     ax.legend(
         handles=build_strategy_patch_handles(config.RECOVERY_STRATEGIES),
         loc="upper center",
-        ncol=4,
+        ncol=len(config.RECOVERY_STRATEGIES),
         frameon=False,
         bbox_to_anchor=(0.5, 0.93),
     )
-    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.88))
+    fig.subplots_adjust(
+        left=0.05,
+        right=0.985,
+        bottom=0.065,
+        top=0.845,
+        wspace=0.08,
+        hspace=0.14,
+    )
     fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
     plt.close(fig)
 
@@ -736,9 +761,9 @@ def plot_resilience_grouped_bars(config, resilience_summary_rows: List[Dict], ou
 def build_layer_impact_summary(resilience_summary_rows: List[Dict]) -> List[Dict]:
     """生成按场景、策略和层级展开的终态性能影响汇总。"""
     layer_specs = [
-        ("Q_phy", "物理层性能"),
-        ("Q_comm", "通信层性能"),
-        ("Q_mis", "任务层性能"),
+        ("Q_phy", "Physical-Layer Performance"),
+        ("Q_comm", "Communication-Layer Performance"),
+        ("Q_mis", "Mission-Layer Performance"),
     ]
     baseline_lookup = {
         row["scenario_id"]: row
@@ -802,14 +827,14 @@ def plot_final_layer_performance_bars(config, resilience_summary_rows: List[Dict
     scenario_labels = get_scenario_compact_labels(config)
     lookup = build_resilience_lookup(resilience_summary_rows)
     layer_specs = [
-        ("Q_phy", "物理层终态性能 $Q_{phy}(t_r)$"),
-        ("Q_comm", "通信层终态性能 $Q_{comm}(t_r)$"),
-        ("Q_mis", "任务层终态性能 $Q_{mis}(t_r)$"),
+        ("Q_phy", "Final Physical-Layer Performance $Q_{phy}(t_r)$"),
+        ("Q_comm", "Final Communication-Layer Performance $Q_{comm}(t_r)$"),
+        ("Q_mis", "Final Mission-Layer Performance $Q_{mis}(t_r)$"),
     ]
 
     fig, axes = plt.subplots(1, 3, figsize=config.FIGSIZE_LAYER_FINAL, sharey=True)
     fig.suptitle(
-        "四种恢复策略对不同层级终态性能的影响",
+        "Impact of Recovery Strategies on Final Layer-Wise Performance",
         fontsize=15,
         fontweight="bold",
         y=0.98,
@@ -840,14 +865,14 @@ def plot_final_layer_performance_bars(config, resilience_summary_rows: List[Dict
         ax.set_xticklabels(scenario_labels, rotation=18)
         ax.set_ylim(0.0, 1.05)
         ax.grid(True, axis="y", alpha=0.3)
-        ax.set_xlabel("攻击场景")
+        ax.set_xlabel("Attack Scenario")
         if axis_index == 0:
-            ax.set_ylabel("终态性能均值")
+            ax.set_ylabel("Mean Final Performance")
 
     fig.legend(
         handles=build_strategy_patch_handles(config.RECOVERY_STRATEGIES),
         loc="upper center",
-        ncol=4,
+        ncol=len(config.RECOVERY_STRATEGIES),
         frameon=False,
         bbox_to_anchor=(0.5, 0.91),
     )
@@ -907,21 +932,21 @@ def _draw_snapshot_panel(ax, snapshot: Dict, title: str) -> None:
             continue
         pos_u = alive_lookup[u]["position"]
         pos_v = alive_lookup[v]["position"]
-        mission_edge = FancyArrowPatch(
-            posA=(pos_u[0], pos_u[1]),
-            posB=(pos_v[0], pos_v[1]),
-            arrowstyle="-|>",
-            mutation_scale=8,
-            shrinkA=5,
-            shrinkB=5,
-            connectionstyle="arc3,rad=0.16",
-            linewidth=1.7,
-            linestyle="-",
-            color="#b2182b",
-            alpha=0.82,
+        ax.annotate(
+            "",
+            xy=(pos_v[0], pos_v[1]),
+            xytext=(pos_u[0], pos_u[1]),
             zorder=3,
+            arrowprops=dict(
+                arrowstyle="->",
+                color="#b2182b",
+                lw=1.7,
+                alpha=0.7,
+                linestyle="-",
+                shrinkA=8,
+                shrinkB=8,
+            ),
         )
-        ax.add_patch(mission_edge)
 
     for node_type, style in node_styles.items():
         typed_nodes = [
@@ -958,7 +983,11 @@ def _draw_snapshot_panel(ax, snapshot: Dict, title: str) -> None:
                 zorder=5,
             )
 
-    ax.set_title(f"{title}\n存活节点={snapshot['alive_nodes']}  有效路径={snapshot['valid_paths_count']}", fontsize=11)
+    ax.set_title(
+        f"{title}\nAlive Nodes={snapshot['alive_nodes']}  Valid Kill Chains={snapshot['valid_paths_count']}",
+        fontsize=9.4,
+        pad=6,
+    )
     ax.set_xlim(0.0, 100.0)
     ax.set_ylim(0.0, 100.0)
     ax.set_aspect("equal", adjustable="box")
@@ -969,42 +998,72 @@ def _draw_snapshot_panel(ax, snapshot: Dict, title: str) -> None:
 
 def plot_snapshot_evolution(config, snapshot_store: Dict[str, Dict], output_path: Path) -> None:
     """图 4：受击后不同重构方式的空间拓扑演化快照。"""
-    required_keys = ["attack_break", "distance_compare", "degree_compare", "utility_compare"]
+    required_keys = [
+        "attack_break",
+        "distance_compare",
+        "degree_compare",
+        "mismatch_compare",
+        "utility_compare",
+    ]
     if any(key not in snapshot_store for key in required_keys):
         return
 
-    fig, axes = plt.subplots(1, 4, figsize=(21, 5.4))
+    fig = plt.figure(figsize=(13.2, 9.6))
+    panel_size = 0.285
+    top_row_bottom = 0.53
+    bottom_row_bottom = 0.12
+    top_row_lefts = [0.045, 0.3575, 0.67]
+    bottom_row_lefts = [0.20, 0.5125]
+    axes = [
+        fig.add_axes([top_row_lefts[0], top_row_bottom, panel_size, panel_size]),
+        fig.add_axes([top_row_lefts[1], top_row_bottom, panel_size, panel_size]),
+        fig.add_axes([top_row_lefts[2], top_row_bottom, panel_size, panel_size]),
+        fig.add_axes([bottom_row_lefts[0], bottom_row_bottom, panel_size, panel_size]),
+        fig.add_axes([bottom_row_lefts[1], bottom_row_bottom, panel_size, panel_size]),
+    ]
     fig.suptitle(
-        "受击与重构后的空间拓扑演化快照",
+        "Spatial Topology Evolution After Attack and Reconfiguration",
         fontsize=15,
         fontweight="bold",
-        y=0.98,
+        y=0.975,
     )
 
     attack_break_time = config.ATTACK_TIME
-    _draw_snapshot_panel(axes[0], snapshot_store["attack_break"], f"受击断链时刻 $t={attack_break_time}$")
-    _draw_snapshot_panel(axes[1], snapshot_store["distance_compare"], f"最短距离重构对比时刻 $t={config.SNAPSHOT_COMPARE_TIME}$")
-    _draw_snapshot_panel(axes[2], snapshot_store["degree_compare"], f"最高度数重构对比时刻 $t={config.SNAPSHOT_COMPARE_TIME}$")
-    _draw_snapshot_panel(axes[3], snapshot_store["utility_compare"], f"效用与角色重构对比时刻 $t={config.SNAPSHOT_COMPARE_TIME}$")
+    compare_time = config.SNAPSHOT_COMPARE_TIME
+    _draw_snapshot_panel(axes[0], snapshot_store["attack_break"], f"(a) Attack Fragmentation ($t={attack_break_time}$)")
+    _draw_snapshot_panel(axes[1], snapshot_store["distance_compare"], f"(b) Nearest-Neighbor ($t={compare_time}$)")
+    _draw_snapshot_panel(axes[2], snapshot_store["degree_compare"], f"(c) Maximum-Degree ($t={compare_time}$)")
+    _draw_snapshot_panel(axes[3], snapshot_store["mismatch_compare"], f"(d) Phase-Mismatched Utility ($t={compare_time}$)")
+    _draw_snapshot_panel(axes[4], snapshot_store["utility_compare"], f"(e) Utility-Guided and Role-Driven ($t={compare_time}$)")
+
+    for ax in axes[:3]:
+        ax.set_xlabel("")
+        ax.tick_params(axis="x", labelbottom=False)
+
+    for ax in (axes[1], axes[2], axes[4]):
+        ax.set_ylabel("")
+        ax.tick_params(axis="y", labelleft=False)
 
     legend_handles = [
-        Line2D([0], [0], marker="o", color="w", markerfacecolor="#1f77b4", markeredgecolor="white", markersize=8, label="S 节点"),
-        Line2D([0], [0], marker="s", color="w", markerfacecolor="#ff7f0e", markeredgecolor="white", markersize=8, label="D 节点"),
-        Line2D([0], [0], marker="^", color="w", markerfacecolor="#d62728", markeredgecolor="white", markersize=8, label="I 节点"),
-        Line2D([0], [0], color="#d0d0d0", linewidth=1.2, label="物理层边"),
-        Line2D([0], [0], color=plt.cm.Greens(0.75), linewidth=1.2, linestyle="--", label="通信层边（颜色深浅对应 $P_{ij}(t)$）"),
-        Line2D([0], [0], color="#b2182b", linewidth=1.8, label="任务层边（弧形箭头）"),
+        Line2D([0], [0], marker="o", color="w", markerfacecolor="#1f77b4", markeredgecolor="white", markersize=8, label="Sensor Node"),
+        Line2D([0], [0], marker="s", color="w", markerfacecolor="#ff7f0e", markeredgecolor="white", markersize=8, label="Decider Node"),
+        Line2D([0], [0], marker="^", color="w", markerfacecolor="#d62728", markeredgecolor="white", markersize=8, label="Influencer Node"),
+        Line2D([0], [0], color="#d0d0d0", linewidth=1.2, label="Physical Edge"),
+        Line2D([0], [0], color=plt.cm.Greens(0.75), linewidth=1.2, linestyle="--", label="Communication Edge ($P_{ij}(t)$)"),
+        Line2D([0], [0], color="#b2182b", linewidth=1.8, label="Mission Edge"),
     ]
     fig.legend(
         handles=legend_handles,
         loc="upper center",
-        ncol=3,
+        ncol=6,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.90),
+        bbox_to_anchor=(0.5, 0.925),
         handlelength=2.8,
+        fontsize=9.5,
+        columnspacing=1.0,
+        handletextpad=0.6,
     )
-    plt.tight_layout(rect=(0.0, 0.0, 1.0, 0.84))
-    fig.savefig(output_path, dpi=config.FIG_DPI, bbox_inches="tight")
+    fig.savefig(output_path, dpi=config.FIG_DPI)
     plt.close(fig)
 
 
@@ -1252,6 +1311,7 @@ def save_base_outputs(
         "random_seeds": config.QUICK_RANDOM_SEEDS if quick else config.RANDOM_SEEDS,
         "attack_time": config.ATTACK_TIME,
         "attack_duration": config.ATTACK_DURATION,
+        "attack_batch_weights": getattr(config, "ATTACK_BATCH_WEIGHTS", None),
         "attack_ratio": config.ATTACK_RATIO,
         "attack_nodes": config.ATTACK_NODES,
         "task_phase_schedule": config.TASK_PHASE_SCHEDULE,
@@ -1259,6 +1319,7 @@ def save_base_outputs(
         "lambda": config.LAMBDA,
         "reconfigure_trigger_time": config.RECONFIGURE_TRIGGER_TIME,
         "recovery_speed": config.RECOVERY_SPEED,
+        "recovery_speed_profile": getattr(config, "RECOVERY_SPEED_PROFILE", None),
         "search_radius": config.SEARCH_RADIUS,
         "baseline_trigger_physical_degree": config.BASELINE_TRIGGER_PHYSICAL_DEGREE,
         "utility_min_acceptance": config.UTILITY_MIN_ACCEPTANCE,
@@ -1308,24 +1369,24 @@ def generate_base_figures(
         config,
         time_summary_rows,
         metric_name="Q_phy",
-        ylabel="物理层性能 $Q_{phy}(t)$",
-        title="不同恢复策略对物理层性能的动态影响",
+        ylabel="Physical-Layer Performance $Q_{phy}(t)$",
+        title="Dynamic Impact of Recovery Strategies on Physical-Layer Performance",
         output_path=config.OUTPUT_DIR / "figure_5_qphy_recovery_matrix.png",
     )
     plot_layer_recovery_matrix(
         config,
         time_summary_rows,
         metric_name="Q_comm",
-        ylabel="通信层性能 $Q_{comm}(t)$",
-        title="不同恢复策略对通信层性能的动态影响",
+        ylabel="Communication-Layer Performance $Q_{comm}(t)$",
+        title="Dynamic Impact of Recovery Strategies on Communication-Layer Performance",
         output_path=config.OUTPUT_DIR / "figure_6_qcomm_recovery_matrix.png",
     )
     plot_layer_recovery_matrix(
         config,
         time_summary_rows,
         metric_name="Q_mis",
-        ylabel="任务层性能 $Q_{mis}(t)$",
-        title="不同恢复策略对任务层性能的动态影响",
+        ylabel="Mission-Layer Performance $Q_{mis}(t)$",
+        title="Dynamic Impact of Recovery Strategies on Mission-Layer Performance",
         output_path=config.OUTPUT_DIR / "figure_7_qmis_recovery_matrix.png",
     )
     plot_final_layer_performance_bars(
